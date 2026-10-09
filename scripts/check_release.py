@@ -57,9 +57,53 @@ def check():
             if abs(actual["upper80"] - predictions["upper80"][i]) > 1e-5:
                 raise RuntimeError(f"Interval replay mismatch: {model}/{year}")
             count += 1
+    for source in __import__("atlas.data", fromlist=["latest_annual"]).latest_annual()[
+        "sources"
+    ]:
+        if (
+            hashlib.sha256((DATA / source["raw_file"]).read_bytes()).hexdigest()
+            != source["sha256"]
+        ):
+            raise RuntimeError("Latest annual source integrity failed")
+    for filename in ["events.json", "treasury-current.json"]:
+        snapshot = json.loads((DATA / "processed" / filename).read_text())
+        sources = (
+            snapshot["sources"]
+            if filename == "events.json"
+            else snapshot["source"]["sources"]
+        )
+        for source in sources:
+            if (
+                hashlib.sha256((DATA / source["raw_file"]).read_bytes()).hexdigest()
+                != source["sha256"]
+            ):
+                raise RuntimeError("Public-source snapshot integrity failed")
+    from atlas.network import metadata, DIRECTORY
+    from atlas.graph_forecast import replay
+
+    network = metadata()
+    graph_report = json.loads((DATA / "models/gnn/evaluation.json").read_text())
+    for item in network["validation"]:
+        digest = hashlib.sha256(
+            (DIRECTORY / f"{item['year']}.npz").read_bytes()
+        ).hexdigest()
+        if (
+            digest != item["aggregate_sha256"]
+            or digest != graph_report["dataset_hashes"][str(item["year"])]
+        ):
+            raise RuntimeError("Network archive differs from evaluated graph data")
+    import numpy as np
+
+    for key, predictions in graph_report["predictions"].items():
+        if key.startswith(("graph_", "no_graph_")) and not np.allclose(
+            replay(key), predictions, atol=1e-4, rtol=0
+        ):
+            raise RuntimeError(f"Graph checkpoint replay mismatch: {key}")
     return {
         "status": "passed",
         "models": len(ready["models"]),
+        "graph_models": 6,
+        "graph_node_predictions_replayed": 2430,
         "replayed_predictions": count,
         "device": "cpu",
         "framework": "PyTorch",

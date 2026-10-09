@@ -1,7 +1,7 @@
 from fastapi import FastAPI, HTTPException, Query, Response
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.trustedhost import TrustedHostMiddleware
-from atlas.schemas import ForecastResponse, WalkForwardRequest
+from atlas.schemas import ForecastResponse, WalkForwardRequest, NetworkScenarioRequest
 from fastapi.middleware.cors import CORSMiddleware
 from atlas import data
 from atlas.http_limits import RequestLimits
@@ -31,7 +31,9 @@ def health():
 
 
 @app.get("/api/countries", response_model=CountriesResponse)
-def countries(year: int = Query(2024, ge=1960, le=2024)):
+def countries(year: int = Query(2025, ge=1960, le=2100)):
+    if year > data.latest_annual()["year"]:
+        raise HTTPException(422, "Observation year is not cached")
     return {"kind": "observed", "year": year, "countries": data.countries(year)}
 
 
@@ -62,6 +64,29 @@ def sources():
                 "url": treasury["source_url"],
             }
         )
+    network_path = data.DATA / "processed/network/metadata.json"
+    if network_path.exists():
+        network = json.loads(network_path.read_text())
+        latest = network["validation"][-1]
+        items.append(
+            {
+                "source": network["source"],
+                "label": "2016–2022 country-sector flows (five-sector aggregation)",
+                "url": network["url"],
+                "license": "OECD data terms; derived aggregation, OECD attribution retained",
+                "raw_file": "processed/network/2022.npz",
+                "sha256": latest["aggregate_sha256"],
+                "archive_sha256": network["archive_sha256"],
+                "retrieved_at": "2026-10-09",
+            }
+        )
+    current_rates = json.loads((data.DATA / "processed/treasury-current.json").read_text())["source"]
+    for source in current_rates["sources"]:
+        items.append({**source, "source": current_rates["name"], "label": f"Treasury par yields — {source['year']}", "url": f"https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value={source['year']}", "retrieved_at": current_rates["retrieved_at"], "license": "US federal government data; Treasury attribution retained"})
+    event_cache = json.loads((data.DATA / "processed/events.json").read_text())
+    for source in event_cache["sources"]:
+        items.append({**source, "source": source["name"], "label": source["name"] + " — official releases", "retrieved_at": event_cache["retrieved_at"], "license": "Attributed headlines and links; source terms apply"})
+    items.extend(data.latest_annual()["sources"])
     return items
 
 
@@ -228,6 +253,77 @@ def portfolio_walk_forward(request: WalkForwardRequest):
         return {**result, "assets": assets, "source": request.source}
     except ValueError as e:
         raise HTTPException(422, str(e))
+
+
+@app.get("/api/network")
+def network_metadata():
+    from atlas.network import metadata
+
+    return metadata()
+
+
+@app.get("/api/network/country/{code}")
+def network_country(code: str, year: int = Query(2022, ge=2016, le=2022)):
+    from atlas.network import profile
+
+    try:
+        return profile(code, year)
+    except ValueError as e:
+        raise HTTPException(422, str(e))
+
+
+@app.post("/api/network/scenario")
+def network_scenario(request: NetworkScenarioRequest):
+    from atlas.network import scenario
+
+    try:
+        return scenario(**request.model_dump())
+    except ValueError as e:
+        raise HTTPException(422, str(e))
+
+
+@app.get("/api/network/evaluation")
+def network_evaluation():
+    path = data.DATA / "models/gnn/evaluation.json"
+    if not path.exists():
+        raise HTTPException(404, "Graph experiment has not been trained")
+    return json.loads(path.read_text())
+
+
+@app.get("/api/events")
+def events():
+    path = data.DATA / "processed/events.json"
+    if not path.exists():
+        raise HTTPException(404, "No event cache; explicitly update public data")
+    return json.loads(path.read_text())
+
+
+@app.get("/api/updates")
+def update_status():
+    from atlas.updates import status
+
+    return status()
+
+
+@app.post("/api/updates", status_code=202)
+def update_public_data():
+    from atlas.updates import start_refresh
+
+    return start_refresh()
+
+
+@app.get("/api/data/coverage")
+def coverage():
+    latest = data.latest_annual()
+    return {
+        "latest_year": latest["year"],
+        "frozen_forecast_data_through": 2024,
+        "network_years": list(range(2016, 2023)),
+        "annual_nonmissing": sum(
+            o["value"] is not None for o in latest["observations"]
+        ),
+        "annual_records": len(latest["observations"]),
+    }
 
 
 # Added last so API routes take precedence. Release mode needs no Vite server.

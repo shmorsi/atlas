@@ -1,0 +1,3064 @@
+{
+  "kind": "observed_historical_network",
+  "source": "OECD ICIO 2025 regular tables",
+  "url": "https://www.oecd.org/en/data/datasets/inter-country-input-output-tables.html",
+  "citation": "OECD (2025), OECD Inter-Country Input-Output Tables, https://oe.cd/icio",
+  "archive_sha256": "46db55c45747e26dde5c1716d072b2aa74ace362a4424491ac646d2ab175befb",
+  "unit": "current USD million",
+  "years": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022
+  ],
+  "nodes": [
+    {
+      "id": "AGO_PRIMARY",
+      "country": "AGO",
+      "country_name": "Angola",
+      "sector": "Primary"
+    },
+    {
+      "id": "AGO_ENERGY",
+      "country": "AGO",
+      "country_name": "Angola",
+      "sector": "Energy"
+    },
+    {
+      "id": "AGO_MANUFACTURING",
+      "country": "AGO",
+      "country_name": "Angola",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "AGO_CONSTRUCTION",
+      "country": "AGO",
+      "country_name": "Angola",
+      "sector": "Construction"
+    },
+    {
+      "id": "AGO_SERVICES",
+      "country": "AGO",
+      "country_name": "Angola",
+      "sector": "Services"
+    },
+    {
+      "id": "ARE_PRIMARY",
+      "country": "ARE",
+      "country_name": "United Arab Emirates",
+      "sector": "Primary"
+    },
+    {
+      "id": "ARE_ENERGY",
+      "country": "ARE",
+      "country_name": "United Arab Emirates",
+      "sector": "Energy"
+    },
+    {
+      "id": "ARE_MANUFACTURING",
+      "country": "ARE",
+      "country_name": "United Arab Emirates",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "ARE_CONSTRUCTION",
+      "country": "ARE",
+      "country_name": "United Arab Emirates",
+      "sector": "Construction"
+    },
+    {
+      "id": "ARE_SERVICES",
+      "country": "ARE",
+      "country_name": "United Arab Emirates",
+      "sector": "Services"
+    },
+    {
+      "id": "ARG_PRIMARY",
+      "country": "ARG",
+      "country_name": "Argentina",
+      "sector": "Primary"
+    },
+    {
+      "id": "ARG_ENERGY",
+      "country": "ARG",
+      "country_name": "Argentina",
+      "sector": "Energy"
+    },
+    {
+      "id": "ARG_MANUFACTURING",
+      "country": "ARG",
+      "country_name": "Argentina",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "ARG_CONSTRUCTION",
+      "country": "ARG",
+      "country_name": "Argentina",
+      "sector": "Construction"
+    },
+    {
+      "id": "ARG_SERVICES",
+      "country": "ARG",
+      "country_name": "Argentina",
+      "sector": "Services"
+    },
+    {
+      "id": "AUS_PRIMARY",
+      "country": "AUS",
+      "country_name": "Australia",
+      "sector": "Primary"
+    },
+    {
+      "id": "AUS_ENERGY",
+      "country": "AUS",
+      "country_name": "Australia",
+      "sector": "Energy"
+    },
+    {
+      "id": "AUS_MANUFACTURING",
+      "country": "AUS",
+      "country_name": "Australia",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "AUS_CONSTRUCTION",
+      "country": "AUS",
+      "country_name": "Australia",
+      "sector": "Construction"
+    },
+    {
+      "id": "AUS_SERVICES",
+      "country": "AUS",
+      "country_name": "Australia",
+      "sector": "Services"
+    },
+    {
+      "id": "AUT_PRIMARY",
+      "country": "AUT",
+      "country_name": "Austria",
+      "sector": "Primary"
+    },
+    {
+      "id": "AUT_ENERGY",
+      "country": "AUT",
+      "country_name": "Austria",
+      "sector": "Energy"
+    },
+    {
+      "id": "AUT_MANUFACTURING",
+      "country": "AUT",
+      "country_name": "Austria",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "AUT_CONSTRUCTION",
+      "country": "AUT",
+      "country_name": "Austria",
+      "sector": "Construction"
+    },
+    {
+      "id": "AUT_SERVICES",
+      "country": "AUT",
+      "country_name": "Austria",
+      "sector": "Services"
+    },
+    {
+      "id": "BEL_PRIMARY",
+      "country": "BEL",
+      "country_name": "Belgium",
+      "sector": "Primary"
+    },
+    {
+      "id": "BEL_ENERGY",
+      "country": "BEL",
+      "country_name": "Belgium",
+      "sector": "Energy"
+    },
+    {
+      "id": "BEL_MANUFACTURING",
+      "country": "BEL",
+      "country_name": "Belgium",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "BEL_CONSTRUCTION",
+      "country": "BEL",
+      "country_name": "Belgium",
+      "sector": "Construction"
+    },
+    {
+      "id": "BEL_SERVICES",
+      "country": "BEL",
+      "country_name": "Belgium",
+      "sector": "Services"
+    },
+    {
+      "id": "BGD_PRIMARY",
+      "country": "BGD",
+      "country_name": "Bangladesh",
+      "sector": "Primary"
+    },
+    {
+      "id": "BGD_ENERGY",
+      "country": "BGD",
+      "country_name": "Bangladesh",
+      "sector": "Energy"
+    },
+    {
+      "id": "BGD_MANUFACTURING",
+      "country": "BGD",
+      "country_name": "Bangladesh",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "BGD_CONSTRUCTION",
+      "country": "BGD",
+      "country_name": "Bangladesh",
+      "sector": "Construction"
+    },
+    {
+      "id": "BGD_SERVICES",
+      "country": "BGD",
+      "country_name": "Bangladesh",
+      "sector": "Services"
+    },
+    {
+      "id": "BGR_PRIMARY",
+      "country": "BGR",
+      "country_name": "Bulgaria",
+      "sector": "Primary"
+    },
+    {
+      "id": "BGR_ENERGY",
+      "country": "BGR",
+      "country_name": "Bulgaria",
+      "sector": "Energy"
+    },
+    {
+      "id": "BGR_MANUFACTURING",
+      "country": "BGR",
+      "country_name": "Bulgaria",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "BGR_CONSTRUCTION",
+      "country": "BGR",
+      "country_name": "Bulgaria",
+      "sector": "Construction"
+    },
+    {
+      "id": "BGR_SERVICES",
+      "country": "BGR",
+      "country_name": "Bulgaria",
+      "sector": "Services"
+    },
+    {
+      "id": "BLR_PRIMARY",
+      "country": "BLR",
+      "country_name": "Belarus",
+      "sector": "Primary"
+    },
+    {
+      "id": "BLR_ENERGY",
+      "country": "BLR",
+      "country_name": "Belarus",
+      "sector": "Energy"
+    },
+    {
+      "id": "BLR_MANUFACTURING",
+      "country": "BLR",
+      "country_name": "Belarus",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "BLR_CONSTRUCTION",
+      "country": "BLR",
+      "country_name": "Belarus",
+      "sector": "Construction"
+    },
+    {
+      "id": "BLR_SERVICES",
+      "country": "BLR",
+      "country_name": "Belarus",
+      "sector": "Services"
+    },
+    {
+      "id": "BRA_PRIMARY",
+      "country": "BRA",
+      "country_name": "Brazil",
+      "sector": "Primary"
+    },
+    {
+      "id": "BRA_ENERGY",
+      "country": "BRA",
+      "country_name": "Brazil",
+      "sector": "Energy"
+    },
+    {
+      "id": "BRA_MANUFACTURING",
+      "country": "BRA",
+      "country_name": "Brazil",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "BRA_CONSTRUCTION",
+      "country": "BRA",
+      "country_name": "Brazil",
+      "sector": "Construction"
+    },
+    {
+      "id": "BRA_SERVICES",
+      "country": "BRA",
+      "country_name": "Brazil",
+      "sector": "Services"
+    },
+    {
+      "id": "BRN_PRIMARY",
+      "country": "BRN",
+      "country_name": "Brunei Darussalam",
+      "sector": "Primary"
+    },
+    {
+      "id": "BRN_ENERGY",
+      "country": "BRN",
+      "country_name": "Brunei Darussalam",
+      "sector": "Energy"
+    },
+    {
+      "id": "BRN_MANUFACTURING",
+      "country": "BRN",
+      "country_name": "Brunei Darussalam",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "BRN_CONSTRUCTION",
+      "country": "BRN",
+      "country_name": "Brunei Darussalam",
+      "sector": "Construction"
+    },
+    {
+      "id": "BRN_SERVICES",
+      "country": "BRN",
+      "country_name": "Brunei Darussalam",
+      "sector": "Services"
+    },
+    {
+      "id": "CAN_PRIMARY",
+      "country": "CAN",
+      "country_name": "Canada",
+      "sector": "Primary"
+    },
+    {
+      "id": "CAN_ENERGY",
+      "country": "CAN",
+      "country_name": "Canada",
+      "sector": "Energy"
+    },
+    {
+      "id": "CAN_MANUFACTURING",
+      "country": "CAN",
+      "country_name": "Canada",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "CAN_CONSTRUCTION",
+      "country": "CAN",
+      "country_name": "Canada",
+      "sector": "Construction"
+    },
+    {
+      "id": "CAN_SERVICES",
+      "country": "CAN",
+      "country_name": "Canada",
+      "sector": "Services"
+    },
+    {
+      "id": "CHE_PRIMARY",
+      "country": "CHE",
+      "country_name": "Switzerland",
+      "sector": "Primary"
+    },
+    {
+      "id": "CHE_ENERGY",
+      "country": "CHE",
+      "country_name": "Switzerland",
+      "sector": "Energy"
+    },
+    {
+      "id": "CHE_MANUFACTURING",
+      "country": "CHE",
+      "country_name": "Switzerland",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "CHE_CONSTRUCTION",
+      "country": "CHE",
+      "country_name": "Switzerland",
+      "sector": "Construction"
+    },
+    {
+      "id": "CHE_SERVICES",
+      "country": "CHE",
+      "country_name": "Switzerland",
+      "sector": "Services"
+    },
+    {
+      "id": "CHL_PRIMARY",
+      "country": "CHL",
+      "country_name": "Chile",
+      "sector": "Primary"
+    },
+    {
+      "id": "CHL_ENERGY",
+      "country": "CHL",
+      "country_name": "Chile",
+      "sector": "Energy"
+    },
+    {
+      "id": "CHL_MANUFACTURING",
+      "country": "CHL",
+      "country_name": "Chile",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "CHL_CONSTRUCTION",
+      "country": "CHL",
+      "country_name": "Chile",
+      "sector": "Construction"
+    },
+    {
+      "id": "CHL_SERVICES",
+      "country": "CHL",
+      "country_name": "Chile",
+      "sector": "Services"
+    },
+    {
+      "id": "CHN_PRIMARY",
+      "country": "CHN",
+      "country_name": "China, People's Republic of",
+      "sector": "Primary"
+    },
+    {
+      "id": "CHN_ENERGY",
+      "country": "CHN",
+      "country_name": "China, People's Republic of",
+      "sector": "Energy"
+    },
+    {
+      "id": "CHN_MANUFACTURING",
+      "country": "CHN",
+      "country_name": "China, People's Republic of",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "CHN_CONSTRUCTION",
+      "country": "CHN",
+      "country_name": "China, People's Republic of",
+      "sector": "Construction"
+    },
+    {
+      "id": "CHN_SERVICES",
+      "country": "CHN",
+      "country_name": "China, People's Republic of",
+      "sector": "Services"
+    },
+    {
+      "id": "CIV_PRIMARY",
+      "country": "CIV",
+      "country_name": "Côte d'Ivoire",
+      "sector": "Primary"
+    },
+    {
+      "id": "CIV_ENERGY",
+      "country": "CIV",
+      "country_name": "Côte d'Ivoire",
+      "sector": "Energy"
+    },
+    {
+      "id": "CIV_MANUFACTURING",
+      "country": "CIV",
+      "country_name": "Côte d'Ivoire",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "CIV_CONSTRUCTION",
+      "country": "CIV",
+      "country_name": "Côte d'Ivoire",
+      "sector": "Construction"
+    },
+    {
+      "id": "CIV_SERVICES",
+      "country": "CIV",
+      "country_name": "Côte d'Ivoire",
+      "sector": "Services"
+    },
+    {
+      "id": "CMR_PRIMARY",
+      "country": "CMR",
+      "country_name": "Cameroon",
+      "sector": "Primary"
+    },
+    {
+      "id": "CMR_ENERGY",
+      "country": "CMR",
+      "country_name": "Cameroon",
+      "sector": "Energy"
+    },
+    {
+      "id": "CMR_MANUFACTURING",
+      "country": "CMR",
+      "country_name": "Cameroon",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "CMR_CONSTRUCTION",
+      "country": "CMR",
+      "country_name": "Cameroon",
+      "sector": "Construction"
+    },
+    {
+      "id": "CMR_SERVICES",
+      "country": "CMR",
+      "country_name": "Cameroon",
+      "sector": "Services"
+    },
+    {
+      "id": "COD_PRIMARY",
+      "country": "COD",
+      "country_name": "Democratic Republic of the Congo",
+      "sector": "Primary"
+    },
+    {
+      "id": "COD_ENERGY",
+      "country": "COD",
+      "country_name": "Democratic Republic of the Congo",
+      "sector": "Energy"
+    },
+    {
+      "id": "COD_MANUFACTURING",
+      "country": "COD",
+      "country_name": "Democratic Republic of the Congo",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "COD_CONSTRUCTION",
+      "country": "COD",
+      "country_name": "Democratic Republic of the Congo",
+      "sector": "Construction"
+    },
+    {
+      "id": "COD_SERVICES",
+      "country": "COD",
+      "country_name": "Democratic Republic of the Congo",
+      "sector": "Services"
+    },
+    {
+      "id": "COL_PRIMARY",
+      "country": "COL",
+      "country_name": "Colombia",
+      "sector": "Primary"
+    },
+    {
+      "id": "COL_ENERGY",
+      "country": "COL",
+      "country_name": "Colombia",
+      "sector": "Energy"
+    },
+    {
+      "id": "COL_MANUFACTURING",
+      "country": "COL",
+      "country_name": "Colombia",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "COL_CONSTRUCTION",
+      "country": "COL",
+      "country_name": "Colombia",
+      "sector": "Construction"
+    },
+    {
+      "id": "COL_SERVICES",
+      "country": "COL",
+      "country_name": "Colombia",
+      "sector": "Services"
+    },
+    {
+      "id": "CRI_PRIMARY",
+      "country": "CRI",
+      "country_name": "Costa Rica",
+      "sector": "Primary"
+    },
+    {
+      "id": "CRI_ENERGY",
+      "country": "CRI",
+      "country_name": "Costa Rica",
+      "sector": "Energy"
+    },
+    {
+      "id": "CRI_MANUFACTURING",
+      "country": "CRI",
+      "country_name": "Costa Rica",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "CRI_CONSTRUCTION",
+      "country": "CRI",
+      "country_name": "Costa Rica",
+      "sector": "Construction"
+    },
+    {
+      "id": "CRI_SERVICES",
+      "country": "CRI",
+      "country_name": "Costa Rica",
+      "sector": "Services"
+    },
+    {
+      "id": "CYP_PRIMARY",
+      "country": "CYP",
+      "country_name": "Cyprus (1)",
+      "sector": "Primary"
+    },
+    {
+      "id": "CYP_ENERGY",
+      "country": "CYP",
+      "country_name": "Cyprus (1)",
+      "sector": "Energy"
+    },
+    {
+      "id": "CYP_MANUFACTURING",
+      "country": "CYP",
+      "country_name": "Cyprus (1)",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "CYP_CONSTRUCTION",
+      "country": "CYP",
+      "country_name": "Cyprus (1)",
+      "sector": "Construction"
+    },
+    {
+      "id": "CYP_SERVICES",
+      "country": "CYP",
+      "country_name": "Cyprus (1)",
+      "sector": "Services"
+    },
+    {
+      "id": "CZE_PRIMARY",
+      "country": "CZE",
+      "country_name": "Czechia",
+      "sector": "Primary"
+    },
+    {
+      "id": "CZE_ENERGY",
+      "country": "CZE",
+      "country_name": "Czechia",
+      "sector": "Energy"
+    },
+    {
+      "id": "CZE_MANUFACTURING",
+      "country": "CZE",
+      "country_name": "Czechia",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "CZE_CONSTRUCTION",
+      "country": "CZE",
+      "country_name": "Czechia",
+      "sector": "Construction"
+    },
+    {
+      "id": "CZE_SERVICES",
+      "country": "CZE",
+      "country_name": "Czechia",
+      "sector": "Services"
+    },
+    {
+      "id": "DEU_PRIMARY",
+      "country": "DEU",
+      "country_name": "Germany",
+      "sector": "Primary"
+    },
+    {
+      "id": "DEU_ENERGY",
+      "country": "DEU",
+      "country_name": "Germany",
+      "sector": "Energy"
+    },
+    {
+      "id": "DEU_MANUFACTURING",
+      "country": "DEU",
+      "country_name": "Germany",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "DEU_CONSTRUCTION",
+      "country": "DEU",
+      "country_name": "Germany",
+      "sector": "Construction"
+    },
+    {
+      "id": "DEU_SERVICES",
+      "country": "DEU",
+      "country_name": "Germany",
+      "sector": "Services"
+    },
+    {
+      "id": "DNK_PRIMARY",
+      "country": "DNK",
+      "country_name": "Denmark",
+      "sector": "Primary"
+    },
+    {
+      "id": "DNK_ENERGY",
+      "country": "DNK",
+      "country_name": "Denmark",
+      "sector": "Energy"
+    },
+    {
+      "id": "DNK_MANUFACTURING",
+      "country": "DNK",
+      "country_name": "Denmark",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "DNK_CONSTRUCTION",
+      "country": "DNK",
+      "country_name": "Denmark",
+      "sector": "Construction"
+    },
+    {
+      "id": "DNK_SERVICES",
+      "country": "DNK",
+      "country_name": "Denmark",
+      "sector": "Services"
+    },
+    {
+      "id": "EGY_PRIMARY",
+      "country": "EGY",
+      "country_name": "Egypt",
+      "sector": "Primary"
+    },
+    {
+      "id": "EGY_ENERGY",
+      "country": "EGY",
+      "country_name": "Egypt",
+      "sector": "Energy"
+    },
+    {
+      "id": "EGY_MANUFACTURING",
+      "country": "EGY",
+      "country_name": "Egypt",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "EGY_CONSTRUCTION",
+      "country": "EGY",
+      "country_name": "Egypt",
+      "sector": "Construction"
+    },
+    {
+      "id": "EGY_SERVICES",
+      "country": "EGY",
+      "country_name": "Egypt",
+      "sector": "Services"
+    },
+    {
+      "id": "ESP_PRIMARY",
+      "country": "ESP",
+      "country_name": "Spain",
+      "sector": "Primary"
+    },
+    {
+      "id": "ESP_ENERGY",
+      "country": "ESP",
+      "country_name": "Spain",
+      "sector": "Energy"
+    },
+    {
+      "id": "ESP_MANUFACTURING",
+      "country": "ESP",
+      "country_name": "Spain",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "ESP_CONSTRUCTION",
+      "country": "ESP",
+      "country_name": "Spain",
+      "sector": "Construction"
+    },
+    {
+      "id": "ESP_SERVICES",
+      "country": "ESP",
+      "country_name": "Spain",
+      "sector": "Services"
+    },
+    {
+      "id": "EST_PRIMARY",
+      "country": "EST",
+      "country_name": "Estonia",
+      "sector": "Primary"
+    },
+    {
+      "id": "EST_ENERGY",
+      "country": "EST",
+      "country_name": "Estonia",
+      "sector": "Energy"
+    },
+    {
+      "id": "EST_MANUFACTURING",
+      "country": "EST",
+      "country_name": "Estonia",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "EST_CONSTRUCTION",
+      "country": "EST",
+      "country_name": "Estonia",
+      "sector": "Construction"
+    },
+    {
+      "id": "EST_SERVICES",
+      "country": "EST",
+      "country_name": "Estonia",
+      "sector": "Services"
+    },
+    {
+      "id": "FIN_PRIMARY",
+      "country": "FIN",
+      "country_name": "Finland",
+      "sector": "Primary"
+    },
+    {
+      "id": "FIN_ENERGY",
+      "country": "FIN",
+      "country_name": "Finland",
+      "sector": "Energy"
+    },
+    {
+      "id": "FIN_MANUFACTURING",
+      "country": "FIN",
+      "country_name": "Finland",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "FIN_CONSTRUCTION",
+      "country": "FIN",
+      "country_name": "Finland",
+      "sector": "Construction"
+    },
+    {
+      "id": "FIN_SERVICES",
+      "country": "FIN",
+      "country_name": "Finland",
+      "sector": "Services"
+    },
+    {
+      "id": "FRA_PRIMARY",
+      "country": "FRA",
+      "country_name": "France",
+      "sector": "Primary"
+    },
+    {
+      "id": "FRA_ENERGY",
+      "country": "FRA",
+      "country_name": "France",
+      "sector": "Energy"
+    },
+    {
+      "id": "FRA_MANUFACTURING",
+      "country": "FRA",
+      "country_name": "France",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "FRA_CONSTRUCTION",
+      "country": "FRA",
+      "country_name": "France",
+      "sector": "Construction"
+    },
+    {
+      "id": "FRA_SERVICES",
+      "country": "FRA",
+      "country_name": "France",
+      "sector": "Services"
+    },
+    {
+      "id": "GBR_PRIMARY",
+      "country": "GBR",
+      "country_name": "United Kingdom",
+      "sector": "Primary"
+    },
+    {
+      "id": "GBR_ENERGY",
+      "country": "GBR",
+      "country_name": "United Kingdom",
+      "sector": "Energy"
+    },
+    {
+      "id": "GBR_MANUFACTURING",
+      "country": "GBR",
+      "country_name": "United Kingdom",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "GBR_CONSTRUCTION",
+      "country": "GBR",
+      "country_name": "United Kingdom",
+      "sector": "Construction"
+    },
+    {
+      "id": "GBR_SERVICES",
+      "country": "GBR",
+      "country_name": "United Kingdom",
+      "sector": "Services"
+    },
+    {
+      "id": "GRC_PRIMARY",
+      "country": "GRC",
+      "country_name": "Greece",
+      "sector": "Primary"
+    },
+    {
+      "id": "GRC_ENERGY",
+      "country": "GRC",
+      "country_name": "Greece",
+      "sector": "Energy"
+    },
+    {
+      "id": "GRC_MANUFACTURING",
+      "country": "GRC",
+      "country_name": "Greece",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "GRC_CONSTRUCTION",
+      "country": "GRC",
+      "country_name": "Greece",
+      "sector": "Construction"
+    },
+    {
+      "id": "GRC_SERVICES",
+      "country": "GRC",
+      "country_name": "Greece",
+      "sector": "Services"
+    },
+    {
+      "id": "HKG_PRIMARY",
+      "country": "HKG",
+      "country_name": "Hong Kong, China",
+      "sector": "Primary"
+    },
+    {
+      "id": "HKG_ENERGY",
+      "country": "HKG",
+      "country_name": "Hong Kong, China",
+      "sector": "Energy"
+    },
+    {
+      "id": "HKG_MANUFACTURING",
+      "country": "HKG",
+      "country_name": "Hong Kong, China",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "HKG_CONSTRUCTION",
+      "country": "HKG",
+      "country_name": "Hong Kong, China",
+      "sector": "Construction"
+    },
+    {
+      "id": "HKG_SERVICES",
+      "country": "HKG",
+      "country_name": "Hong Kong, China",
+      "sector": "Services"
+    },
+    {
+      "id": "HRV_PRIMARY",
+      "country": "HRV",
+      "country_name": "Croatia",
+      "sector": "Primary"
+    },
+    {
+      "id": "HRV_ENERGY",
+      "country": "HRV",
+      "country_name": "Croatia",
+      "sector": "Energy"
+    },
+    {
+      "id": "HRV_MANUFACTURING",
+      "country": "HRV",
+      "country_name": "Croatia",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "HRV_CONSTRUCTION",
+      "country": "HRV",
+      "country_name": "Croatia",
+      "sector": "Construction"
+    },
+    {
+      "id": "HRV_SERVICES",
+      "country": "HRV",
+      "country_name": "Croatia",
+      "sector": "Services"
+    },
+    {
+      "id": "HUN_PRIMARY",
+      "country": "HUN",
+      "country_name": "Hungary",
+      "sector": "Primary"
+    },
+    {
+      "id": "HUN_ENERGY",
+      "country": "HUN",
+      "country_name": "Hungary",
+      "sector": "Energy"
+    },
+    {
+      "id": "HUN_MANUFACTURING",
+      "country": "HUN",
+      "country_name": "Hungary",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "HUN_CONSTRUCTION",
+      "country": "HUN",
+      "country_name": "Hungary",
+      "sector": "Construction"
+    },
+    {
+      "id": "HUN_SERVICES",
+      "country": "HUN",
+      "country_name": "Hungary",
+      "sector": "Services"
+    },
+    {
+      "id": "IDN_PRIMARY",
+      "country": "IDN",
+      "country_name": "Indonesia",
+      "sector": "Primary"
+    },
+    {
+      "id": "IDN_ENERGY",
+      "country": "IDN",
+      "country_name": "Indonesia",
+      "sector": "Energy"
+    },
+    {
+      "id": "IDN_MANUFACTURING",
+      "country": "IDN",
+      "country_name": "Indonesia",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "IDN_CONSTRUCTION",
+      "country": "IDN",
+      "country_name": "Indonesia",
+      "sector": "Construction"
+    },
+    {
+      "id": "IDN_SERVICES",
+      "country": "IDN",
+      "country_name": "Indonesia",
+      "sector": "Services"
+    },
+    {
+      "id": "IND_PRIMARY",
+      "country": "IND",
+      "country_name": "India",
+      "sector": "Primary"
+    },
+    {
+      "id": "IND_ENERGY",
+      "country": "IND",
+      "country_name": "India",
+      "sector": "Energy"
+    },
+    {
+      "id": "IND_MANUFACTURING",
+      "country": "IND",
+      "country_name": "India",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "IND_CONSTRUCTION",
+      "country": "IND",
+      "country_name": "India",
+      "sector": "Construction"
+    },
+    {
+      "id": "IND_SERVICES",
+      "country": "IND",
+      "country_name": "India",
+      "sector": "Services"
+    },
+    {
+      "id": "IRL_PRIMARY",
+      "country": "IRL",
+      "country_name": "Ireland",
+      "sector": "Primary"
+    },
+    {
+      "id": "IRL_ENERGY",
+      "country": "IRL",
+      "country_name": "Ireland",
+      "sector": "Energy"
+    },
+    {
+      "id": "IRL_MANUFACTURING",
+      "country": "IRL",
+      "country_name": "Ireland",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "IRL_CONSTRUCTION",
+      "country": "IRL",
+      "country_name": "Ireland",
+      "sector": "Construction"
+    },
+    {
+      "id": "IRL_SERVICES",
+      "country": "IRL",
+      "country_name": "Ireland",
+      "sector": "Services"
+    },
+    {
+      "id": "ISL_PRIMARY",
+      "country": "ISL",
+      "country_name": "Iceland",
+      "sector": "Primary"
+    },
+    {
+      "id": "ISL_ENERGY",
+      "country": "ISL",
+      "country_name": "Iceland",
+      "sector": "Energy"
+    },
+    {
+      "id": "ISL_MANUFACTURING",
+      "country": "ISL",
+      "country_name": "Iceland",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "ISL_CONSTRUCTION",
+      "country": "ISL",
+      "country_name": "Iceland",
+      "sector": "Construction"
+    },
+    {
+      "id": "ISL_SERVICES",
+      "country": "ISL",
+      "country_name": "Iceland",
+      "sector": "Services"
+    },
+    {
+      "id": "ISR_PRIMARY",
+      "country": "ISR",
+      "country_name": "Israel (2)",
+      "sector": "Primary"
+    },
+    {
+      "id": "ISR_ENERGY",
+      "country": "ISR",
+      "country_name": "Israel (2)",
+      "sector": "Energy"
+    },
+    {
+      "id": "ISR_MANUFACTURING",
+      "country": "ISR",
+      "country_name": "Israel (2)",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "ISR_CONSTRUCTION",
+      "country": "ISR",
+      "country_name": "Israel (2)",
+      "sector": "Construction"
+    },
+    {
+      "id": "ISR_SERVICES",
+      "country": "ISR",
+      "country_name": "Israel (2)",
+      "sector": "Services"
+    },
+    {
+      "id": "ITA_PRIMARY",
+      "country": "ITA",
+      "country_name": "Italy",
+      "sector": "Primary"
+    },
+    {
+      "id": "ITA_ENERGY",
+      "country": "ITA",
+      "country_name": "Italy",
+      "sector": "Energy"
+    },
+    {
+      "id": "ITA_MANUFACTURING",
+      "country": "ITA",
+      "country_name": "Italy",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "ITA_CONSTRUCTION",
+      "country": "ITA",
+      "country_name": "Italy",
+      "sector": "Construction"
+    },
+    {
+      "id": "ITA_SERVICES",
+      "country": "ITA",
+      "country_name": "Italy",
+      "sector": "Services"
+    },
+    {
+      "id": "JOR_PRIMARY",
+      "country": "JOR",
+      "country_name": "Jordan",
+      "sector": "Primary"
+    },
+    {
+      "id": "JOR_ENERGY",
+      "country": "JOR",
+      "country_name": "Jordan",
+      "sector": "Energy"
+    },
+    {
+      "id": "JOR_MANUFACTURING",
+      "country": "JOR",
+      "country_name": "Jordan",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "JOR_CONSTRUCTION",
+      "country": "JOR",
+      "country_name": "Jordan",
+      "sector": "Construction"
+    },
+    {
+      "id": "JOR_SERVICES",
+      "country": "JOR",
+      "country_name": "Jordan",
+      "sector": "Services"
+    },
+    {
+      "id": "JPN_PRIMARY",
+      "country": "JPN",
+      "country_name": "Japan",
+      "sector": "Primary"
+    },
+    {
+      "id": "JPN_ENERGY",
+      "country": "JPN",
+      "country_name": "Japan",
+      "sector": "Energy"
+    },
+    {
+      "id": "JPN_MANUFACTURING",
+      "country": "JPN",
+      "country_name": "Japan",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "JPN_CONSTRUCTION",
+      "country": "JPN",
+      "country_name": "Japan",
+      "sector": "Construction"
+    },
+    {
+      "id": "JPN_SERVICES",
+      "country": "JPN",
+      "country_name": "Japan",
+      "sector": "Services"
+    },
+    {
+      "id": "KAZ_PRIMARY",
+      "country": "KAZ",
+      "country_name": "Kazakhstan",
+      "sector": "Primary"
+    },
+    {
+      "id": "KAZ_ENERGY",
+      "country": "KAZ",
+      "country_name": "Kazakhstan",
+      "sector": "Energy"
+    },
+    {
+      "id": "KAZ_MANUFACTURING",
+      "country": "KAZ",
+      "country_name": "Kazakhstan",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "KAZ_CONSTRUCTION",
+      "country": "KAZ",
+      "country_name": "Kazakhstan",
+      "sector": "Construction"
+    },
+    {
+      "id": "KAZ_SERVICES",
+      "country": "KAZ",
+      "country_name": "Kazakhstan",
+      "sector": "Services"
+    },
+    {
+      "id": "KHM_PRIMARY",
+      "country": "KHM",
+      "country_name": "Cambodia",
+      "sector": "Primary"
+    },
+    {
+      "id": "KHM_ENERGY",
+      "country": "KHM",
+      "country_name": "Cambodia",
+      "sector": "Energy"
+    },
+    {
+      "id": "KHM_MANUFACTURING",
+      "country": "KHM",
+      "country_name": "Cambodia",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "KHM_CONSTRUCTION",
+      "country": "KHM",
+      "country_name": "Cambodia",
+      "sector": "Construction"
+    },
+    {
+      "id": "KHM_SERVICES",
+      "country": "KHM",
+      "country_name": "Cambodia",
+      "sector": "Services"
+    },
+    {
+      "id": "KOR_PRIMARY",
+      "country": "KOR",
+      "country_name": "Korea",
+      "sector": "Primary"
+    },
+    {
+      "id": "KOR_ENERGY",
+      "country": "KOR",
+      "country_name": "Korea",
+      "sector": "Energy"
+    },
+    {
+      "id": "KOR_MANUFACTURING",
+      "country": "KOR",
+      "country_name": "Korea",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "KOR_CONSTRUCTION",
+      "country": "KOR",
+      "country_name": "Korea",
+      "sector": "Construction"
+    },
+    {
+      "id": "KOR_SERVICES",
+      "country": "KOR",
+      "country_name": "Korea",
+      "sector": "Services"
+    },
+    {
+      "id": "LAO_PRIMARY",
+      "country": "LAO",
+      "country_name": "Lao (People's Democratic Republic)",
+      "sector": "Primary"
+    },
+    {
+      "id": "LAO_ENERGY",
+      "country": "LAO",
+      "country_name": "Lao (People's Democratic Republic)",
+      "sector": "Energy"
+    },
+    {
+      "id": "LAO_MANUFACTURING",
+      "country": "LAO",
+      "country_name": "Lao (People's Democratic Republic)",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "LAO_CONSTRUCTION",
+      "country": "LAO",
+      "country_name": "Lao (People's Democratic Republic)",
+      "sector": "Construction"
+    },
+    {
+      "id": "LAO_SERVICES",
+      "country": "LAO",
+      "country_name": "Lao (People's Democratic Republic)",
+      "sector": "Services"
+    },
+    {
+      "id": "LTU_PRIMARY",
+      "country": "LTU",
+      "country_name": "Lithuania",
+      "sector": "Primary"
+    },
+    {
+      "id": "LTU_ENERGY",
+      "country": "LTU",
+      "country_name": "Lithuania",
+      "sector": "Energy"
+    },
+    {
+      "id": "LTU_MANUFACTURING",
+      "country": "LTU",
+      "country_name": "Lithuania",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "LTU_CONSTRUCTION",
+      "country": "LTU",
+      "country_name": "Lithuania",
+      "sector": "Construction"
+    },
+    {
+      "id": "LTU_SERVICES",
+      "country": "LTU",
+      "country_name": "Lithuania",
+      "sector": "Services"
+    },
+    {
+      "id": "LUX_PRIMARY",
+      "country": "LUX",
+      "country_name": "Luxembourg",
+      "sector": "Primary"
+    },
+    {
+      "id": "LUX_ENERGY",
+      "country": "LUX",
+      "country_name": "Luxembourg",
+      "sector": "Energy"
+    },
+    {
+      "id": "LUX_MANUFACTURING",
+      "country": "LUX",
+      "country_name": "Luxembourg",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "LUX_CONSTRUCTION",
+      "country": "LUX",
+      "country_name": "Luxembourg",
+      "sector": "Construction"
+    },
+    {
+      "id": "LUX_SERVICES",
+      "country": "LUX",
+      "country_name": "Luxembourg",
+      "sector": "Services"
+    },
+    {
+      "id": "LVA_PRIMARY",
+      "country": "LVA",
+      "country_name": "Latvia",
+      "sector": "Primary"
+    },
+    {
+      "id": "LVA_ENERGY",
+      "country": "LVA",
+      "country_name": "Latvia",
+      "sector": "Energy"
+    },
+    {
+      "id": "LVA_MANUFACTURING",
+      "country": "LVA",
+      "country_name": "Latvia",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "LVA_CONSTRUCTION",
+      "country": "LVA",
+      "country_name": "Latvia",
+      "sector": "Construction"
+    },
+    {
+      "id": "LVA_SERVICES",
+      "country": "LVA",
+      "country_name": "Latvia",
+      "sector": "Services"
+    },
+    {
+      "id": "MAR_PRIMARY",
+      "country": "MAR",
+      "country_name": "Morocco",
+      "sector": "Primary"
+    },
+    {
+      "id": "MAR_ENERGY",
+      "country": "MAR",
+      "country_name": "Morocco",
+      "sector": "Energy"
+    },
+    {
+      "id": "MAR_MANUFACTURING",
+      "country": "MAR",
+      "country_name": "Morocco",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "MAR_CONSTRUCTION",
+      "country": "MAR",
+      "country_name": "Morocco",
+      "sector": "Construction"
+    },
+    {
+      "id": "MAR_SERVICES",
+      "country": "MAR",
+      "country_name": "Morocco",
+      "sector": "Services"
+    },
+    {
+      "id": "MEX_PRIMARY",
+      "country": "MEX",
+      "country_name": "Mexico",
+      "sector": "Primary"
+    },
+    {
+      "id": "MEX_ENERGY",
+      "country": "MEX",
+      "country_name": "Mexico",
+      "sector": "Energy"
+    },
+    {
+      "id": "MEX_MANUFACTURING",
+      "country": "MEX",
+      "country_name": "Mexico",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "MEX_CONSTRUCTION",
+      "country": "MEX",
+      "country_name": "Mexico",
+      "sector": "Construction"
+    },
+    {
+      "id": "MEX_SERVICES",
+      "country": "MEX",
+      "country_name": "Mexico",
+      "sector": "Services"
+    },
+    {
+      "id": "MLT_PRIMARY",
+      "country": "MLT",
+      "country_name": "Malta",
+      "sector": "Primary"
+    },
+    {
+      "id": "MLT_ENERGY",
+      "country": "MLT",
+      "country_name": "Malta",
+      "sector": "Energy"
+    },
+    {
+      "id": "MLT_MANUFACTURING",
+      "country": "MLT",
+      "country_name": "Malta",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "MLT_CONSTRUCTION",
+      "country": "MLT",
+      "country_name": "Malta",
+      "sector": "Construction"
+    },
+    {
+      "id": "MLT_SERVICES",
+      "country": "MLT",
+      "country_name": "Malta",
+      "sector": "Services"
+    },
+    {
+      "id": "MMR_PRIMARY",
+      "country": "MMR",
+      "country_name": "Myanmar",
+      "sector": "Primary"
+    },
+    {
+      "id": "MMR_ENERGY",
+      "country": "MMR",
+      "country_name": "Myanmar",
+      "sector": "Energy"
+    },
+    {
+      "id": "MMR_MANUFACTURING",
+      "country": "MMR",
+      "country_name": "Myanmar",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "MMR_CONSTRUCTION",
+      "country": "MMR",
+      "country_name": "Myanmar",
+      "sector": "Construction"
+    },
+    {
+      "id": "MMR_SERVICES",
+      "country": "MMR",
+      "country_name": "Myanmar",
+      "sector": "Services"
+    },
+    {
+      "id": "MYS_PRIMARY",
+      "country": "MYS",
+      "country_name": "Malaysia",
+      "sector": "Primary"
+    },
+    {
+      "id": "MYS_ENERGY",
+      "country": "MYS",
+      "country_name": "Malaysia",
+      "sector": "Energy"
+    },
+    {
+      "id": "MYS_MANUFACTURING",
+      "country": "MYS",
+      "country_name": "Malaysia",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "MYS_CONSTRUCTION",
+      "country": "MYS",
+      "country_name": "Malaysia",
+      "sector": "Construction"
+    },
+    {
+      "id": "MYS_SERVICES",
+      "country": "MYS",
+      "country_name": "Malaysia",
+      "sector": "Services"
+    },
+    {
+      "id": "NGA_PRIMARY",
+      "country": "NGA",
+      "country_name": "Nigeria",
+      "sector": "Primary"
+    },
+    {
+      "id": "NGA_ENERGY",
+      "country": "NGA",
+      "country_name": "Nigeria",
+      "sector": "Energy"
+    },
+    {
+      "id": "NGA_MANUFACTURING",
+      "country": "NGA",
+      "country_name": "Nigeria",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "NGA_CONSTRUCTION",
+      "country": "NGA",
+      "country_name": "Nigeria",
+      "sector": "Construction"
+    },
+    {
+      "id": "NGA_SERVICES",
+      "country": "NGA",
+      "country_name": "Nigeria",
+      "sector": "Services"
+    },
+    {
+      "id": "NLD_PRIMARY",
+      "country": "NLD",
+      "country_name": "Netherlands",
+      "sector": "Primary"
+    },
+    {
+      "id": "NLD_ENERGY",
+      "country": "NLD",
+      "country_name": "Netherlands",
+      "sector": "Energy"
+    },
+    {
+      "id": "NLD_MANUFACTURING",
+      "country": "NLD",
+      "country_name": "Netherlands",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "NLD_CONSTRUCTION",
+      "country": "NLD",
+      "country_name": "Netherlands",
+      "sector": "Construction"
+    },
+    {
+      "id": "NLD_SERVICES",
+      "country": "NLD",
+      "country_name": "Netherlands",
+      "sector": "Services"
+    },
+    {
+      "id": "NOR_PRIMARY",
+      "country": "NOR",
+      "country_name": "Norway",
+      "sector": "Primary"
+    },
+    {
+      "id": "NOR_ENERGY",
+      "country": "NOR",
+      "country_name": "Norway",
+      "sector": "Energy"
+    },
+    {
+      "id": "NOR_MANUFACTURING",
+      "country": "NOR",
+      "country_name": "Norway",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "NOR_CONSTRUCTION",
+      "country": "NOR",
+      "country_name": "Norway",
+      "sector": "Construction"
+    },
+    {
+      "id": "NOR_SERVICES",
+      "country": "NOR",
+      "country_name": "Norway",
+      "sector": "Services"
+    },
+    {
+      "id": "NZL_PRIMARY",
+      "country": "NZL",
+      "country_name": "New Zealand",
+      "sector": "Primary"
+    },
+    {
+      "id": "NZL_ENERGY",
+      "country": "NZL",
+      "country_name": "New Zealand",
+      "sector": "Energy"
+    },
+    {
+      "id": "NZL_MANUFACTURING",
+      "country": "NZL",
+      "country_name": "New Zealand",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "NZL_CONSTRUCTION",
+      "country": "NZL",
+      "country_name": "New Zealand",
+      "sector": "Construction"
+    },
+    {
+      "id": "NZL_SERVICES",
+      "country": "NZL",
+      "country_name": "New Zealand",
+      "sector": "Services"
+    },
+    {
+      "id": "PAK_PRIMARY",
+      "country": "PAK",
+      "country_name": "Pakistan",
+      "sector": "Primary"
+    },
+    {
+      "id": "PAK_ENERGY",
+      "country": "PAK",
+      "country_name": "Pakistan",
+      "sector": "Energy"
+    },
+    {
+      "id": "PAK_MANUFACTURING",
+      "country": "PAK",
+      "country_name": "Pakistan",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "PAK_CONSTRUCTION",
+      "country": "PAK",
+      "country_name": "Pakistan",
+      "sector": "Construction"
+    },
+    {
+      "id": "PAK_SERVICES",
+      "country": "PAK",
+      "country_name": "Pakistan",
+      "sector": "Services"
+    },
+    {
+      "id": "PER_PRIMARY",
+      "country": "PER",
+      "country_name": "Peru",
+      "sector": "Primary"
+    },
+    {
+      "id": "PER_ENERGY",
+      "country": "PER",
+      "country_name": "Peru",
+      "sector": "Energy"
+    },
+    {
+      "id": "PER_MANUFACTURING",
+      "country": "PER",
+      "country_name": "Peru",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "PER_CONSTRUCTION",
+      "country": "PER",
+      "country_name": "Peru",
+      "sector": "Construction"
+    },
+    {
+      "id": "PER_SERVICES",
+      "country": "PER",
+      "country_name": "Peru",
+      "sector": "Services"
+    },
+    {
+      "id": "PHL_PRIMARY",
+      "country": "PHL",
+      "country_name": "Philippines",
+      "sector": "Primary"
+    },
+    {
+      "id": "PHL_ENERGY",
+      "country": "PHL",
+      "country_name": "Philippines",
+      "sector": "Energy"
+    },
+    {
+      "id": "PHL_MANUFACTURING",
+      "country": "PHL",
+      "country_name": "Philippines",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "PHL_CONSTRUCTION",
+      "country": "PHL",
+      "country_name": "Philippines",
+      "sector": "Construction"
+    },
+    {
+      "id": "PHL_SERVICES",
+      "country": "PHL",
+      "country_name": "Philippines",
+      "sector": "Services"
+    },
+    {
+      "id": "POL_PRIMARY",
+      "country": "POL",
+      "country_name": "Poland",
+      "sector": "Primary"
+    },
+    {
+      "id": "POL_ENERGY",
+      "country": "POL",
+      "country_name": "Poland",
+      "sector": "Energy"
+    },
+    {
+      "id": "POL_MANUFACTURING",
+      "country": "POL",
+      "country_name": "Poland",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "POL_CONSTRUCTION",
+      "country": "POL",
+      "country_name": "Poland",
+      "sector": "Construction"
+    },
+    {
+      "id": "POL_SERVICES",
+      "country": "POL",
+      "country_name": "Poland",
+      "sector": "Services"
+    },
+    {
+      "id": "PRT_PRIMARY",
+      "country": "PRT",
+      "country_name": "Portugal",
+      "sector": "Primary"
+    },
+    {
+      "id": "PRT_ENERGY",
+      "country": "PRT",
+      "country_name": "Portugal",
+      "sector": "Energy"
+    },
+    {
+      "id": "PRT_MANUFACTURING",
+      "country": "PRT",
+      "country_name": "Portugal",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "PRT_CONSTRUCTION",
+      "country": "PRT",
+      "country_name": "Portugal",
+      "sector": "Construction"
+    },
+    {
+      "id": "PRT_SERVICES",
+      "country": "PRT",
+      "country_name": "Portugal",
+      "sector": "Services"
+    },
+    {
+      "id": "ROU_PRIMARY",
+      "country": "ROU",
+      "country_name": "Romania",
+      "sector": "Primary"
+    },
+    {
+      "id": "ROU_ENERGY",
+      "country": "ROU",
+      "country_name": "Romania",
+      "sector": "Energy"
+    },
+    {
+      "id": "ROU_MANUFACTURING",
+      "country": "ROU",
+      "country_name": "Romania",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "ROU_CONSTRUCTION",
+      "country": "ROU",
+      "country_name": "Romania",
+      "sector": "Construction"
+    },
+    {
+      "id": "ROU_SERVICES",
+      "country": "ROU",
+      "country_name": "Romania",
+      "sector": "Services"
+    },
+    {
+      "id": "RUS_PRIMARY",
+      "country": "RUS",
+      "country_name": "Russian Federation",
+      "sector": "Primary"
+    },
+    {
+      "id": "RUS_ENERGY",
+      "country": "RUS",
+      "country_name": "Russian Federation",
+      "sector": "Energy"
+    },
+    {
+      "id": "RUS_MANUFACTURING",
+      "country": "RUS",
+      "country_name": "Russian Federation",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "RUS_CONSTRUCTION",
+      "country": "RUS",
+      "country_name": "Russian Federation",
+      "sector": "Construction"
+    },
+    {
+      "id": "RUS_SERVICES",
+      "country": "RUS",
+      "country_name": "Russian Federation",
+      "sector": "Services"
+    },
+    {
+      "id": "SAU_PRIMARY",
+      "country": "SAU",
+      "country_name": "Saudi Arabia",
+      "sector": "Primary"
+    },
+    {
+      "id": "SAU_ENERGY",
+      "country": "SAU",
+      "country_name": "Saudi Arabia",
+      "sector": "Energy"
+    },
+    {
+      "id": "SAU_MANUFACTURING",
+      "country": "SAU",
+      "country_name": "Saudi Arabia",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "SAU_CONSTRUCTION",
+      "country": "SAU",
+      "country_name": "Saudi Arabia",
+      "sector": "Construction"
+    },
+    {
+      "id": "SAU_SERVICES",
+      "country": "SAU",
+      "country_name": "Saudi Arabia",
+      "sector": "Services"
+    },
+    {
+      "id": "SEN_PRIMARY",
+      "country": "SEN",
+      "country_name": "Senegal",
+      "sector": "Primary"
+    },
+    {
+      "id": "SEN_ENERGY",
+      "country": "SEN",
+      "country_name": "Senegal",
+      "sector": "Energy"
+    },
+    {
+      "id": "SEN_MANUFACTURING",
+      "country": "SEN",
+      "country_name": "Senegal",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "SEN_CONSTRUCTION",
+      "country": "SEN",
+      "country_name": "Senegal",
+      "sector": "Construction"
+    },
+    {
+      "id": "SEN_SERVICES",
+      "country": "SEN",
+      "country_name": "Senegal",
+      "sector": "Services"
+    },
+    {
+      "id": "SGP_PRIMARY",
+      "country": "SGP",
+      "country_name": "Singapore",
+      "sector": "Primary"
+    },
+    {
+      "id": "SGP_ENERGY",
+      "country": "SGP",
+      "country_name": "Singapore",
+      "sector": "Energy"
+    },
+    {
+      "id": "SGP_MANUFACTURING",
+      "country": "SGP",
+      "country_name": "Singapore",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "SGP_CONSTRUCTION",
+      "country": "SGP",
+      "country_name": "Singapore",
+      "sector": "Construction"
+    },
+    {
+      "id": "SGP_SERVICES",
+      "country": "SGP",
+      "country_name": "Singapore",
+      "sector": "Services"
+    },
+    {
+      "id": "STP_PRIMARY",
+      "country": "STP",
+      "country_name": "Saõ Tomé and Príncipe",
+      "sector": "Primary"
+    },
+    {
+      "id": "STP_ENERGY",
+      "country": "STP",
+      "country_name": "Saõ Tomé and Príncipe",
+      "sector": "Energy"
+    },
+    {
+      "id": "STP_MANUFACTURING",
+      "country": "STP",
+      "country_name": "Saõ Tomé and Príncipe",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "STP_CONSTRUCTION",
+      "country": "STP",
+      "country_name": "Saõ Tomé and Príncipe",
+      "sector": "Construction"
+    },
+    {
+      "id": "STP_SERVICES",
+      "country": "STP",
+      "country_name": "Saõ Tomé and Príncipe",
+      "sector": "Services"
+    },
+    {
+      "id": "SVK_PRIMARY",
+      "country": "SVK",
+      "country_name": "Slovak Republic",
+      "sector": "Primary"
+    },
+    {
+      "id": "SVK_ENERGY",
+      "country": "SVK",
+      "country_name": "Slovak Republic",
+      "sector": "Energy"
+    },
+    {
+      "id": "SVK_MANUFACTURING",
+      "country": "SVK",
+      "country_name": "Slovak Republic",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "SVK_CONSTRUCTION",
+      "country": "SVK",
+      "country_name": "Slovak Republic",
+      "sector": "Construction"
+    },
+    {
+      "id": "SVK_SERVICES",
+      "country": "SVK",
+      "country_name": "Slovak Republic",
+      "sector": "Services"
+    },
+    {
+      "id": "SVN_PRIMARY",
+      "country": "SVN",
+      "country_name": "Slovenia",
+      "sector": "Primary"
+    },
+    {
+      "id": "SVN_ENERGY",
+      "country": "SVN",
+      "country_name": "Slovenia",
+      "sector": "Energy"
+    },
+    {
+      "id": "SVN_MANUFACTURING",
+      "country": "SVN",
+      "country_name": "Slovenia",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "SVN_CONSTRUCTION",
+      "country": "SVN",
+      "country_name": "Slovenia",
+      "sector": "Construction"
+    },
+    {
+      "id": "SVN_SERVICES",
+      "country": "SVN",
+      "country_name": "Slovenia",
+      "sector": "Services"
+    },
+    {
+      "id": "SWE_PRIMARY",
+      "country": "SWE",
+      "country_name": "Sweden",
+      "sector": "Primary"
+    },
+    {
+      "id": "SWE_ENERGY",
+      "country": "SWE",
+      "country_name": "Sweden",
+      "sector": "Energy"
+    },
+    {
+      "id": "SWE_MANUFACTURING",
+      "country": "SWE",
+      "country_name": "Sweden",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "SWE_CONSTRUCTION",
+      "country": "SWE",
+      "country_name": "Sweden",
+      "sector": "Construction"
+    },
+    {
+      "id": "SWE_SERVICES",
+      "country": "SWE",
+      "country_name": "Sweden",
+      "sector": "Services"
+    },
+    {
+      "id": "THA_PRIMARY",
+      "country": "THA",
+      "country_name": "Thailand",
+      "sector": "Primary"
+    },
+    {
+      "id": "THA_ENERGY",
+      "country": "THA",
+      "country_name": "Thailand",
+      "sector": "Energy"
+    },
+    {
+      "id": "THA_MANUFACTURING",
+      "country": "THA",
+      "country_name": "Thailand",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "THA_CONSTRUCTION",
+      "country": "THA",
+      "country_name": "Thailand",
+      "sector": "Construction"
+    },
+    {
+      "id": "THA_SERVICES",
+      "country": "THA",
+      "country_name": "Thailand",
+      "sector": "Services"
+    },
+    {
+      "id": "TUN_PRIMARY",
+      "country": "TUN",
+      "country_name": "Tunisia",
+      "sector": "Primary"
+    },
+    {
+      "id": "TUN_ENERGY",
+      "country": "TUN",
+      "country_name": "Tunisia",
+      "sector": "Energy"
+    },
+    {
+      "id": "TUN_MANUFACTURING",
+      "country": "TUN",
+      "country_name": "Tunisia",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "TUN_CONSTRUCTION",
+      "country": "TUN",
+      "country_name": "Tunisia",
+      "sector": "Construction"
+    },
+    {
+      "id": "TUN_SERVICES",
+      "country": "TUN",
+      "country_name": "Tunisia",
+      "sector": "Services"
+    },
+    {
+      "id": "TUR_PRIMARY",
+      "country": "TUR",
+      "country_name": "Türkiye",
+      "sector": "Primary"
+    },
+    {
+      "id": "TUR_ENERGY",
+      "country": "TUR",
+      "country_name": "Türkiye",
+      "sector": "Energy"
+    },
+    {
+      "id": "TUR_MANUFACTURING",
+      "country": "TUR",
+      "country_name": "Türkiye",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "TUR_CONSTRUCTION",
+      "country": "TUR",
+      "country_name": "Türkiye",
+      "sector": "Construction"
+    },
+    {
+      "id": "TUR_SERVICES",
+      "country": "TUR",
+      "country_name": "Türkiye",
+      "sector": "Services"
+    },
+    {
+      "id": "TWN_PRIMARY",
+      "country": "TWN",
+      "country_name": "Chinese Taipei",
+      "sector": "Primary"
+    },
+    {
+      "id": "TWN_ENERGY",
+      "country": "TWN",
+      "country_name": "Chinese Taipei",
+      "sector": "Energy"
+    },
+    {
+      "id": "TWN_MANUFACTURING",
+      "country": "TWN",
+      "country_name": "Chinese Taipei",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "TWN_CONSTRUCTION",
+      "country": "TWN",
+      "country_name": "Chinese Taipei",
+      "sector": "Construction"
+    },
+    {
+      "id": "TWN_SERVICES",
+      "country": "TWN",
+      "country_name": "Chinese Taipei",
+      "sector": "Services"
+    },
+    {
+      "id": "UKR_PRIMARY",
+      "country": "UKR",
+      "country_name": "Ukraine",
+      "sector": "Primary"
+    },
+    {
+      "id": "UKR_ENERGY",
+      "country": "UKR",
+      "country_name": "Ukraine",
+      "sector": "Energy"
+    },
+    {
+      "id": "UKR_MANUFACTURING",
+      "country": "UKR",
+      "country_name": "Ukraine",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "UKR_CONSTRUCTION",
+      "country": "UKR",
+      "country_name": "Ukraine",
+      "sector": "Construction"
+    },
+    {
+      "id": "UKR_SERVICES",
+      "country": "UKR",
+      "country_name": "Ukraine",
+      "sector": "Services"
+    },
+    {
+      "id": "USA_PRIMARY",
+      "country": "USA",
+      "country_name": "United States",
+      "sector": "Primary"
+    },
+    {
+      "id": "USA_ENERGY",
+      "country": "USA",
+      "country_name": "United States",
+      "sector": "Energy"
+    },
+    {
+      "id": "USA_MANUFACTURING",
+      "country": "USA",
+      "country_name": "United States",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "USA_CONSTRUCTION",
+      "country": "USA",
+      "country_name": "United States",
+      "sector": "Construction"
+    },
+    {
+      "id": "USA_SERVICES",
+      "country": "USA",
+      "country_name": "United States",
+      "sector": "Services"
+    },
+    {
+      "id": "VNM_PRIMARY",
+      "country": "VNM",
+      "country_name": "Viet Nam",
+      "sector": "Primary"
+    },
+    {
+      "id": "VNM_ENERGY",
+      "country": "VNM",
+      "country_name": "Viet Nam",
+      "sector": "Energy"
+    },
+    {
+      "id": "VNM_MANUFACTURING",
+      "country": "VNM",
+      "country_name": "Viet Nam",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "VNM_CONSTRUCTION",
+      "country": "VNM",
+      "country_name": "Viet Nam",
+      "sector": "Construction"
+    },
+    {
+      "id": "VNM_SERVICES",
+      "country": "VNM",
+      "country_name": "Viet Nam",
+      "sector": "Services"
+    },
+    {
+      "id": "ZAF_PRIMARY",
+      "country": "ZAF",
+      "country_name": "South Africa",
+      "sector": "Primary"
+    },
+    {
+      "id": "ZAF_ENERGY",
+      "country": "ZAF",
+      "country_name": "South Africa",
+      "sector": "Energy"
+    },
+    {
+      "id": "ZAF_MANUFACTURING",
+      "country": "ZAF",
+      "country_name": "South Africa",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "ZAF_CONSTRUCTION",
+      "country": "ZAF",
+      "country_name": "South Africa",
+      "sector": "Construction"
+    },
+    {
+      "id": "ZAF_SERVICES",
+      "country": "ZAF",
+      "country_name": "South Africa",
+      "sector": "Services"
+    },
+    {
+      "id": "ROW_PRIMARY",
+      "country": "ROW",
+      "country_name": "Rest of the World",
+      "sector": "Primary"
+    },
+    {
+      "id": "ROW_ENERGY",
+      "country": "ROW",
+      "country_name": "Rest of the World",
+      "sector": "Energy"
+    },
+    {
+      "id": "ROW_MANUFACTURING",
+      "country": "ROW",
+      "country_name": "Rest of the World",
+      "sector": "Manufacturing"
+    },
+    {
+      "id": "ROW_CONSTRUCTION",
+      "country": "ROW",
+      "country_name": "Rest of the World",
+      "sector": "Construction"
+    },
+    {
+      "id": "ROW_SERVICES",
+      "country": "ROW",
+      "country_name": "Rest of the World",
+      "sector": "Services"
+    }
+  ],
+  "industry_groups": {
+    "A01": "Primary",
+    "A02": "Primary",
+    "A03": "Primary",
+    "B05": "Energy",
+    "B06": "Energy",
+    "B07": "Primary",
+    "B08": "Primary",
+    "B09": "Energy",
+    "C10T12": "Manufacturing",
+    "C13T15": "Manufacturing",
+    "C16": "Manufacturing",
+    "C17_18": "Manufacturing",
+    "C19": "Energy",
+    "C20": "Manufacturing",
+    "C21": "Manufacturing",
+    "C22": "Manufacturing",
+    "C23": "Manufacturing",
+    "C24A": "Manufacturing",
+    "C24B": "Manufacturing",
+    "C25": "Manufacturing",
+    "C26": "Manufacturing",
+    "C27": "Manufacturing",
+    "C28": "Manufacturing",
+    "C29": "Manufacturing",
+    "C301": "Manufacturing",
+    "C302T309": "Manufacturing",
+    "C31T33": "Manufacturing",
+    "D": "Energy",
+    "E": "Services",
+    "F": "Construction",
+    "G": "Services",
+    "H49": "Services",
+    "H50": "Services",
+    "H51": "Services",
+    "H52": "Services",
+    "H53": "Services",
+    "I": "Services",
+    "J58T60": "Services",
+    "J61": "Services",
+    "J62_63": "Services",
+    "K": "Services",
+    "L": "Services",
+    "M": "Services",
+    "N": "Services",
+    "O": "Services",
+    "P": "Services",
+    "Q": "Services",
+    "R": "Services",
+    "S": "Services",
+    "T": "Services"
+  },
+  "validation": [
+    {
+      "year": 2016,
+      "member": "2016_SML.csv",
+      "member_sha256": "de91a560b3f4b1c75ab18846da13418d663844b465724691598a4e39bf5a09c2",
+      "source_missing_cells": 0,
+      "source_accounting_exceptions": [],
+      "aggregate_accounting_within_tolerance": true,
+      "accounting_tolerance": "Sum of constituent tolerances: 0.25 million USD per original sector + 0.01% output; source exceptions retained, not rebalanced",
+      "aggregate_max_row_relative_residual": 0.003086234536679078,
+      "aggregate_max_column_relative_residual": 0.0030905209735346607,
+      "source_zero_output_nodes": 52,
+      "max_row_balance_residual_million_usd": 17.512600000482053,
+      "max_column_balance_residual_million_usd": 5.816699999966659,
+      "max_balance_residual_relative_to_max_output_or_1": 0.015521064301552243,
+      "spectral_radius": 0.6293373810713462,
+      "world_output_million_usd": 146354895.4052,
+      "aggregate_sha256": "ee712e0b9f885d5a2be3f9cb9e596175f5f9f278ee7649c466071a28dc463aec"
+    },
+    {
+      "year": 2017,
+      "member": "2017_SML.csv",
+      "member_sha256": "07a07dc53f1302a35c984f2801a98899ea3e73c9704e8350cbb36587200a4b19",
+      "source_missing_cells": 0,
+      "source_accounting_exceptions": [],
+      "aggregate_accounting_within_tolerance": true,
+      "accounting_tolerance": "Sum of constituent tolerances: 0.25 million USD per original sector + 0.01% output; source exceptions retained, not rebalanced",
+      "aggregate_max_row_relative_residual": 0.0028638151980956345,
+      "aggregate_max_column_relative_residual": 0.003288418713270664,
+      "source_zero_output_nodes": 52,
+      "max_row_balance_residual_million_usd": 120.89529999997467,
+      "max_column_balance_residual_million_usd": 38.20129999960773,
+      "max_balance_residual_relative_to_max_output_or_1": 0.01429999999999998,
+      "spectral_radius": 0.5930768177910587,
+      "world_output_million_usd": 155394978.5476,
+      "aggregate_sha256": "69ee6168259fdfdfff702f26737e950fc8cbc137abfb9a04d5513bdac74b2a17"
+    },
+    {
+      "year": 2018,
+      "member": "2018_SML.csv",
+      "member_sha256": "3d14b8d34c5cc036fd2eb91fc44edce97c904ea8657cc273a162de84153ae23b",
+      "source_missing_cells": 0,
+      "source_accounting_exceptions": [],
+      "aggregate_accounting_within_tolerance": true,
+      "accounting_tolerance": "Sum of constituent tolerances: 0.25 million USD per original sector + 0.01% output; source exceptions retained, not rebalanced",
+      "aggregate_max_row_relative_residual": 0.0029536433026955402,
+      "aggregate_max_column_relative_residual": 0.003153544575943453,
+      "source_zero_output_nodes": 51,
+      "max_row_balance_residual_million_usd": 107.98489999910817,
+      "max_column_balance_residual_million_usd": 37.92599999986123,
+      "max_balance_residual_relative_to_max_output_or_1": 0.01649999999999996,
+      "spectral_radius": 0.5887472025112663,
+      "world_output_million_usd": 166307228.07500002,
+      "aggregate_sha256": "586081f1150dc7dfe5d323ef78c8d4e26ade68f773274d58f22d98b02fd7a7f2"
+    },
+    {
+      "year": 2019,
+      "member": "2019_SML.csv",
+      "member_sha256": "85bd13fd8c2385c41d239d2ddc973ced1caa87c59c2b90b7bed3ff97048043d8",
+      "source_missing_cells": 0,
+      "source_accounting_exceptions": [],
+      "aggregate_accounting_within_tolerance": true,
+      "accounting_tolerance": "Sum of constituent tolerances: 0.25 million USD per original sector + 0.01% output; source exceptions retained, not rebalanced",
+      "aggregate_max_row_relative_residual": 0.0032773637424800225,
+      "aggregate_max_column_relative_residual": 0.001584807398760893,
+      "source_zero_output_nodes": 51,
+      "max_row_balance_residual_million_usd": 100.87080000061542,
+      "max_column_balance_residual_million_usd": 33.9345000020694,
+      "max_balance_residual_relative_to_max_output_or_1": 0.01749999999999996,
+      "spectral_radius": 0.5879179196440316,
+      "world_output_million_usd": 168481393.3319,
+      "aggregate_sha256": "86a3dc9bb846d491079408b0e646da642228e9d15028032cbdf7fd1ed8f9f1e9"
+    },
+    {
+      "year": 2020,
+      "member": "2020_SML.csv",
+      "member_sha256": "92955212d9c8942112b7cc9b9251e55dd841e5a607376580a20d37fc54eb20a9",
+      "source_missing_cells": 0,
+      "source_accounting_exceptions": [
+        {
+          "node": "ARE_L",
+          "row_residual": -3.231100000004517,
+          "column_residual": -0.005199999897740781
+        },
+        {
+          "node": "ARE_T",
+          "row_residual": -0.7316000000000713,
+          "column_residual": 0.0
+        },
+        {
+          "node": "ARG_L",
+          "row_residual": -5.197099999993952,
+          "column_residual": -0.00809999994453392
+        },
+        {
+          "node": "ARG_T",
+          "row_residual": -0.9776000000001659,
+          "column_residual": 0.0
+        },
+        {
+          "node": "AUS_L",
+          "row_residual": -38.76239999997779,
+          "column_residual": -0.005200000625336543
+        },
+        {
+          "node": "AUT_L",
+          "row_residual": -7.130000000004657,
+          "column_residual": -0.008700000085809734
+        },
+        {
+          "node": "BEL_L",
+          "row_residual": -8.263600000005681,
+          "column_residual": -0.007400000125926454
+        },
+        {
+          "node": "BGD_L",
+          "row_residual": -2.570400000000518,
+          "column_residual": -0.008699999936652603
+        },
+        {
+          "node": "BGR_L",
+          "row_residual": -1.2662000000000262,
+          "column_residual": -0.009700000005068432
+        },
+        {
+          "node": "BRA_L",
+          "row_residual": -33.62599999998929,
+          "column_residual": -0.0063000001246109605
+        },
+        {
+          "node": "BRA_T",
+          "row_residual": -2.7570999999989,
+          "column_residual": 0.0
+        },
+        {
+          "node": "CAN_L",
+          "row_residual": -39.87610000005225,
+          "column_residual": -0.009300000383518636
+        },
+        {
+          "node": "CAN_T",
+          "row_residual": -0.551600000000235,
+          "column_residual": 0.0
+        },
+        {
+          "node": "CHE_L",
+          "row_residual": -11.446700000000419,
+          "column_residual": -0.003000000593601726
+        },
+        {
+          "node": "CHE_T",
+          "row_residual": -0.5818999999996777,
+          "column_residual": 0.0
+        },
+        {
+          "node": "CHL_L",
+          "row_residual": -4.549299999998766,
+          "column_residual": -0.00999999993655365
+        },
+        {
+          "node": "CHN_L",
+          "row_residual": -0.005200000014156103,
+          "column_residual": 146.3979000018444
+        },
+        {
+          "node": "COD_L",
+          "row_residual": -0.4517000000000735,
+          "column_residual": -0.01109999999835054
+        },
+        {
+          "node": "COL_L",
+          "row_residual": -4.305399999997462,
+          "column_residual": -0.010799999934533844
+        },
+        {
+          "node": "CRI_L",
+          "row_residual": -0.8258999999998196,
+          "column_residual": -0.008600000006481423
+        },
+        {
+          "node": "CZE_L",
+          "row_residual": -5.8122999999977765,
+          "column_residual": -0.005700000016076956
+        },
+        {
+          "node": "DEU_T",
+          "row_residual": -2.25879999999961,
+          "column_residual": 0.0
+        },
+        {
+          "node": "EGY_L",
+          "row_residual": -5.121100000003935,
+          "column_residual": -0.006200000007083872
+        },
+        {
+          "node": "ESP_L",
+          "row_residual": -28.577999999950407,
+          "column_residual": -0.0016999999643303454
+        },
+        {
+          "node": "ESP_T",
+          "row_residual": -2.6622999999999593,
+          "column_residual": 0.0
+        },
+        {
+          "node": "FIN_L",
+          "row_residual": -6.39869999999064,
+          "column_residual": -0.005300000113493297
+        },
+        {
+          "node": "FRA_L",
+          "row_residual": -61.06190000002971,
+          "column_residual": -0.005100000009406358
+        },
+        {
+          "node": "FRA_T",
+          "row_residual": -0.7618000000002212,
+          "column_residual": 0.0
+        },
+        {
+          "node": "GBR_L",
+          "row_residual": -71.38870000006864,
+          "column_residual": -0.003699999419040978
+        },
+        {
+          "node": "GBR_T",
+          "row_residual": -0.9413000000004104,
+          "column_residual": 0.0
+        },
+        {
+          "node": "GRC_L",
+          "row_residual": -5.404399999999441,
+          "column_residual": -0.005299999967974145
+        },
+        {
+          "node": "HKG_L",
+          "row_residual": -10.048699999999371,
+          "column_residual": -0.006300000117335003
+        },
+        {
+          "node": "HKG_T",
+          "row_residual": -1.029399999999896,
+          "column_residual": 0.0
+        },
+        {
+          "node": "HRV_L",
+          "row_residual": -1.0147999999999229,
+          "column_residual": -0.0068000000037500286
+        },
+        {
+          "node": "HUN_L",
+          "row_residual": -2.9716999999982363,
+          "column_residual": -0.007399999947665492
+        },
+        {
+          "node": "IDN_L",
+          "row_residual": -4.985600000007253,
+          "column_residual": -0.008499999938067049
+        },
+        {
+          "node": "IDN_T",
+          "row_residual": -1.2403000000003885,
+          "column_residual": 0.0
+        },
+        {
+          "node": "IND_L",
+          "row_residual": -42.151499999978114,
+          "column_residual": -0.005300000018905848
+        },
+        {
+          "node": "IND_T",
+          "row_residual": -0.974999999999909,
+          "column_residual": 0.0
+        },
+        {
+          "node": "IRL_L",
+          "row_residual": -4.605100000000675,
+          "column_residual": -0.006199999977980042
+        },
+        {
+          "node": "ISL_L",
+          "row_residual": -0.916700000000219,
+          "column_residual": -0.007500000005620677
+        },
+        {
+          "node": "ISR_L",
+          "row_residual": -13.496100000003935,
+          "column_residual": -0.007300000099348836
+        },
+        {
+          "node": "ITA_L",
+          "row_residual": -47.34769999998389,
+          "column_residual": -0.004000000306405127
+        },
+        {
+          "node": "ITA_T",
+          "row_residual": -5.112800000002608,
+          "column_residual": 0.0
+        },
+        {
+          "node": "JOR_L",
+          "row_residual": -1.1484999999984211,
+          "column_residual": -0.010400000006484333
+        },
+        {
+          "node": "JPN_L",
+          "row_residual": -140.5573999999324,
+          "column_residual": -0.003699998836964369
+        },
+        {
+          "node": "KAZ_L",
+          "row_residual": -2.441499999997177,
+          "column_residual": -0.00489999996352708
+        },
+        {
+          "node": "KOR_L",
+          "row_residual": -28.793199999985518,
+          "column_residual": -0.004200000170385465
+        },
+        {
+          "node": "KOR_T",
+          "row_residual": -0.5247999999996864,
+          "column_residual": 0.0
+        },
+        {
+          "node": "MAR_L",
+          "row_residual": -0.6975000000002183,
+          "column_residual": -0.006600000003345485
+        },
+        {
+          "node": "MYS_L",
+          "row_residual": -2.176100000000588,
+          "column_residual": -0.005399999976361869
+        },
+        {
+          "node": "NGA_T",
+          "row_residual": -0.5488999999997759,
+          "column_residual": 0.0
+        },
+        {
+          "node": "NLD_L",
+          "row_residual": -13.438299999994342,
+          "column_residual": -0.004800000140676275
+        },
+        {
+          "node": "NOR_L",
+          "row_residual": -4.74829999999929,
+          "column_residual": -0.004400000070745591
+        },
+        {
+          "node": "NZL_L",
+          "row_residual": -5.411500000001979,
+          "column_residual": -0.008100000042759348
+        },
+        {
+          "node": "PAK_L",
+          "row_residual": -2.090700000002471,
+          "column_residual": -0.0069999999777792254
+        },
+        {
+          "node": "PER_L",
+          "row_residual": -1.9537000000018452,
+          "column_residual": -0.006500000003143214
+        },
+        {
+          "node": "PER_T",
+          "row_residual": -0.9832999999998719,
+          "column_residual": 0.0
+        },
+        {
+          "node": "PHL_L",
+          "row_residual": -2.8300000000017462,
+          "column_residual": -0.0076999999801046215
+        },
+        {
+          "node": "PRT_L",
+          "row_residual": -4.445299999995768,
+          "column_residual": -0.006399999983841553
+        },
+        {
+          "node": "ROU_L",
+          "row_residual": -4.622999999995955,
+          "column_residual": -0.004099999994650716
+        },
+        {
+          "node": "ROU_T",
+          "row_residual": -0.6624000000001615,
+          "column_residual": 0.0
+        },
+        {
+          "node": "RUS_L",
+          "row_residual": -24.846199999999953,
+          "column_residual": -0.0074000000895466655
+        },
+        {
+          "node": "RUS_T",
+          "row_residual": -1.404500000000553,
+          "column_residual": 0.0
+        },
+        {
+          "node": "SAU_L",
+          "row_residual": -4.7378999999928055,
+          "column_residual": -0.009100000017497223
+        },
+        {
+          "node": "SAU_T",
+          "row_residual": -1.623000000000502,
+          "column_residual": 0.0
+        },
+        {
+          "node": "SGP_T",
+          "row_residual": -0.4461999999998625,
+          "column_residual": 0.0
+        },
+        {
+          "node": "SVK_L",
+          "row_residual": -2.386000000002241,
+          "column_residual": -0.008899999998902786
+        },
+        {
+          "node": "SVN_L",
+          "row_residual": -0.809400000000096,
+          "column_residual": -0.008300000001327135
+        },
+        {
+          "node": "THA_L",
+          "row_residual": -2.748300000002928,
+          "column_residual": -0.011199999993550591
+        },
+        {
+          "node": "TUR_L",
+          "row_residual": -10.09800000001269,
+          "column_residual": -0.00850000002537854
+        },
+        {
+          "node": "TWN_L",
+          "row_residual": -12.481600000013714,
+          "column_residual": -0.006999999997788109
+        },
+        {
+          "node": "TWN_T",
+          "row_residual": -0.9481000000000677,
+          "column_residual": 0.0
+        },
+        {
+          "node": "UKR_L",
+          "row_residual": -1.637800000002244,
+          "column_residual": -0.005300000002534944
+        },
+        {
+          "node": "USA_L",
+          "row_residual": -459.2796999993734,
+          "column_residual": -0.007799999322742224
+        },
+        {
+          "node": "USA_T",
+          "row_residual": -5.6754000000000815,
+          "column_residual": 0.0
+        },
+        {
+          "node": "ZAF_L",
+          "row_residual": -3.90589999999429,
+          "column_residual": -0.007600000004458707
+        },
+        {
+          "node": "ZAF_T",
+          "row_residual": -9.41309999999794,
+          "column_residual": 0.0
+        },
+        {
+          "node": "ROW_L",
+          "row_residual": -30.985799999994924,
+          "column_residual": -0.0025999999488703907
+        },
+        {
+          "node": "ROW_T",
+          "row_residual": -5.205600000001141,
+          "column_residual": 0.0
+        }
+      ],
+      "aggregate_accounting_within_tolerance": true,
+      "accounting_tolerance": "Sum of constituent tolerances: 0.25 million USD per original sector + 0.01% output; source exceptions retained, not rebalanced",
+      "aggregate_max_row_relative_residual": 0.0027053972433019133,
+      "aggregate_max_column_relative_residual": 0.0025263280161071404,
+      "source_zero_output_nodes": 51,
+      "max_row_balance_residual_million_usd": 459.2796999993734,
+      "max_column_balance_residual_million_usd": 146.3979000018444,
+      "max_balance_residual_relative_to_max_output_or_1": 0.017200000000000104,
+      "spectral_radius": 0.5908419916498039,
+      "world_output_million_usd": 163487964.23970002,
+      "aggregate_sha256": "f0053e8733ca98fe3bd26857d787615a8acfc700d858d7200c3de78be7bbd66d"
+    },
+    {
+      "year": 2021,
+      "member": "2021_SML.csv",
+      "member_sha256": "9a5c161ff1625e841c5901218adcdba0a81b3ee5872c2180ba2cbbabfcba4694",
+      "source_missing_cells": 0,
+      "source_accounting_exceptions": [],
+      "aggregate_accounting_within_tolerance": true,
+      "accounting_tolerance": "Sum of constituent tolerances: 0.25 million USD per original sector + 0.01% output; source exceptions retained, not rebalanced",
+      "aggregate_max_row_relative_residual": 0.0026886939785072477,
+      "aggregate_max_column_relative_residual": 0.002203293966689798,
+      "source_zero_output_nodes": 51,
+      "max_row_balance_residual_million_usd": 8.721599999349564,
+      "max_column_balance_residual_million_usd": 3.3677000016905367,
+      "max_balance_residual_relative_to_max_output_or_1": 0.018000000000000016,
+      "spectral_radius": 0.5869203508825925,
+      "world_output_million_usd": 189793658.0939,
+      "aggregate_sha256": "8273b2f3f96f3df8a258ca02cf2f1d46a8c5c6bf5950a80cd32689458ac84058"
+    },
+    {
+      "year": 2022,
+      "member": "2022_SML.csv",
+      "member_sha256": "fbab8fd2727bda9fd8c6cfee8227816db82d33bef6aa4b90194ca5dcbc5ad14b",
+      "source_missing_cells": 0,
+      "source_accounting_exceptions": [
+        {
+          "node": "BRA_L",
+          "row_residual": 21.563099999941187,
+          "column_residual": -0.0054000006057322025
+        },
+        {
+          "node": "ITA_T",
+          "row_residual": 2.122800000001007,
+          "column_residual": 0.0
+        },
+        {
+          "node": "USA_T",
+          "row_residual": 2.9304000000011,
+          "column_residual": 0.0
+        },
+        {
+          "node": "ZAF_T",
+          "row_residual": 5.115900000004331,
+          "column_residual": 0.0
+        },
+        {
+          "node": "ROW_T",
+          "row_residual": 2.8519999999989523,
+          "column_residual": 0.0
+        }
+      ],
+      "aggregate_accounting_within_tolerance": true,
+      "accounting_tolerance": "Sum of constituent tolerances: 0.25 million USD per original sector + 0.01% output; source exceptions retained, not rebalanced",
+      "aggregate_max_row_relative_residual": 0.0028064886016469287,
+      "aggregate_max_column_relative_residual": 0.0022772650367658192,
+      "source_zero_output_nodes": 51,
+      "max_row_balance_residual_million_usd": 238.60580000001937,
+      "max_column_balance_residual_million_usd": 82.03199999779463,
+      "max_balance_residual_relative_to_max_output_or_1": 0.01869999999999994,
+      "spectral_radius": 0.5856910966678647,
+      "world_output_million_usd": 199690648.75779998,
+      "aggregate_sha256": "f9068f3bb35115c47b0186b08fa5045f052b59fd3fe179655dbfb8adb0d8d251"
+    }
+  ],
+  "limitations": [
+    "Historical revised tables, not current observed relationships",
+    "Five-sector aggregation preserves summed flows/output but loses within-group heterogeneity",
+    "Energy combines coal, oil/gas extraction, mining support, refining and electricity/gas; it is not pure oil",
+    "2020 source rows have accounting exceptions beyond tolerance; the five-sector aggregation is checked separately and all exceptions are retained",
+    "Published accounting residuals are retained and reported, not repaired",
+    "No release-vintage or causal market-transmission claim"
+  ]
+}

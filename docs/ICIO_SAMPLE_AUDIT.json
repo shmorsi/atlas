@@ -1,0 +1,59 @@
+{
+  "method": "Independent stdlib CSV and Decimal block sums; no importer aggregation function reused",
+  "checks": [
+    {
+      "year": 2016,
+      "supplier": "SAU_ENERGY",
+      "buyer": "JPN_MANUFACTURING",
+      "raw_decimal_sum": "340.6201",
+      "aggregate_value": 340.62010000000015,
+      "absolute_error": 1.7053025658242404e-13,
+      "buyer_output_verified": "2722905.8090"
+    },
+    {
+      "year": 2016,
+      "supplier": "USA_SERVICES",
+      "buyer": "CAN_ENERGY",
+      "raw_decimal_sum": "2373.6008",
+      "aggregate_value": 2373.6008,
+      "absolute_error": 0.0,
+      "buyer_output_verified": "159351.1751"
+    },
+    {
+      "year": 2020,
+      "supplier": "SAU_ENERGY",
+      "buyer": "JPN_MANUFACTURING",
+      "raw_decimal_sum": "463.8483",
+      "aggregate_value": 463.8483,
+      "absolute_error": 0.0,
+      "buyer_output_verified": "2685576.8207"
+    },
+    {
+      "year": 2020,
+      "supplier": "USA_SERVICES",
+      "buyer": "CAN_ENERGY",
+      "raw_decimal_sum": "2987.7699",
+      "aggregate_value": 2987.7699,
+      "absolute_error": 0.0,
+      "buyer_output_verified": "164296.7369"
+    },
+    {
+      "year": 2022,
+      "supplier": "SAU_ENERGY",
+      "buyer": "JPN_MANUFACTURING",
+      "raw_decimal_sum": "2379.9272",
+      "aggregate_value": 2379.9271999999996,
+      "absolute_error": 4.547473508864641e-13,
+      "buyer_output_verified": "2615015.2571"
+    },
+    {
+      "year": 2022,
+      "supplier": "USA_SERVICES",
+      "buyer": "CAN_ENERGY",
+      "raw_decimal_sum": "2727.7850",
+      "aggregate_value": 2727.7850000000003,
+      "absolute_error": 4.547473508864641e-13,
+      "buyer_output_verified": "280849.4357"
+    }
+  ]
+}

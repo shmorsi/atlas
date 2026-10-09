@@ -1,0 +1,6 @@
+# Preserve downloaded source bytes: model/source hashes depend on exact originals.
+data/raw/** -text -whitespace
+data/reference/** -text
+*.npz -text
+*.pt -text
+*.parquet -text

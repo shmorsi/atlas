@@ -11,6 +11,17 @@ class RequestLimits:
     async def __call__(self, scope, receive, send):
         if scope["type"] != "http" or scope["method"] not in ("POST", "PUT", "PATCH"):
             return await self.app(scope, receive, send)
+        headers = dict(scope.get("headers", []))
+        origin = headers.get(b"origin", b"").decode()
+        host = headers.get(b"host", b"").decode()
+        if origin and origin not in {
+            f"http://{host}",
+            "http://127.0.0.1:5173",
+            "http://localhost:5173",
+        }:
+            return await JSONResponse(
+                {"detail": "Cross-origin mutation denied"}, status_code=403
+            )(scope, receive, send)
         chunks = []
         size = 0
         while True:

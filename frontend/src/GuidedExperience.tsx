@@ -34,6 +34,7 @@ const concepts = [
   },
 ];
 export function GuidedAtlas({
+  latestYear,
   countries,
   selected,
   onSelect,
@@ -48,6 +49,7 @@ export function GuidedAtlas({
   onWorkspace,
   onAdvanced,
 }: {
+  latestYear: number;
   countries: Country[];
   selected: string;
   onSelect: (id: string) => void;
@@ -179,7 +181,10 @@ export function GuidedAtlas({
               value={year}
               onChange={(e) => onYear(+e.target.value)}
             >
-              {Array.from({ length: 65 }, (_, i) => 2024 - i).map((y) => (
+              {Array.from(
+                { length: latestYear - 1959 },
+                (_, i) => latestYear - i,
+              ).map((y) => (
                 <option key={y}>{y}</option>
               ))}
             </select>
@@ -271,9 +276,9 @@ export function GuidedAtlas({
             </label>
             <p>
               The map shows annual economic growth. These are historical
-              observations through 2024, not a live feed. Missing values remain
-              unavailable. Boundaries are generalized. Population circles, when
-              enabled, use country reference points.
+              observations through {latestYear}, not a live feed. Missing values
+              remain unavailable. Boundaries are generalized. Population
+              circles, when enabled, use country reference points.
             </p>
           </div>
         </details>
@@ -540,7 +545,8 @@ export function GuidedScenario({ onAdvanced }: { onAdvanced: () => void }) {
           </button>
           <p className="guide-small">
             This is not an oil-price forecast or a result for the country you
-            selected. Real production-network data are not yet loaded.
+            selected. Measured OECD data are available in the Research view’s
+            Economic Network.
           </p>
         </div>
         <div className="scenario-explanation">

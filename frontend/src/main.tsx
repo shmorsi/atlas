@@ -21,6 +21,12 @@ import { api, Country, Observation, format, indicators } from "./types";
 import "./style.css";
 import "./guided.css";
 import { GuidedAtlas, GuidedScenario } from "./GuidedExperience";
+const CurrentEvents = lazy(() =>
+  import("./CurrentEvents").then((m) => ({ default: m.CurrentEvents })),
+);
+const NetworkWorkspace = lazy(() =>
+  import("./NetworkWorkspace").then((m) => ({ default: m.NetworkWorkspace })),
+);
 const StructuralLab = lazy(() =>
   import("./ResearchWorkspaces").then((m) => ({ default: m.StructuralLab })),
 );
@@ -53,11 +59,21 @@ const modules = [
   ["Research & Methods", BookOpen],
 ] as const;
 function App() {
+  const [latestYear, setLatestYear] = useState(2025);
+  useEffect(() => {
+    api<any>("/data/coverage")
+      .then((d) => {
+        setLatestYear(d.latest_year);
+        setYear((y) => (y === 2025 ? d.latest_year : y));
+      })
+      .catch(() => {});
+  }, []);
+
   const [experience, setExperience] = useState<"guided" | "research">("guided");
   const [countries, setCountries] = useState<Country[]>([]),
     [selected, setSelected] = useState("JPN"),
     [history, setHistory] = useState<Observation[]>([]),
-    [year, setYear] = useState(2024),
+    [year, setYear] = useState(2025),
     [query, setQuery] = useState(""),
     [region, setRegion] = useState("All regions"),
     [indicator, setIndicator] = useState("NY.GDP.MKTP.KD.ZG"),
@@ -268,6 +284,7 @@ function App() {
           {workspace === "World Atlas" ? (
             experience === "guided" ? (
               <GuidedAtlas
+                latestYear={latestYear}
                 countries={countries}
                 selected={selected}
                 onSelect={setSelected}
@@ -320,11 +337,12 @@ function App() {
                       value={year}
                       onChange={(e) => setYear(+e.target.value)}
                     >
-                      {Array.from({ length: 65 }, (_, i) => 2024 - i).map(
-                        (y) => (
-                          <option key={y}>{y}</option>
-                        ),
-                      )}
+                      {Array.from(
+                        { length: latestYear - 1959 },
+                        (_, i) => latestYear - i,
+                      ).map((y) => (
+                        <option key={y}>{y}</option>
+                      ))}
                     </select>
                   </label>
                 </section>
@@ -553,8 +571,15 @@ function App() {
                             <div className="not-available">
                               <span>Production & energy dependencies</span>
                               <p>
-                                No verified production table loaded. Network
-                                exposure is unavailable.
+                                OECD historical flows are available for
+                                2016–2022.
+                                <button
+                                  onClick={() =>
+                                    setWorkspace("Economic Network")
+                                  }
+                                >
+                                  Explore production dependencies
+                                </button>
                               </p>
                             </div>
                           </>
@@ -623,7 +648,7 @@ function App() {
               </>
             )
           ) : workspace === "Economic Network" ? (
-            <StructuralLab network />
+            <NetworkWorkspace selected={selected} onSelect={setSelected} />
           ) : workspace === "Shock Laboratory" ? (
             experience === "guided" ? (
               <GuidedScenario onAdvanced={() => setExperience("research")} />
@@ -664,7 +689,10 @@ function App() {
           ) : workspace === "Macro Forecasting" ? (
             <ForecastLab />
           ) : workspace === "Historical Events" ? (
-            <HistoricalLab country={c} observations={history} />
+            <>
+              <CurrentEvents onWorkspace={setWorkspace} />
+              <HistoricalLab country={c} observations={history} />
+            </>
           ) : workspace === "Research & Methods" ? (
             <section className="research">
               <div className="eyebrow">SOURCE REGISTER</div>

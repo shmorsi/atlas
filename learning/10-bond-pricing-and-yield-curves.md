@@ -20,4 +20,4 @@ What is missing from this bond model? Accrued interest, irregular coupon dates, 
 
 ## Limits
 
-The interface now includes 250 historical Treasury par curves from 2024 with an observed-data label. These are par yields, not spot discount factors or investment returns. The separate bond calculator accepts explicitly hypothetical yield assumptions; rates are fractions and shifts are basis points.
+The interface now includes 694 historical Treasury par curves through 2026-10-09 with an observed-data label. These are par yields, not spot discount factors or investment returns. The separate bond calculator accepts explicitly hypothetical yield assumptions; rates are fractions and shifts are basis points.

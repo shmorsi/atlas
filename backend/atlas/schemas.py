@@ -101,3 +101,12 @@ class ForecastResponse(StrictModel):
 class WalkForwardRequest(PortfolioRequest):
     train_window: int = Field(default=60, ge=10, le=5000)
     rebalance_every: int = Field(default=20, ge=1, le=1000)
+
+
+class NetworkScenarioRequest(StrictModel):
+    country: str = Field(default="SAU", pattern=r"^[A-Z]{3}$")
+    sector: Literal[
+        "Primary", "Energy", "Manufacturing", "Construction", "Services"
+    ] = "Energy"
+    shock: float = Field(default=0.1, ge=-0.5, le=0.5)
+    year: int = Field(default=2022, ge=2016, le=2022)

@@ -98,6 +98,8 @@ export function TreasuryCurves() {
               </table>
             </div>
             <p>
+              Latest observation:{" "}
+              {data.source.latest_observation || data.curves.at(-1).date}.{" "}
               {data.source.dates} dates · {data.source.unit} · Retrieved{" "}
               {data.source.retrieved_at}. {data.source.limitation}
             </p>

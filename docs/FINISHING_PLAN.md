@@ -12,15 +12,15 @@ Before calling the beginner experience validated, run a moderated trial with at 
 
 ## 2. Finish the real economic network
 
-Current blocker: the official OECD archive returned HTTP 403. Obtain an authorized copy with its metadata and applicable reuse terms; do not bypass access controls. Preserve source files and hashes. Implement an importer that checks dimensions, sector/country identities, currency/units, output totals and accounting reconciliation. Investigate discrepancies rather than silently repairing them.
+Implemented: the supplied OECD archive and metadata are imported. Seven 405-node aggregates preserve raw flow/output sums, retain source accounting exceptions, pass stability checks and agree with independent Decimal CSV samples. The UI exposes supplier flows, geographic relationships, direct/indirect scenarios and an exploratory graph/no-graph evaluation. The fictional teaching network remains separate.
 
-Acceptance: a documented small aggregation reproduces an independent calculation; coefficient orientation, spectral stability and sensitivity checks pass; the UI can trace every displayed exposure to a source. Only then enable measured country-industry paths and network experiments. Keep the fictional teaching network visibly separate.
+Further evidence requires a longer historical panel and genuine release vintages. Current graph results have only one held-out year; ridge wins. The historical structure ends in 2022 and must not be labeled current.
 
 ## 3. Complete finance and forecasting evidence
 
 Implemented in the local release: observed Treasury curves, trailing-window portfolio re-estimation, drifting weights, repeated transaction costs and original/equal-weight comparisons over identical dates. Still required: appropriately licensed ETF total-return histories, historical release vintages, defined multiple stress scenarios and defensible expected-return models.
 
-For forecasts, freeze a chronological evaluation protocol before experiments. Fit transformations on training data only, respect actual release availability, report every seed and baseline, and evaluate uncertainty coverage. Train/evaluate the graph model only after the verified network and matched outcome panel exist. Present negative results. Do not infer causal macro-to-market transmission from predictive associations.
+For forecasts, freeze a chronological evaluation protocol before experiments. Fit transformations on training data only, respect actual release availability, report every seed and baseline, and evaluate uncertainty coverage. The trained graph/no-graph experiment now uses the verified network and matched output panel. Present negative results. Do not infer causal macro-to-market transmission from predictive associations.
 
 Acceptance: clean replay reproduces data splits, predictions, tables and saved checkpoints; limitations are visible beside results. No profitability, causal effect or model-superiority claim without supporting evidence.
 
@@ -32,4 +32,4 @@ Acceptance: clean replay reproduces data splits, predictions, tables and saved c
 - Exercise malformed uploads, long country names, empty historical series, connection loss/retry and unavailable research data. Keep results tied to current inputs.
 - Rerun backend, production-build and browser suites; inspect intentional visual changes before accepting new baselines. Package source, dependency locks, provenance and a clear limitations page.
 
-Release labels should match the evidence: the current app is a working local atlas with teaching and research foundations. Completion of the original brief requires gates 2–4 as well as demonstrated beginner comprehension. Do not hide the unfinished modules behind polished presentation.
+Release labels should match the evidence: the current app is a working local atlas with teaching and research foundations. The remaining research and release boundaries are recorded in BUILD_STATUS.md, alongside implemented features. Do not hide the unfinished modules behind polished presentation.

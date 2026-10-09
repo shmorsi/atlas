@@ -8,5 +8,17 @@ export default defineConfig({
     strictPort: true,
     proxy: { "/api": "http://127.0.0.1:8000" },
   },
-  build: { outDir: "../dist", emptyOutDir: true },
+  build: {
+    outDir: "../dist",
+    emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        onlyExplicitManualChunks: true,
+        manualChunks(id) {
+          if (id.includes("/@deck.gl/") || id.includes("/@luma.gl/"))
+            return "population-overlay";
+        },
+      },
+    },
+  },
 });

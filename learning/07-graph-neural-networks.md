@@ -20,4 +20,4 @@ Are thousands of nodes thousands of independent temporal samples? No. They share
 
 ## Limits
 
-The architecture and gradient tests work; empirical GNN training and a no-edge economic ablation are blocked by the unavailable verified network and outcome panel. No GNN accuracy is reported.
+An actual PyTorch graph/no-edge experiment now uses the seven supplied OECD tables: three training target years, one validation and one test year. All three seeds and baselines are reported in docs/RESEARCH_REPORT.md. Ridge beats the graph on the single held-out year; 405 dependent nodes do not constitute 405 independent annual samples.

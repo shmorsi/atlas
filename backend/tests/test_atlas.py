@@ -20,7 +20,8 @@ def test_countries():
 
 def test_country_history_and_missing():
     d = client.get("/api/countries/JPN").json()
-    assert len(d["observations"]) == 260
+    assert len(d["observations"]) == 264
+    assert max(o["year"] for o in d["observations"]) == 2025
     assert all(o["publication_date"] is None for o in d["observations"])
     assert client.get("/api/countries/NOPE").status_code == 404
     assert (

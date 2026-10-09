@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { MapboxOverlay } from "@deck.gl/mapbox";
-import { ScatterplotLayer } from "@deck.gl/layers";
+import type { MapboxOverlay as PopulationOverlay } from "@deck.gl/mapbox";
 import * as maplibregl from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 maplibregl.setWorkerUrl("/maplibre/maplibre-gl-worker.mjs");
@@ -278,28 +277,39 @@ export function WorldMap({
   useEffect(() => {
     if (!ready || !map.current || !population || globe) return;
     const m = map.current;
-    const overlay = new MapboxOverlay({
-      layers: [
-        new ScatterplotLayer<Country>({
-          id: "observed-population",
-          data: countries.filter(
-            (c) =>
-              (region === "All regions" || c.region === region) &&
-              c.indicators["SP.POP.TOTL"]?.value != null,
-          ),
-          getPosition: (c) => [c.longitude, c.latitude],
-          getRadius: (c) => Math.sqrt(c.indicators["SP.POP.TOTL"].value!) * 15,
-          getFillColor: [215, 172, 101, 95],
-          getLineColor: [215, 172, 101, 180],
-          stroked: true,
-          lineWidthMinPixels: 1,
-          pickable: false,
-        }),
-      ],
-    });
-    m.addControl(overlay);
+    let live = true;
+    let overlay: PopulationOverlay | null = null;
+    Promise.all([import("@deck.gl/mapbox"), import("@deck.gl/layers")])
+      .then(([{ MapboxOverlay }, { ScatterplotLayer }]) => {
+        if (!live) return;
+        overlay = new MapboxOverlay({
+          layers: [
+            new ScatterplotLayer<Country>({
+              id: "observed-population",
+              data: countries.filter(
+                (c) =>
+                  (region === "All regions" || c.region === region) &&
+                  c.indicators["SP.POP.TOTL"]?.value != null,
+              ),
+              getPosition: (c) => [c.longitude, c.latitude],
+              getRadius: (c) =>
+                Math.sqrt(c.indicators["SP.POP.TOTL"].value!) * 15,
+              getFillColor: [215, 172, 101, 95],
+              getLineColor: [215, 172, 101, 180],
+              stroked: true,
+              lineWidthMinPixels: 1,
+              pickable: false,
+            }),
+          ],
+        });
+        m.addControl(overlay);
+      })
+      .catch((e) => {
+        if (live) setError("Population overlay unavailable: " + String(e));
+      });
     return () => {
-      m.removeControl(overlay);
+      live = false;
+      if (overlay && m.hasControl(overlay)) m.removeControl(overlay);
     };
   }, [ready, population, globe, countries, region]);
   return (

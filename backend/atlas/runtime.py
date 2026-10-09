@@ -11,6 +11,13 @@ def readiness():
         DATA / "processed/countries.json",
         ROOT / "frontend/public/data/world.geojson",
         DATA / "models/evaluation.json",
+        DATA / "processed/latest-annual.json",
+        DATA / "processed/events.json",
+        DATA / "processed/treasury-current.json",
+        DATA / "processed/network/metadata.json",
+        DATA / "models/gnn/evaluation.json",
+        *[DATA / f"processed/network/{y}.npz" for y in range(2016, 2023)],
+        *[DATA / f"models/gnn/{kind}_seed{s}.pt" for kind in ["graph", "no_graph"] for s in [17,29,43]],
     ]
     missing = [str(p.relative_to(ROOT)) for p in required if not p.is_file()]
     model_status = []

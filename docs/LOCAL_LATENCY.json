@@ -1,0 +1,29 @@
+{
+  "scope": "Local warm loopback requests on macOS ARM64; 10 sequential measurements, not load/cold-start benchmarks",
+  "results": [
+    {
+      "endpoint": "/api/countries?year=2025",
+      "warm_requests": 10,
+      "median_ms": 6.47,
+      "max_ms": 12.42
+    },
+    {
+      "endpoint": "/api/network/country/JPN?year=2022",
+      "warm_requests": 10,
+      "median_ms": 5.31,
+      "max_ms": 6.09
+    },
+    {
+      "endpoint": "/api/network/scenario",
+      "warm_requests": 10,
+      "median_ms": 11.0,
+      "max_ms": 11.77
+    },
+    {
+      "endpoint": "/api/forecast/replay",
+      "warm_requests": 10,
+      "median_ms": 40.51,
+      "max_ms": 59.4
+    }
+  ]
+}

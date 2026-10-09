@@ -65,7 +65,8 @@ export function StructuralLab({ network = false }: { network?: boolean }) {
           {network ? "Production relationships" : "Structural shock laboratory"}
         </h2>
         <p>
-          OECD download unavailable. The starting matrix is a{" "}
+          The measured OECD network is available in Economic Network. This
+          editable starting matrix is a{" "}
           <strong>synthetic three-sector teaching example</strong>, not measured
           economic exposure.
         </p>

@@ -7,7 +7,7 @@ Local-first global economic intelligence and quantitative research terminal. Rea
 Prerequisites: Node 22+, Python 3.12–3.13, a modern WebGL2 browser. On Windows use Python from python.org and run in PowerShell; on macOS/Linux `python3` must refer to a supported Python. Tested on macOS ARM64 / Python 3.12.
 
 ```sh
-npm install
+npm ci
 npm run setup
 npm run atlas
 ```
@@ -30,6 +30,8 @@ Refresh is explicit, never triggered on startup:
 ```
 
 On Windows replace `.venv/bin/python` with `.venv/Scripts/python.exe`. Raw files are retained and hashed. Normalized observations use Parquet, queried through DuckDB. SQLite stores source metadata and is rebuilt by preparation.
+
+The default atlas additionally includes a separate 2025 WDI cache (660 records, 592 available values). This does not alter the frozen GRU training dataset. Run `npm run refresh:annual` to explicitly update the latest completed annual period; `npm run refresh:public` updates Treasury and official event feeds. The Events workspace provides the same rates/events update action. Retrieval and observation dates are displayed; cached data do not imply real-time coverage.
 
 ## Checks
 
@@ -80,11 +82,12 @@ Observed history, hypothetical input-output effects, bond valuations, and learne
 
 ## Working research modules
 
-- **Shock / Network laboratories:** user-editable coefficient matrix; synthetic starting example explicitly labeled. Price and quantity solvers, decomposition and numerical diagnostics. No measured production network is currently loaded.
-- **Rates:** 250 observed daily Treasury par curves from 2024, with source hash and missingness preserved; hypothetical coupon-bond valuation, duration, convexity and exact yield-shift repricing.
+- **Shock / Network laboratories:** user-editable coefficient matrix; synthetic starting example explicitly labeled. Price and quantity solvers, decomposition and numerical diagnostics. A separate Economic Network workspace loads seven real OECD tables aggregated to 405 nodes, with supplier relationships, geographic links and historical cost propagation.
+- **Graph research:** six genuine trained PyTorch graph/no-graph checkpoints, three chronological training years, one validation year and one test year. Every seed and baseline is reported; ridge performs best on the one held-out year.
+- **Rates:** 694 observed daily Treasury par curves spanning 2024–2026, latest 2026-10-09, with source hash and missingness preserved; hypothetical coupon-bond valuation, duration, convexity and exact yield-shift repricing.
 - **Portfolio Studio:** locally uploaded total-return CSV, validated weights, volatility/drawdown/CVaR, minimum-variance/CVaR allocation and chronological holdout comparison. A separate walk-forward mode uses trailing training windows, drifting holdings and costs at every rebalance, with original/equal-weight baselines. No redistributable ETF history is supplied.
 - **Macro Forecasting:** real trained compact PyTorch GRU/Gaussian-head experiments, six saved checkpoints, three baselines, ablation, all seeds and held-out diagnostics. On-demand CPU PyTorch inference recomputes predictions from cached, evaluated weights. Small sample and revised-history limitations are explicit.
-- **Historical Events:** observed annual GDP context around selected reference years, without causal attribution or point-in-time replay.
+- **Historical Events:** 30 dated official Fed/ECB releases, filters, source links, explicit refresh, possible transmission channels and annual GDP context. No causal headline-to-market estimate or point-in-time replay.
 
 ```sh
 .venv/bin/python scripts/train.py

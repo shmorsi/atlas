@@ -2,13 +2,13 @@
 
 ## Scope and scientific boundary
 
-This build is a working local research terminal with real cached macro observations, verified mathematical routines, user-provided portfolio analysis and a small trained PyTorch forecasting experiment. It is **not the completed global causal simulation product**. No country-level production exposure or GNN predictive accuracy is claimed.
+This build is a working local research terminal with real cached macro observations, verified mathematical routines, user-provided portfolio analysis and a small trained PyTorch forecasting experiment. It is **not the completed global causal simulation product**. Historical country-sector production relationships and a limited graph experiment are now included; their scope is documented below.
 
 The pipeline retains 42,900 annual WDI records including nulls for 165 mapped economies, with 177 geographic entities overall. Raw downloads are retained and hashed. Data end in 2024; source retrieval is later and does not define historical publication time. Parquet nullable string fields avoid a DuckDB all-null-column compatibility problem found during testing.
 
 ## Structural and financial models
 
-`economics.py` validates finite nonnegative square technical coefficients, column cost shares, spectral radius below one and condition number below 1e8. It solves a linear system for price or quantity propagation and returns direct, first-order and higher-order effects plus relationship contributions and residuals. The default UI matrix is explicitly synthetic. A does not encode a measured country network until a genuine table is loaded.
+`economics.py` validates finite nonnegative square technical coefficients, column cost shares, spectral radius below one and condition number below 1e8. It solves a linear system for price or quantity propagation and returns direct, first-order and higher-order effects plus relationship contributions and residuals. The default UI matrix is explicitly synthetic. The separate OECD network derives 405-node matrices from seven published tables and provides historical country-sector exposure.
 
 `finance.py` prices coupon cash flows, solves yield-to-maturity, derives duration and convexity and compares exact repricing with a Taylor approximation. Tests include par pricing and finite differences. Portfolio CSV inputs must be complete, positive and date-ordered; the user must explicitly attest total-return adjustment. CVXPY/Clarabel imposes long-only, concentration and turnover constraints. The first 70% of returns fit allocations and the remaining 30% evaluate them. CVaR uses empirical order statistics and fractional tail mass. One-time turnover costs are applied to initial held-out capital; repeated rebalancing costs remain excluded in that single-split mode. A separate walk-forward endpoint now fits trailing windows, allows holdings to drift, and charges proportional costs at every scheduled rebalance. Original and equal-weight baselines use the same dates and cost rates. Trade records expose each training interval and allocation.
 
@@ -38,13 +38,30 @@ Performance varies across seeds. The multivariate neural model does not consiste
 
 The two-year input lag is an explicit timing convention, **not** a release-time guarantee. Revised WDI values lack original vintages, so revision leakage cannot be ruled out. This is a retrospective educational experiment rather than a tradable backtest. Annual sample size makes a large Transformer or a strong empirical GNN claim unjustified.
 
-## GNN feasibility gate
+## Exploratory graph experiment
 
-An incoming-edge message-passing architecture is implemented, with shape, message and gradient tests. OECD's official 2016–2022 regular ICIO archive returned HTTP 403 in this environment. No alternative fabricated graph was used for research training. Even seven annual tables would supply only seven temporal periods, not thousands of independent country-sector experiments. Next work requires a verified historical graph, aligned outcome panel, publication/vintage metadata and graph/no-graph evaluation split by time.
+The supplied regular OECD tables are validated and aggregated from 4,050 to 405 nodes, preserving transaction/output sums. Incoming messages use A[i,j] from supplier i to buyer j. Four features at t−1 predict 100 × log(X[t]/X[t−1]): previous growth, log output, total intermediate-input share and foreign-input share. Nominal USD outcomes mix activity, inflation and exchange rates. Network coefficients and features come from the preceding year. This is revised-history timing, not a historical release-vintage guarantee.
+
+Training targets: 2018–2020; validation: 2021; test: 2022. The 405 connected node observations are dependent. Train-only normalization, validation early stopping, three seeds, zero-edge ablation and ridge/persistence/mean baselines are retained. The small model has 81 parameters. All six saved checkpoints replay all 405 held-out nodes in the release gate.
+
+| Model | MAE (log pp) | RMSE (log pp) |
+|---|---:|---:|
+| graph_seed17 | 9.4850 | 14.2782 |
+| graph_seed29 | 10.9011 | 15.8831 |
+| graph_seed43 | 10.2392 | 15.1302 |
+| no_graph_seed17 | 9.6255 | 14.5382 |
+| no_graph_seed29 | 10.6868 | 15.6420 |
+| no_graph_seed43 | 10.1999 | 15.0884 |
+| ridge | 9.3973 | 14.0001 |
+| persistence | 11.8300 | 16.5121 |
+| training_mean | 10.7350 | 15.8222 |
+
+Ridge performs best. The graph does not consistently improve over the zero-edge ablation. Three training years and one test year are feasibility evidence only; no generalization, significance, calibration or causal scenario-prediction claim follows. No Transformer is warranted by this sample.
+
 
 ## Unavailable integrations
 
-No causal oil-supply identification, monetary-policy transmission, neural shock-conditioning, market-pricing bridge, real ETF stress responses, trade-flow map, verified energy infrastructure, or point-in-time event replay is implemented. The UI explains those limits. The quantity solver accepts hypothetical demand shocks; it does not infer a trade-demand shock from news.
+No causal oil-supply identification, monetary-policy transmission, neural shock-conditioning, market-pricing bridge, real ETF stress responses, verified energy infrastructure, or point-in-time event replay is implemented. The UI explains those limits. The quantity solver accepts hypothetical demand shocks; it does not infer a trade-demand shock from news.
 
 ## Reproduction
 
@@ -52,8 +69,8 @@ Run `scripts/train.py` to reproduce the evaluation and checkpoints. `scripts/che
 
 ## Architecture tradeoffs
 
-One local FastAPI process, one Vite process, compact models and bundled data avoid cloud infrastructure. Requests are validated and independent of frontend calculations. No background retraining occurs. MapLibre workers and geographic assets are local; deck.gl population circles use observed population at Natural Earth cartographic reference points, not infrastructure locations or production exposure. ECharts uses only the required chart modules. Browser bundles remain substantial and are a performance improvement opportunity.
+One local FastAPI process serving production assets (Vite only for development), compact models and bundled data avoid cloud infrastructure. Requests are validated and independent of frontend calculations. No background retraining occurs. MapLibre workers and geographic assets are local; deck.gl population circles use observed population at Natural Earth cartographic reference points, not infrastructure locations or production exposure. ECharts uses only the required chart modules. Browser bundles remain substantial and are a performance improvement opportunity.
 
 ## Release engineering extension — 2026-10-09
 
-The rates workspace now presents 250 observed Treasury par curves from 2024 separately from hypothetical bond valuations. Six saved PyTorch checkpoints execute on demand with immutable cached weights; the release gate verifies all 60 held-out means and intervals. Production serves built assets from the local FastAPI process. These changes improve implementation and reproducibility; they do not strengthen the statistical evidence from the unchanged small annual forecast sample.
+The rates workspace now presents 694 observed Treasury par curves through 2026-10-09 separately from hypothetical bond valuations. Six saved PyTorch checkpoints execute on demand with immutable cached weights; the release gate verifies all 60 held-out means and intervals. Production serves built assets from the local FastAPI process. These changes improve implementation and reproducibility; they do not strengthen the statistical evidence from the unchanged small annual forecast sample.

@@ -26,7 +26,7 @@ TENORS = {
 }
 
 
-def parse_xml(raw):
+def parse_xml(raw, include_six_week=False):
     if b"<!DOCTYPE" in raw.upper() or b"<!ENTITY" in raw.upper():
         raise ValueError("XML declarations are not supported")
     root = ET.fromstring(raw)
@@ -44,7 +44,8 @@ def parse_xml(raw):
         if date in seen:
             raise ValueError("Duplicate Treasury date")
         seen.add(date)
-        for tenor, months in TENORS.items():
+        tenors = {**TENORS, **({"1_5MONTH": 1.5} if include_six_week else {})}
+        for tenor, months in tenors.items():
             node = props.find("d:BC_" + tenor, ns)
             value = None if node is None or not node.text else float(node.text)
             if value is not None and (
@@ -97,10 +98,20 @@ def curves():
     grouped = {}
     for row in df.to_dicts():
         grouped.setdefault(row["date"], []).append(row)
+    source = json.loads((DATA / "treasury-manifest.json").read_text())
+    current = DATA / "processed/treasury-current.json"
+    if current.exists():
+        latest = json.loads(current.read_text())
+        for curve in latest["curves"]:
+            grouped[curve["date"]] = curve["points"]
+        original = {k: source[k] for k in ["raw_file", "sha256", "retrieved_at"]}
+        source = {**source, **latest["source"], "dates": len(grouped), "observations": sum(len(p) for p in grouped.values()), "sources": [{**original, "year": 2024}, *latest["source"]["sources"]]}
+        source.pop("raw_file", None)
+        source.pop("sha256", None)
     return {
         "kind": "observed",
-        "source": json.loads((DATA / "treasury-manifest.json").read_text()),
+        "source": source,
         "curves": [
-            {"date": date, "points": points} for date, points in grouped.items()
+            {"date": date, "points": points} for date, points in sorted(grouped.items())
         ],
     }

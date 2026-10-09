@@ -1,10 +1,10 @@
 # Three-minute recruiter demonstration
 
 1. **0:00–0:35 — Evidence and interface.** Start `npm run atlas`. Search Japan, choose 2020, change GDP growth to population and open the source register. Explain that nulls stay null and data are revised annual history. Toggle the globe and demonstrate keyboard country selection.
-2. **0:35–1:05 — Economic mathematics.** Open Shock Laboratory. State that the displayed network is synthetic because the OECD source download was blocked. Use A=[[0,.5],[0,0]] and s=[.1,0]. Explain why the second sector receives .05, show solver residuals and reject A=[[1]]. Do not call this an observed oil shock.
+2. **0:35–1:05 — Economic mathematics.** Open Shock Laboratory. State that this editable teaching network is synthetic. The separate Economic Network uses real OECD tables. Use A=[[0,.5],[0,0]] and s=[.1,0]. Explain why the second sector receives .05, show solver residuals and reject A=[[1]]. Do not call this an observed oil shock.
 3. **1:05–1:30 — Finance.** Price a bond at par, shift yield and compare duration-convexity with exact repricing. If you have licensed total-return history, import it into Portfolio Studio and show chronological holdout results. Otherwise leave the honest empty state.
 4. **1:30–2:20 — Real learning.** Open Macro Forecasting. Show saved PyTorch checkpoints, 354 learned parameters, chronological periods, all seeds and ridge/persistence comparisons. Acknowledge the tiny sample and runs that lose to the baselines.
-5. **2:20–3:00 — Engineering judgment.** Run tests, explain matrix orientation and release-time leakage, then show `BUILD_STATUS.md`. Describe the next step: verified ICIO data and aligned outcome histories before claiming GNN research or financial shock transmission.
+5. **2:20–3:00 — Engineering judgment.** Run tests, explain matrix orientation and release-time leakage, then show `BUILD_STATUS.md`. Show the actual graph/no-graph results, explain why ridge winning matters, and distinguish historical dependencies from causal financial shock transmission.
 
 ## Evidence-based résumé options
 

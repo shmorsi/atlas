@@ -20,4 +20,4 @@ Is a central node necessarily an attractive investment? No. Graph position descr
 
 ## Limits
 
-OECD download is blocked. No measured centrality, supplier concentration, or global exposure is claimed.
+Seven supplied OECD tables are aggregated to 405 nodes. Economic Network shows historical supplier flows and fixed-coefficient exposure; see docs/OECD_IMPORT.md for orientation, aggregation and retained accounting discrepancies. No transport-route or current-infrastructure claim is made.

@@ -23,6 +23,9 @@ if (!python) {
 }
 if (!existsSync(".venv")) run(python, ["-m", "venv", ".venv"]);
 run(venv, ["-m", "pip", "install", "-r", "requirements-lock.txt"]);
-run(venv, ["scripts/prepare_data.py"]);
-run(venv, ["scripts/prepare_treasury.py"]);
+if (!existsSync("data/processed/observations.parquet"))
+  run(venv, ["scripts/prepare_data.py"]);
+if (!existsSync("data/processed/treasury.parquet"))
+  run(venv, ["scripts/prepare_treasury.py"]);
+run(venv, ["scripts/check_release.py"]);
 console.log("Ready. Run npm run atlas. No data download is needed.");

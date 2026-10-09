@@ -101,10 +101,22 @@ def query(sql, params=None):
         return [dict(zip(names, r)) for r in result.fetchall()]
 
 
+def latest_annual():
+    path = DATA / "processed/latest-annual.json"
+    return (
+        json.loads(path.read_text())
+        if path.exists()
+        else {"year": 2024, "observations": [], "sources": []}
+    )
+
+
 def countries(year=2024):
     items = json.loads((DATA / "processed/countries.json").read_text())
-    obs = query(
-        "SELECT entity,indicator,value,year,unit FROM observations WHERE year=?", [year]
+    obs = (
+        [o for o in latest_annual()["observations"] if o["year"] == year]
+        if year > 2024 else query(
+            "SELECT entity,indicator,value,year,unit FROM observations WHERE year=?", [year]
+        )
     )
     by = {}
     for o in obs:
@@ -113,4 +125,6 @@ def countries(year=2024):
 
 
 def history(code):
-    return query("SELECT * FROM observations WHERE entity=? ORDER BY year", [code])
+    return query("SELECT * FROM observations WHERE entity=? ORDER BY year", [code]) + [
+        o for o in latest_annual()["observations"] if o["entity"] == code
+    ]

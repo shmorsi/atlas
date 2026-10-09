@@ -172,7 +172,19 @@ test("geographic polygons, hover, click and population layer", async ({
   await expect(page.locator(".maplibregl-popup")).toContainText("China");
   await page.locator(".maplibregl-canvas").click({ position: pos });
   await expect(page.locator(".country-title h2")).toHaveText("China");
+  expect(
+    await page.evaluate(() =>
+      performance
+        .getEntriesByType("resource")
+        .some((r) => r.name.includes("population-overlay-")),
+    ),
+  ).toBeFalsy();
   await page.getByRole("button", { name: "Population circles" }).click();
+  await expect(page.locator(".map-wrap canvas")).toHaveCount(2);
+  await page.getByRole("button", { name: "Population circles" }).click();
+  await expect(page.locator(".map-wrap canvas")).toHaveCount(1);
+  await page.getByRole("button", { name: "Population circles" }).click();
+  await expect(page.locator(".map-wrap canvas")).toHaveCount(2);
   await expect(
     page.getByText("Circle area ∝ observed population"),
   ).toBeVisible();

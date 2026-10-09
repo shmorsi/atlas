@@ -1,12 +1,7 @@
-# Continuation notes
+# Work outside this local release
 
-Read BUILD_STATUS.md before extending the product. Preserve the working offline app and scientific evidence labels.
+The OECD ingestion, network scenarios, graph/no-graph experiment and explicit current-data updates are implemented. See BUILD_STATUS.md for exact scope and VALIDATION.md for executed checks.
 
-1. Acquire the OECD regular ICIO archive and its metadata through an authorized source. The official URL returned 403; do not bypass controls. Validate units, row/column labels, output definitions, accounting identities, license and release vintage. Use a documented aggregation before attempting laptop-scale dense operations; implement sparse solvers for the full network.
-2. Replace the synthetic teaching network only when a measured, versioned network is validated. Preserve the teaching example as an explicitly labeled mode. Add output-weighted country/industry aggregation, coefficient sensitivity, graph path and supplier concentration views.
-3. Obtain aligned historical node outcomes, count temporal periods and document dependence. Only then train GNN/no-edge baselines with chronological folds. A single network cross-section cannot substantiate learned temporal prediction claims.
-4. Add release-aware monthly macro data and true vintages. Expand the temporal model only if it improves a predeclared benchmark. Do not tune on the current ten-year test period and continue calling it untouched.
-5. Observed Treasury curves and tested walk-forward re-estimation/costs are now implemented. Add appropriately licensed total-return ETF histories and multi-scenario allocations. Identify scenario relationships before linking structural costs to financial returns.
-6. Add verified strategic infrastructure and maritime coordinates, observed trade-flow weights, richer historical event evidence and map-linked stress results. Keep geographic reference points distinct from actual infrastructure.
+Further research needs more temporal network observations and release-vintage-aware outcomes; independent chronological tests; identified causal mechanisms before mapping an event into macro or market effects; licensed total-return datasets and predeclared multiple stress scenarios before robust portfolio claims. More model complexity is not a substitute for data or evidence.
 
-Engineering follow-ups: split larger browser bundles, cache repeated immutable queries, automate browser-server lifecycle in CI, migrate TestClient transport when upstream requires it, and validate Windows/Linux installations.
+Broader product release needs comprehensive licensed world-news coverage, human beginner-comprehension/accessibility testing and clean cross-platform/browser installation tests. An Internet-facing service also needs an explicit deployment design, authentication, security review and operating monitoring. The supplied loopback app does not pretend these are completed.
