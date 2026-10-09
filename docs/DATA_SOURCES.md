@@ -7,3 +7,6 @@
 The manifest retrieval timestamps come from the download execution clock. They are not economic publication dates. Source update dates are recorded separately where supplied. No source contains historical vintages. Never use retrieval dates as a substitute for original releases.
 
 The cache ends in 2024 deliberately to retain a common completed annual horizon. A later cache retrieval does not make 2024 observations current conditions.
+
+- **US Treasury 2024 daily par yield curves:** official [XML feed documentation](https://home.treasury.gov/treasury-daily-interest-rate-xml-feed). Bundled XML contains 250 observed dates and 13 maturities (3,250 entries), normalized to `data/processed/treasury.parquet`; provenance/hash in `data/treasury-manifest.json`. US federal government data with attribution. Feed retrieved 2026-10-09; original publication dates and vintages are unknown. Par yields are distinct from spot rates and realized bond/ETF total returns.
+- OECD download was rechecked 2026-10-09 and still returned HTTP 403 / an access challenge. No bypass attempted.

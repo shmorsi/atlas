@@ -245,22 +245,80 @@ def train(output: Path, epochs=300, seeds=(17, 29, 43)):
     return report
 
 
-def infer(checkpoint: Path, window):
-    state = torch.load(checkpoint, map_location="cpu", weights_only=True)
-    model = TemporalGaussian(len(state["features"]))
+from functools import lru_cache
+
+
+@lru_cache(maxsize=8)
+def _load_checkpoint(path: str, modified_ns: int, size: int):
+    # File identity invalidates cached weights after explicit offline retraining.
+    state = torch.load(path, map_location="cpu", weights_only=True)
+    required = {
+        "state_dict",
+        "features",
+        "mean",
+        "scale",
+        "target_mean",
+        "target_scale",
+    }
+    if not required.issubset(state):
+        raise ValueError("Checkpoint metadata is incomplete")
+    features = state["features"]
+    if (
+        not features
+        or len(set(features)) != len(features)
+        or any(i not in range(4) for i in features)
+    ):
+        raise ValueError("Invalid checkpoint feature indices")
+    if np.shape(state["mean"]) != (4,) or np.shape(state["scale"]) != (4,):
+        raise ValueError("Invalid normalization dimensions")
+    metadata = np.r_[
+        state["mean"], state["scale"], state["target_mean"], state["target_scale"]
+    ]
+    if (
+        not np.isfinite(metadata).all()
+        or min(state["scale"]) <= 0
+        or state["target_scale"] <= 0
+    ):
+        raise ValueError("Invalid checkpoint normalization")
+    model = TemporalGaussian(len(features))
     model.load_state_dict(state["state_dict"])
+    if not all(torch.isfinite(p).all() for p in model.parameters()):
+        raise ValueError("Nonfinite checkpoint parameters")
     model.eval()
+    model.requires_grad_(False)
+    return model, state
+
+
+def load_checkpoint(checkpoint: Path):
+    checkpoint = checkpoint.resolve()
+    stat = checkpoint.stat()
+    return _load_checkpoint(str(checkpoint), stat.st_mtime_ns, stat.st_size)
+
+
+def infer(checkpoint: Path, window):
     x = np.asarray(window, float)
     if x.shape != (5, 4) or not np.isfinite(x).all():
         raise ValueError("Require a complete 5-year, 4-feature window")
+    model, state = load_checkpoint(checkpoint)
     x = (x - np.array(state["mean"])) / np.array(state["scale"])
-    with torch.no_grad():
+    if not np.isfinite(x).all() or np.abs(x).max() > 1e6:
+        raise ValueError("Input exceeds the numerical inference domain")
+    with torch.inference_mode():
         mean, sd = model(
             torch.tensor(x[None][:, :, state["features"]], dtype=torch.float32)
         )
+    mean = float(mean[0]) * state["target_scale"] + state["target_mean"]
+    sd = float(sd[0]) * state["target_scale"]
+    if not np.isfinite([mean, sd]).all() or sd <= 0:
+        raise ValueError("Model produced an invalid predictive distribution")
     return {
         "kind": "neural_prediction",
-        "mean": float(mean[0]) * state["target_scale"] + state["target_mean"],
-        "standard_deviation": float(sd[0]) * state["target_scale"],
+        "model": checkpoint.stem,
+        "framework": "PyTorch",
+        "device": "cpu",
+        "mean": mean,
+        "standard_deviation": sd,
+        "lower80": mean - 1.2815515655 * sd,
+        "upper80": mean + 1.2815515655 * sd,
         "validated_for_causal_scenarios": False,
     }

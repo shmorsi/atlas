@@ -21,3 +21,7 @@ Is this a complete trading backtest? No. The system lacks point-in-time releases
 ## Limits
 
 Report actual metrics and denominators. Annual data and a ten-year test set cannot establish reliable economic forecasting superiority.
+
+## Implemented walk-forward allocation
+
+`atlas.finance.walk_forward` fits each allocation only on the preceding `train_window` returns. Trades occur before the next observed return. Holdings drift until the next scheduled rebalance. A cost proportional to L1 turnover is deducted before compounding the next period's return. Original/equal-weight baselines use the same dates and cost rate. See `docs/RELEASE.md` for the precise convention and exclusions. The test changes all future returns and verifies that the first fitted allocation is unchanged; a separate hand calculation verifies drift and repeated cost deductions.

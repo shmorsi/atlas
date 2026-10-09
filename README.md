@@ -12,7 +12,7 @@ npm run setup
 npm run atlas
 ```
 
-Open http://127.0.0.1:5173. API documentation: http://127.0.0.1:8000/docs. Stop with Ctrl+C. Installation needs internet; normal startup uses bundled data and no external service. The startup command binds only to loopback.
+Open http://127.0.0.1:8000. API documentation: http://127.0.0.1:8000/docs. Stop with Ctrl+C. Installation needs internet; normal startup uses bundled data and no external service. The startup command binds only to loopback, verifies source/model integrity, builds production assets, and serves the interface plus API from one FastAPI process. It does not use Vite in production. Set `ATLAS_PORT` to choose another port. For hot-reload development, use `npm run develop` (UI 5173 / API 8000).
 
 The supplied `.venv` and `node_modules` are local conveniences and not part of Git. Install your own dependencies after copying the project. `requirements-lock.txt` records this build's exact Python versions; `package-lock.json` pins JavaScript dependencies.
 
@@ -37,7 +37,10 @@ On Windows replace `.venv/bin/python` with `.venv/Scripts/python.exe`. Raw files
 .venv/bin/python -m pytest -q
 npm run build
 npx playwright install chromium
-npm run test:ui  # application must be running
+npm run verify:release
+# With the production app running (macOS/Linux):
+ATLAS_TEST_URL=http://127.0.0.1:8000 npm run test:ui
+npm run package  # creates ../ATLAS-release.zip and SHA-256 checksum
 ```
 
 See `docs/BUILD_STATUS.md` for exact completion boundaries and tests; `docs/screenshots/` for inspected layouts. Research workspaces are never filled with invented observations or fake model output.
@@ -78,9 +81,9 @@ Observed history, hypothetical input-output effects, bond valuations, and learne
 ## Working research modules
 
 - **Shock / Network laboratories:** user-editable coefficient matrix; synthetic starting example explicitly labeled. Price and quantity solvers, decomposition and numerical diagnostics. No measured production network is currently loaded.
-- **Rates:** hypothetical coupon-bond valuation, duration, convexity and exact yield-shift repricing.
-- **Portfolio Studio:** locally uploaded total-return CSV, validated weights, volatility/drawdown/CVaR, minimum-variance/CVaR allocation and chronological holdout comparison. No redistributable market history is supplied.
-- **Macro Forecasting:** real trained compact PyTorch GRU/Gaussian-head experiments, six saved checkpoints, three baselines, ablation, all seeds and held-out diagnostics. Small sample and revised-history limitations are explicit.
+- **Rates:** 250 observed daily Treasury par curves from 2024, with source hash and missingness preserved; hypothetical coupon-bond valuation, duration, convexity and exact yield-shift repricing.
+- **Portfolio Studio:** locally uploaded total-return CSV, validated weights, volatility/drawdown/CVaR, minimum-variance/CVaR allocation and chronological holdout comparison. A separate walk-forward mode uses trailing training windows, drifting holdings and costs at every rebalance, with original/equal-weight baselines. No redistributable ETF history is supplied.
+- **Macro Forecasting:** real trained compact PyTorch GRU/Gaussian-head experiments, six saved checkpoints, three baselines, ablation, all seeds and held-out diagnostics. On-demand CPU PyTorch inference recomputes predictions from cached, evaluated weights. Small sample and revised-history limitations are explicit.
 - **Historical Events:** observed annual GDP context around selected reference years, without causal attribution or point-in-time replay.
 
 ```sh
@@ -89,3 +92,5 @@ Observed history, hypothetical input-output effects, bond valuations, and learne
 ```
 
 See [technical research report](docs/RESEARCH_REPORT.md), [learning guide](learning/README.md), [API contracts](docs/API.md) and [recruiter demo](docs/DEMO_SCRIPT.md). The full original product brief remains only partially fulfilled; the completion matrix is authoritative.
+
+See [release notes and remaining scope](docs/RELEASE.md). The local release package includes production assets, source and real model checkpoints; dependencies still require installation.

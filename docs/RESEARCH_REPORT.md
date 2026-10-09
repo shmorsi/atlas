@@ -10,7 +10,7 @@ The pipeline retains 42,900 annual WDI records including nulls for 165 mapped ec
 
 `economics.py` validates finite nonnegative square technical coefficients, column cost shares, spectral radius below one and condition number below 1e8. It solves a linear system for price or quantity propagation and returns direct, first-order and higher-order effects plus relationship contributions and residuals. The default UI matrix is explicitly synthetic. A does not encode a measured country network until a genuine table is loaded.
 
-`finance.py` prices coupon cash flows, solves yield-to-maturity, derives duration and convexity and compares exact repricing with a Taylor approximation. Tests include par pricing and finite differences. Portfolio CSV inputs must be complete, positive and date-ordered; the user must explicitly attest total-return adjustment. CVXPY/Clarabel imposes long-only, concentration and turnover constraints. The first 70% of returns fit allocations and the remaining 30% evaluate them. CVaR uses empirical order statistics and fractional tail mass. One-time turnover costs are applied to initial held-out capital; repeated rebalancing costs remain excluded.
+`finance.py` prices coupon cash flows, solves yield-to-maturity, derives duration and convexity and compares exact repricing with a Taylor approximation. Tests include par pricing and finite differences. Portfolio CSV inputs must be complete, positive and date-ordered; the user must explicitly attest total-return adjustment. CVXPY/Clarabel imposes long-only, concentration and turnover constraints. The first 70% of returns fit allocations and the remaining 30% evaluate them. CVaR uses empirical order statistics and fractional tail mass. One-time turnover costs are applied to initial held-out capital; repeated rebalancing costs remain excluded in that single-split mode. A separate walk-forward endpoint now fits trailing windows, allows holdings to drift, and charges proportional costs at every scheduled rebalance. Original and equal-weight baselines use the same dates and cost rates. Trade records expose each training interval and allocation.
 
 ## Forecasting design
 
@@ -44,7 +44,7 @@ An incoming-edge message-passing architecture is implemented, with shape, messag
 
 ## Unavailable integrations
 
-No causal oil-supply identification, monetary-policy transmission, neural shock-conditioning, market-pricing bridge, real ETF stress responses, observed Treasury curve, trade-flow map, verified energy infrastructure, or point-in-time event replay is implemented. The UI explains those limits. The quantity solver accepts hypothetical demand shocks; it does not infer a trade-demand shock from news.
+No causal oil-supply identification, monetary-policy transmission, neural shock-conditioning, market-pricing bridge, real ETF stress responses, trade-flow map, verified energy infrastructure, or point-in-time event replay is implemented. The UI explains those limits. The quantity solver accepts hypothetical demand shocks; it does not infer a trade-demand shock from news.
 
 ## Reproduction
 
@@ -53,3 +53,7 @@ Run `scripts/train.py` to reproduce the evaluation and checkpoints. `scripts/che
 ## Architecture tradeoffs
 
 One local FastAPI process, one Vite process, compact models and bundled data avoid cloud infrastructure. Requests are validated and independent of frontend calculations. No background retraining occurs. MapLibre workers and geographic assets are local; deck.gl population circles use observed population at Natural Earth cartographic reference points, not infrastructure locations or production exposure. ECharts uses only the required chart modules. Browser bundles remain substantial and are a performance improvement opportunity.
+
+## Release engineering extension — 2026-10-09
+
+The rates workspace now presents 250 observed Treasury par curves from 2024 separately from hypothetical bond valuations. Six saved PyTorch checkpoints execute on demand with immutable cached weights; the release gate verifies all 60 held-out means and intervals. Production serves built assets from the local FastAPI process. These changes improve implementation and reproducibility; they do not strengthen the statistical evidence from the unchanged small annual forecast sample.

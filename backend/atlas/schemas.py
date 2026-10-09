@@ -1,4 +1,4 @@
-from typing import Literal
+from typing import Literal, Annotated
 from pydantic import BaseModel, Field, ConfigDict
 
 
@@ -7,7 +7,9 @@ class StrictModel(BaseModel):
 
 
 class ShockRequest(StrictModel):
-    coefficients: list[list[float]] = Field(max_length=500, min_length=1)
+    coefficients: list[Annotated[list[float], Field(min_length=1, max_length=500)]] = (
+        Field(max_length=500, min_length=1)
+    )
     shock: list[float] = Field(max_length=500, min_length=1)
     mode: Literal["price", "quantity"] = "price"
 
@@ -34,7 +36,9 @@ class PortfolioRequest(StrictModel):
 
 
 class ForecastRequest(StrictModel):
-    window: list[list[float]] = Field(min_length=5, max_length=5)
+    window: list[Annotated[list[float], Field(min_length=4, max_length=4)]] = Field(
+        min_length=5, max_length=5
+    )
     model: Literal[
         "gru_multivariate_seed17",
         "gru_multivariate_seed29",
@@ -80,3 +84,20 @@ class CountryDetailResponse(CountryResponse):
     observations: list[ObservationResponse]
     kind: Literal["observed"]
     vintage_warning: str
+
+
+class ForecastResponse(StrictModel):
+    kind: Literal["neural_prediction"]
+    model: str
+    framework: Literal["PyTorch"]
+    device: Literal["cpu"]
+    mean: float
+    standard_deviation: float = Field(gt=0)
+    lower80: float
+    upper80: float
+    validated_for_causal_scenarios: Literal[False]
+
+
+class WalkForwardRequest(PortfolioRequest):
+    train_window: int = Field(default=60, ge=10, le=5000)
+    rebalance_every: int = Field(default=20, ge=1, le=1000)

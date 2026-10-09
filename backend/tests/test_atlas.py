@@ -40,7 +40,9 @@ def test_source_integrity():
             else "countries.geojson"
         )
         assert (
-            hashlib.sha256((data.DATA / "raw" / name).read_bytes()).hexdigest()
+            hashlib.sha256(
+                (data.DATA / source.get("raw_file", "raw/" + name)).read_bytes()
+            ).hexdigest()
             == source["sha256"]
         )
 

@@ -10,7 +10,11 @@
     "test:ui": "playwright test",
     "setup": "node scripts/setup.mjs",
     "predev": "node scripts/map-assets.mjs",
-    "prebuild": "node scripts/map-assets.mjs"
+    "prebuild": "node scripts/map-assets.mjs",
+    "develop": "node scripts/develop.mjs",
+    "test:backend": "node scripts/python.mjs -m pytest -q",
+    "verify:release": "node scripts/python.mjs scripts/check_release.py",
+    "package": "npm run build && node scripts/python.mjs scripts/package_release.py"
   },
   "dependencies": {
     "@deck.gl/core": "^9.4.0",

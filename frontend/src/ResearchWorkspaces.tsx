@@ -1,3 +1,8 @@
+import {
+  TreasuryCurves,
+  InferenceReplay,
+  WalkForward,
+} from "./ReleaseWorkspaces";
 import { useEffect, useState } from "react";
 import { api, Observation, Country, format } from "./types";
 import { Chart } from "./Chart";
@@ -258,11 +263,13 @@ export function RatesLab() {
   }
   return (
     <div className="lab-layout">
+      <TreasuryCurves />
       <section className="research controls">
         <div className="eyebrow">HYPOTHETICAL FIXED-CASH-FLOW VALUATION</div>
         <h2>Bond sensitivity</h2>
         <p>
-          Use your own yield assumptions. No observed Treasury curve is loaded.
+          Use your own yield assumptions. The historical Treasury curve above
+          provides separate observed context.
         </p>
         {Object.entries({
           face: "Face value",
@@ -604,6 +611,20 @@ export function PortfolioLab() {
           </>
         )}
       </section>
+      <WalkForward
+        enabled={!!csv && confirmed}
+        request={{
+          csv_text: csv,
+          source,
+          total_return_confirmed: confirmed,
+          weights: weights.split(",").map(Number),
+          method,
+          periods,
+          cap,
+          turnover_limit: turnover,
+          cost_bps: cost,
+        }}
+      />
     </div>
   );
 }
@@ -741,6 +762,7 @@ export function ForecastLab() {
                 </tbody>
               </table>
             </div>
+            <InferenceReplay model={model} />
             <h3>Interpretation</h3>
             {report.limitations.map((l: string) => (
               <p className="model-note" key={l}>

@@ -18,7 +18,7 @@ Acceptance: a documented small aggregation reproduces an independent calculation
 
 ## 3. Complete finance and forecasting evidence
 
-Obtain appropriately licensed total-return histories, observed yield curves and release-vintage information. Add rolling re-estimation, repeated transaction costs and defined stress scenarios to portfolios. Compare against simple investable baselines using identical dates and costs.
+Implemented in the local release: observed Treasury curves, trailing-window portfolio re-estimation, drifting weights, repeated transaction costs and original/equal-weight comparisons over identical dates. Still required: appropriately licensed ETF total-return histories, historical release vintages, defined multiple stress scenarios and defensible expected-return models.
 
 For forecasts, freeze a chronological evaluation protocol before experiments. Fit transformations on training data only, respect actual release availability, report every seed and baseline, and evaluate uncertainty coverage. Train/evaluate the graph model only after the verified network and matched outcome panel exist. Present negative results. Do not infer causal macro-to-market transmission from predictive associations.
 

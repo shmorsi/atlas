@@ -1,6 +1,6 @@
 """Deterministic cash-flow mathematics and historical portfolio analytics."""
 
-import csv, io, datetime
+import csv, io, datetime, math
 import numpy as np
 from scipy.optimize import brentq
 import cvxpy as cp
@@ -68,6 +68,8 @@ def parse_prices(text):
     dates = []
     rows = []
     for row in reader:
+        if None in row:
+            raise ValueError("CSV row contains extra columns")
         try:
             d = datetime.date.fromisoformat(row["date"])
             values = [float(row[k]) for k in fields[1:]]
@@ -170,4 +172,98 @@ def optimize(returns, original, method="variance", cap=1, turnover_limit=2, cost
         "objective": float(problem.value),
         "turnover": float(np.abs(weights - original).sum()),
         "transaction_cost": float(np.abs(weights - original).sum() * cost_bps / 10000),
+    }
+
+
+def walk_forward(
+    returns,
+    dates,
+    original,
+    train_window=60,
+    rebalance_every=20,
+    periods=252,
+    method="variance",
+    cap=1,
+    turnover_limit=2,
+    cost_bps=10,
+):
+    """Fit using only trailing observations, trade before the next return, hold/drift between trades."""
+    r = np.asarray(returns, float)
+    original = np.asarray(original, float)
+    portfolio_stats(r, original, periods)
+    if (r <= -1).any() or len(dates) != len(r):
+        raise ValueError("Require finite returns greater than -100% with aligned dates")
+    if train_window < 10 or rebalance_every < 1 or len(r) - train_window < 2:
+        raise ValueError(
+            "Need at least 10 training returns and two out-of-sample returns"
+        )
+    if math.ceil((len(r) - train_window) / rebalance_every) > 100:
+        raise ValueError("Maximum 100 rebalances; increase rebalance interval")
+    if not 0 <= cost_bps <= 500:
+        raise ValueError("Invalid transaction cost")
+    paths = {}
+    for strategy in ["original", "equal_weight", "optimized"]:
+        current = original.copy()
+        net_returns = []
+        trades = []
+        for i in range(train_window, len(r)):
+            charge = 0.0
+            if (i - train_window) % rebalance_every == 0:
+                if strategy == "optimized":
+                    target = np.asarray(
+                        optimize(
+                            r[i - train_window : i],
+                            current,
+                            method,
+                            cap,
+                            turnover_limit,
+                            cost_bps,
+                        )["weights"]
+                    )
+                else:
+                    target = (
+                        original.copy()
+                        if strategy == "original"
+                        else np.ones(len(original)) / len(original)
+                    )
+                turnover = float(np.abs(target - current).sum())
+                charge = turnover * cost_bps / 10000
+                current = target
+                trades.append(
+                    {
+                        "trade_date": dates[i],
+                        "training_start": dates[i - train_window],
+                        "training_end": dates[i - 1],
+                        "weights": target.tolist(),
+                        "turnover": turnover,
+                        "cost_fraction": charge,
+                    }
+                )
+            gross = float(r[i] @ current)
+            net_returns.append((1 - charge) * (1 + gross) - 1)
+            current = current * (1 + r[i]) / (1 + gross)
+        stats = portfolio_stats(np.asarray(net_returns)[:, None], [1], periods)
+        stats["assumption"] = (
+            "Rebalanced on scheduled dates; weights drift between trades; costs deducted before each holding-period return"
+        )
+        paths[strategy] = {
+            "statistics": stats,
+            "rebalances": trades,
+            "net_returns": net_returns,
+            "final_weights": current.tolist(),
+        }
+    return {
+        "kind": "historical_walk_forward",
+        "dates": dates[train_window:],
+        "strategies": paths,
+        "train_window": train_window,
+        "rebalance_every": rebalance_every,
+        "cost_bps_per_l1_turnover": cost_bps,
+        "limitations": [
+            "User-supplied total-return history; no independent verification",
+            "Costs proportional to L1 turnover; no spreads, market impact or taxes",
+            "All strategies start from the supplied original holdings; initial purchase costs are excluded",
+            "Baselines retain their fixed target allocations and are not constrained by optimizer cap/turnover limits",
+            "Historical evaluation is not a forecast of investment performance",
+        ],
     }
