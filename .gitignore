@@ -1,0 +1,13 @@
+.venv/
+node_modules/
+dist/
+__pycache__/
+.pytest_cache/
+*.pyc
+.DS_Store
+playwright-report/
+test-results/
+data/*.duckdb*
+data/*.sqlite*
+
+frontend/public/maplibre/

@@ -1,0 +1,62 @@
+[
+  {
+    "indicator": "NY.GDP.MKTP.CD",
+    "label": "GDP",
+    "unit": "current US$",
+    "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.MKTP.CD?format=json&date=1960:2024&per_page=20000&source=2",
+    "retrieved_at": "2026-10-09T00:29:42.246433+00:00",
+    "sha256": "ce40d7939a342249e5ca08615823cf513dc9fadd46a1f7ea3c19990880209ffb",
+    "source": "World Bank \u00b7 World Development Indicators",
+    "license": "CC BY 4.0 with World Bank additional terms",
+    "last_updated": "2026-10-08",
+    "publication_date": null,
+    "vintage": null
+  },
+  {
+    "indicator": "SP.POP.TOTL",
+    "label": "Population",
+    "unit": "people",
+    "url": "https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?format=json&date=1960:2024&per_page=20000&source=2",
+    "retrieved_at": "2026-10-09T00:29:42.207502+00:00",
+    "sha256": "275d4328f901e2da43f8f45401d4299ed525fdccf7efc8358554a09218da0133",
+    "source": "World Bank \u00b7 World Development Indicators",
+    "license": "CC BY 4.0 with World Bank additional terms",
+    "last_updated": "2026-10-08",
+    "publication_date": null,
+    "vintage": null
+  },
+  {
+    "indicator": "NY.GDP.MKTP.KD.ZG",
+    "label": "GDP growth",
+    "unit": "annual %",
+    "url": "https://api.worldbank.org/v2/country/all/indicator/NY.GDP.MKTP.KD.ZG?format=json&date=1960:2024&per_page=20000&source=2",
+    "retrieved_at": "2026-10-09T00:29:42.358598+00:00",
+    "sha256": "7a3bd7304a93f38b62d8b8bdfd6ff1079dc9592a8efba30ef52cd191c274d878",
+    "source": "World Bank \u00b7 World Development Indicators",
+    "license": "CC BY 4.0 with World Bank additional terms",
+    "last_updated": "2026-10-08",
+    "publication_date": null,
+    "vintage": null
+  },
+  {
+    "indicator": "NE.TRD.GNFS.ZS",
+    "label": "Trade openness",
+    "unit": "% of GDP",
+    "url": "https://api.worldbank.org/v2/country/all/indicator/NE.TRD.GNFS.ZS?format=json&date=1960:2024&per_page=20000&source=2",
+    "retrieved_at": "2026-10-09T00:29:42.315401+00:00",
+    "sha256": "1f424f3cb931e0e00f6e12e7017ad7db667f823b67f83d3103e32acb103ff11c",
+    "source": "World Bank \u00b7 World Development Indicators",
+    "license": "CC BY 4.0 with World Bank additional terms",
+    "last_updated": "2026-10-08",
+    "publication_date": null,
+    "vintage": null
+  },
+  {
+    "source": "Natural Earth",
+    "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_110m_admin_0_countries.geojson",
+    "license": "Public domain",
+    "sha256": "6866c877d39cba9c357620878839b336d569f8c662d3cfab4cb1dbe2d39c977f",
+    "retrieved_at": "2026-10-09T00:29:42.365226+00:00",
+    "scale": "1:110 million"
+  }
+]
