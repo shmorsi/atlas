@@ -135,3 +135,12 @@ def test_portfolio_chronological_evaluation_and_cost():
         * (1 - d["optimization"]["transaction_cost"])
         - 1
     )
+
+
+def test_cvar_fractional_tail_mass():
+    assert empirical_cvar([0, 1, 2, 3], 0.6) == pytest.approx(2.625)
+
+
+def test_price_domain():
+    with pytest.raises(ValueError, match="negative prices"):
+        propagate([[0.5]], [-0.8])

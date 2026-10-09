@@ -32,9 +32,18 @@ class PortfolioRequest(StrictModel):
     turnover_limit: float = Field(default=2, ge=0, le=2)
     cost_bps: float = Field(default=0, ge=0, le=500)
 
+
 class ForecastRequest(StrictModel):
     window: list[list[float]] = Field(min_length=5, max_length=5)
-    model: Literal['gru_multivariate_seed17','gru_multivariate_seed29','gru_multivariate_seed43','gru_domestic_only_seed17','gru_domestic_only_seed29','gru_domestic_only_seed43'] = 'gru_multivariate_seed17'
+    model: Literal[
+        "gru_multivariate_seed17",
+        "gru_multivariate_seed29",
+        "gru_multivariate_seed43",
+        "gru_domestic_only_seed17",
+        "gru_domestic_only_seed29",
+        "gru_domestic_only_seed43",
+    ] = "gru_multivariate_seed17"
+
 
 class ObservationResponse(BaseModel):
     entity: str
@@ -49,6 +58,7 @@ class ObservationResponse(BaseModel):
     source: str | None = None
     quality_flag: str | None = None
 
+
 class CountryResponse(BaseModel):
     id: str
     wb_id: str
@@ -57,14 +67,16 @@ class CountryResponse(BaseModel):
     subregion: str
     longitude: float
     latitude: float
-    indicators: dict[str,ObservationResponse]
+    indicators: dict[str, ObservationResponse]
+
 
 class CountriesResponse(BaseModel):
-    kind: Literal['observed']
+    kind: Literal["observed"]
     year: int
     countries: list[CountryResponse]
 
+
 class CountryDetailResponse(CountryResponse):
     observations: list[ObservationResponse]
-    kind: Literal['observed']
+    kind: Literal["observed"]
     vintage_warning: str

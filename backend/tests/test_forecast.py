@@ -57,3 +57,16 @@ def test_gnn_messages_and_gradient():
     assert not torch.equal(y, m(x, torch.zeros_like(a)))
     y.square().mean().backward()
     assert m.message.weight.grad.abs().sum() > 0
+
+
+def test_saved_checkpoints_reproduce_report():
+    import json
+    from atlas.data import DATA
+
+    x, _, years, _ = dataset()
+    report = json.loads((DATA / "models/evaluation.json").read_text())
+    for key, prediction in report["predictions"].items():
+        if not key.startswith("gru_"):
+            continue
+        actual = infer(DATA / "models" / f"{key}.pt", x[years == 2015][0])
+        assert abs(actual["mean"] - prediction["mean"][0]) < 1e-5

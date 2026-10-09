@@ -4,7 +4,7 @@ Local-first global economic intelligence and quantitative research terminal. Rea
 
 ## Run
 
-Prerequisites: Node 22+, Python 3.11–3.13, a modern WebGL2 browser. On Windows use Python from python.org and run in PowerShell; on macOS/Linux `python3` must refer to a supported Python. Tested on macOS ARM64 / Python 3.12.
+Prerequisites: Node 22+, Python 3.12–3.13, a modern WebGL2 browser. On Windows use Python from python.org and run in PowerShell; on macOS/Linux `python3` must refer to a supported Python. Tested on macOS ARM64 / Python 3.12.
 
 ```sh
 npm install
@@ -67,3 +67,18 @@ Search countries by name/code, select by map or keyboard-accessible list, change
 ## Scientific contract
 
 Observed history, hypothetical input-output effects, bond valuations, and learned predictions have separate result labels. No causal effect, investment performance, or neural improvement is implied without a measured evaluation. Unavailable data and unsupported model links remain explicit. This is research software, not an operational trading system.
+
+## Working research modules
+
+- **Shock / Network laboratories:** user-editable coefficient matrix; synthetic starting example explicitly labeled. Price and quantity solvers, decomposition and numerical diagnostics. No measured production network is currently loaded.
+- **Rates:** hypothetical coupon-bond valuation, duration, convexity and exact yield-shift repricing.
+- **Portfolio Studio:** locally uploaded total-return CSV, validated weights, volatility/drawdown/CVaR, minimum-variance/CVaR allocation and chronological holdout comparison. No redistributable market history is supplied.
+- **Macro Forecasting:** real trained compact PyTorch GRU/Gaussian-head experiments, six saved checkpoints, three baselines, ablation, all seeds and held-out diagnostics. Small sample and revised-history limitations are explicit.
+- **Historical Events:** observed annual GDP context around selected reference years, without causal attribution or point-in-time replay.
+
+```sh
+.venv/bin/python scripts/train.py
+.venv/bin/python scripts/check_notebooks.py
+```
+
+See [technical research report](docs/RESEARCH_REPORT.md), [learning guide](learning/README.md), [API contracts](docs/API.md) and [recruiter demo](docs/DEMO_SCRIPT.md). The full original product brief remains only partially fulfilled; the completion matrix is authoritative.

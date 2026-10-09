@@ -1,0 +1,9 @@
+# Source and licensing register
+
+- **Natural Earth**, Admin 0 countries, 1:110m. [Source](https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-countries/), [public-domain terms](https://www.naturalearthdata.com/about/terms-of-use/). Mirror and SHA-256 recorded in the manifest. Properties are reduced for the map; geometry is unmodified.
+- **World Bank, World Development Indicators**, indicators NY.GDP.MKTP.CD, SP.POP.TOTL, NY.GDP.MKTP.KD.ZG, NE.TRD.GNFS.ZS. [API documentation](https://datahelpdesk.worldbank.org/knowledgebase/articles/889392), [license and additional terms](https://datacatalog.worldbank.org/public-licenses). Data are transformed into a common schema; original values and missingness retained. Credit World Bank on redistribution.
+- **OECD ICIO 2025 edition**: [official download page](https://www.oecd.org/en/data/datasets/inter-country-input-output-tables.html). Attempted 2016–2022 regular archive at `https://webfs-sti.oecd.org/files/STI-PIE/ICIO/2025/2016-2022_SML.zip`; server returned HTTP 403 on this build. No OECD network is bundled or inferred from WDI. Smallest unblock: obtain the official archive with its metadata through an authorized download, then validate its orientation, sectors, outputs, units and license before ingestion. [OECD data terms](https://www.oecd.org/en/about/terms-conditions.html) require attribution and checking dataset-specific restrictions.
+
+The manifest retrieval timestamps come from the download execution clock. They are not economic publication dates. Source update dates are recorded separately where supplied. No source contains historical vintages. Never use retrieval dates as a substitute for original releases.
+
+The cache ends in 2024 deliberately to retain a common completed annual horizon. A later cache retrieval does not make 2024 observations current conditions.

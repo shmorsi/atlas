@@ -140,6 +140,7 @@ function App() {
           {modules.map(([name, Icon], i) => (
             <button
               key={name}
+              aria-label={name}
               className={workspace === name ? "active" : ""}
               onClick={() => setWorkspace(name)}
             >
@@ -243,6 +244,11 @@ function App() {
                   }
                   aria-busy={loading}
                 >
+                  {loading && (
+                    <div className="loading-overlay" role="status">
+                      Loading observations for {year}…
+                    </div>
+                  )}
                   <section className="country-list">
                     <div className="panel-heading">
                       <span>COUNTRY INDEX</span>

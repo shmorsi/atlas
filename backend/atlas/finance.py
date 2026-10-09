@@ -89,7 +89,7 @@ def parse_prices(text):
 
 def empirical_cvar(losses, alpha=0.95):
     # Rockafellar–Uryasev empirical expected shortfall, including fractional tail mass.
-    q = float(np.quantile(losses, alpha))
+    q = float(np.quantile(losses, alpha, method="inverted_cdf"))
     return q + float(np.maximum(np.asarray(losses) - q, 0).mean()) / (1 - alpha)
 
 

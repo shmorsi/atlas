@@ -28,6 +28,8 @@ def propagate(coefficients, shock, mode="price"):
         raise ValueError("Unknown propagation mode")
     transmission = a.T if mode == "price" else a
     total = solve(np.eye(len(a)) - transmission, s)
+    if mode == "price" and (total < -1).any():
+        raise ValueError("Scenario implies negative prices; outside model domain")
     first = transmission @ s
     # Contribution from each supplier i to recipient j at equilibrium.
     contributions = (a * total[:, None]).T if mode == "price" else a * total[None, :]

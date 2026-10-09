@@ -45,7 +45,7 @@ export function Chart({
       ref={el}
       style={{ height, width: "100%" }}
       role="img"
-      aria-label="Historical economic chart; values are also available in the data table"
+      aria-label="Analytical chart; numerical results are provided in the accompanying tables and metrics"
     />
   );
 }

@@ -124,10 +124,14 @@ def evaluation():
     return json.loads(path.read_text())
 
 
-@app.post('/api/forecast/infer')
+@app.post("/api/forecast/infer")
 def forecast_inference(request: ForecastRequest):
     from atlas.forecast import infer
-    path=data.DATA/'models'/f'{request.model}.pt'
-    if not path.exists():raise HTTPException(404,'Requested model has not been trained')
-    try:return infer(path,request.window)
-    except ValueError as e:raise HTTPException(422,str(e))
+
+    path = data.DATA / "models" / f"{request.model}.pt"
+    if not path.exists():
+        raise HTTPException(404, "Requested model has not been trained")
+    try:
+        return infer(path, request.window)
+    except ValueError as e:
+        raise HTTPException(422, str(e))

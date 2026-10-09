@@ -31,6 +31,9 @@ export function StructuralLab({ network = false }: { network?: boolean }) {
     [result, setResult] = useState<any>(null),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false);
+  useEffect(() => {
+    setResult(null);
+  }, [matrix, shock, mode]);
   async function run() {
     setBusy(true);
     setError("");
@@ -241,6 +244,9 @@ export function RatesLab() {
     }),
     [result, setResult] = useState<any>(null),
     [error, setError] = useState("");
+  useEffect(() => {
+    setResult(null);
+  }, [form]);
   async function run() {
     setError("");
     try {
@@ -348,6 +354,9 @@ export function PortfolioLab() {
     [result, setResult] = useState<any>(null),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false);
+  useEffect(() => {
+    setResult(null);
+  }, [csv, source, confirmed, weights, method, periods, cap, turnover, cost]);
   async function run() {
     setBusy(true);
     setError("");
