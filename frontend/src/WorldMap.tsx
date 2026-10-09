@@ -13,6 +13,7 @@ export function WorldMap({
   indicator,
   globe,
   region,
+  cooperativeGestures = false,
 }: {
   countries: Country[];
   selected: string;
@@ -20,6 +21,7 @@ export function WorldMap({
   indicator: string;
   globe: boolean;
   region: string;
+  cooperativeGestures?: boolean;
 }) {
   const container = useRef<HTMLDivElement>(null),
     map = useRef<maplibregl.Map | null>(null),
@@ -50,6 +52,7 @@ export function WorldMap({
         minZoom: -1,
         maxZoom: 7,
         attributionControl: false,
+        cooperativeGestures,
       });
       map.current = m;
     } catch (e) {

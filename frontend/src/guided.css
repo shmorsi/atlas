@@ -1,0 +1,869 @@
+.experience-switch {
+  display: flex;
+  border: 1px solid #334251;
+  border-radius: 4px;
+  padding: 3px;
+  gap: 3px;
+}
+.experience-switch button {
+  border: 0;
+  padding: 5px 10px;
+  font-size: 12px;
+}
+.experience-switch button[aria-pressed="true"] {
+  background: #33403f;
+  color: #e0bb7b;
+}
+.guided-mode .page-heading {
+  height: 82px;
+}
+.guided-mode .heading-note {
+  display: none;
+}
+.guided-mode .rail nav button {
+  padding: 15px 10px;
+}
+.guided-mode .rail nav small {
+  display: none;
+}
+.guide-intro {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0 32px;
+  gap: 30px;
+}
+.guide-intro h2 {
+  font-size: 32px;
+  line-height: 1.25;
+  margin: 12px 0;
+  font-weight: 450;
+  letter-spacing: -0.8px;
+}
+.guide-intro p {
+  max-width: 580px;
+  line-height: 1.7;
+  color: #9eafbf;
+  font-size: 15px;
+  margin: 0;
+}
+.scroll-cue {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  color: #a9bbc9;
+  text-decoration: none;
+  line-height: 1.9;
+  font-size: 12px;
+  border-left: 1px solid #39464f;
+  padding-left: 22px;
+  margin-right: 15px;
+}
+.scroll-cue svg {
+  color: #cfad76;
+}
+.guide-explore,
+.guide-understand,
+.guide-compare,
+.guide-next,
+.guided-scenario {
+  border-top: 1px solid #344351;
+  padding: 26px 0;
+  margin-bottom: 20px;
+}
+.guide-section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+.guide-section-heading > div {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+.guide-section-heading h2 {
+  font-size: 20px;
+  margin: 0;
+  font-weight: 450;
+}
+.step-number {
+  font-size: 12px;
+  color: #c5a16a;
+  font-variant-numeric: tabular-nums;
+}
+.guide-section-heading > span {
+  font-size: 12px;
+  color: #8b9dae;
+}
+.evidence-chip {
+  border: 1px solid #38504d;
+  color: #98b9ad !important;
+  padding: 5px 8px;
+  font-size: 9px !important;
+  letter-spacing: 1px;
+  border-radius: 3px;
+}
+.guide-search-row {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+}
+.guide-search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #111d28;
+  border: 1px solid #344553;
+  padding: 10px 14px;
+  flex: 1;
+}
+.guide-search-box svg {
+  color: #91a6b8;
+}
+.guide-search-box input {
+  border: 0;
+  background: transparent;
+  flex: 1;
+  width: 100%;
+  padding: 4px;
+  font-size: 14px;
+}
+.guide-search-results {
+  position: absolute;
+  top: 100%;
+  left: -1px;
+  right: -1px;
+  z-index: 8;
+  border: 1px solid #3b4e5e;
+  background: #101c29;
+  max-height: 270px;
+  overflow: auto;
+  box-shadow: 0 10px 25px #0008;
+}
+.guide-search-results button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #283746;
+  padding: 12px 15px;
+  text-align: left;
+  font-size: 14px;
+}
+.guide-search-results p {
+  padding: 12px;
+  color: #a6b4c3;
+}
+.guide-year {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  color: #95a6b8;
+  font-size: 13px;
+}
+.guide-year select {
+  padding: 10px 12px;
+}
+.guide-country-picks {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 13px 0 17px;
+}
+.guide-country-picks > span {
+  color: #8498aa;
+  font-size: 12px;
+  margin-right: 4px;
+}
+.guide-country-picks button {
+  font-size: 12px;
+  padding: 5px 10px;
+  border-color: transparent;
+  color: #9eb0c0;
+}
+.guide-country-picks button[aria-pressed="true"] {
+  color: #e0b87e;
+  border-color: #68583c;
+  background: #252a28;
+}
+.guide-map-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  border: 1px solid #2d3c4b;
+  background: #101b25;
+  position: relative;
+}
+.guide-map {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.guide-map .map-wrap {
+  min-height: 425px;
+  flex: 1;
+}
+.guide-map-bottom {
+  border-top: 1px solid #293c4b;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 14px;
+  align-items: center;
+  font-size: 11px;
+  color: #8eabbd;
+}
+.guide-map-bottom button {
+  font-size: 11px;
+  padding: 5px 8px;
+  white-space: nowrap;
+}
+.guide-country-summary {
+  padding: 25px 22px;
+  border-left: 1px solid #30404e;
+}
+.guide-country-summary h2 {
+  font-size: 26px;
+  margin: 10px 0 26px;
+}
+.guide-takeaway > span {
+  font-size: 9px;
+  color: #c9a66f;
+  letter-spacing: 1.3px;
+}
+.guide-takeaway h3 {
+  font-size: 21px;
+  line-height: 1.45;
+  font-weight: 450;
+  color: #e5d5b8;
+  margin: 9px 0;
+}
+.guide-takeaway p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: #8fa4b6;
+}
+.guide-country-summary dl {
+  margin: 20px 0;
+}
+.guide-country-summary dl > div {
+  border-top: 1px solid #2b3a48;
+  padding: 12px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.guide-country-summary dt {
+  font-size: 12px;
+  color: #9cb0bf;
+}
+.guide-country-summary dd {
+  font-size: 17px;
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+.text-link {
+  font-size: 12px;
+  text-decoration: none;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  line-height: 1.8;
+}
+.guide-details {
+  margin-top: 14px;
+  border-top: 1px solid #273846;
+  padding: 12px 0;
+  color: #9eafbf;
+  font-size: 13px;
+  line-height: 1.8;
+}
+.guide-details summary {
+  cursor: pointer;
+  width: fit-content;
+  color: #b0c0ce;
+}
+.guide-details summary:focus-visible {
+  outline: 2px solid #d7ac65;
+}
+.guide-options {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 25px;
+  padding: 12px 0;
+}
+.guide-options label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.guide-options p {
+  margin: 0;
+  max-width: 800px;
+}
+.concept-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+}
+.concept-grid article {
+  border-top: 2px solid #476173;
+  padding: 17px 0;
+}
+.concept-grid h3 {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 16px;
+  color: #c4d0da;
+}
+.concept-grid strong {
+  font-size: 26px;
+  font-weight: 450;
+  letter-spacing: -0.5px;
+  font-variant-numeric: tabular-nums;
+  color: #e0bc80;
+}
+.concept-grid p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #91a5b7;
+  margin-top: 15px;
+}
+.guide-trend {
+  display: grid;
+  grid-template-columns: 1fr 1.7fr;
+  gap: 40px;
+  padding: 28px;
+  background: #101b26;
+  border: 1px solid #2a3b48;
+  margin-top: 14px;
+}
+.guide-trend h3 {
+  font-size: 21px;
+  font-weight: 450;
+  line-height: 1.4;
+  margin: 12px 0;
+}
+.guide-trend p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #93a9ba;
+}
+.guide-trend > div {
+  min-width: 0;
+}
+.guide-comparison-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 25px;
+}
+.guide-comparison-head p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #97acbc;
+  max-width: 580px;
+  margin: 0;
+}
+.guide-comparison-head label {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 220px;
+}
+.guide-compare td,
+.guide-compare th {
+  font-size: 13px;
+  padding: 15px 18px;
+}
+.guide-compare table {
+  border: 1px solid #30404e;
+}
+.guide-next {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 70px;
+}
+.guide-next h2 {
+  font-size: 25px;
+  line-height: 1.4;
+  margin-top: 10px;
+}
+.guide-next p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #9cafbe;
+  max-width: 530px;
+}
+.guide-depth {
+  border-left: 1px solid #34424e;
+  padding-left: 35px;
+}
+.guide-depth h3 {
+  font-size: 18px;
+  font-weight: 450;
+}
+.guide-depth button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.text-button {
+  border: 0;
+  padding: 10px 0;
+  color: #c6ab7f;
+  background: transparent !important;
+}
+.guide-next .primary {
+  padding: 12px 17px;
+}
+.guide-error {
+  padding: 30px;
+  border: 1px solid #76555a;
+  background: #251e25;
+}
+.guide-error p {
+  color: #bcabb0;
+}
+.guided-scenario {
+  max-width: 1300px;
+}
+.guide-lead {
+  font-size: 16px;
+  line-height: 1.8;
+  max-width: 780px;
+  color: #a5b8c8;
+}
+.guide-scenario-grid {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 30px;
+  margin: 32px 0;
+}
+.scenario-input {
+  padding: 24px;
+  background: #111e29;
+  border: 1px solid #304352;
+}
+.scenario-input h3,
+.scenario-explanation h3 {
+  font-size: 20px;
+  line-height: 1.4;
+  font-weight: 450;
+  margin: 0 0 16px;
+}
+.scenario-input p {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #9cafff;
+  color: #9cafbf;
+}
+.scenario-input label {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  font-size: 13px;
+  margin-top: 26px;
+}
+.scenario-input label strong {
+  color: #dfb97a;
+  font-size: 20px;
+}
+.scenario-input input {
+  width: 100%;
+  padding: 0;
+  margin-top: 14px;
+  accent-color: #d7ac65;
+}
+.range-labels {
+  display: flex;
+  justify-content: space-between;
+  color: #8fa6b8;
+  font-size: 11px;
+  margin: 7px 0 20px;
+}
+.guide-small {
+  font-size: 12px !important;
+  color: #859bac !important;
+  margin-top: 22px;
+}
+.scenario-explanation {
+  padding: 24px 0;
+  min-width: 0;
+}
+.transmission-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 28px;
+}
+.transmission-steps > div {
+  border-top: 2px solid #6c8b91;
+  padding-top: 16px;
+}
+.transmission-steps span {
+  color: #7997ac;
+  font-size: 11px;
+}
+.transmission-steps h4 {
+  font-size: 15px;
+  font-weight: 450;
+  margin: 12px 0;
+}
+.transmission-steps strong {
+  font-weight: 450;
+  font-size: 26px;
+  color: #dbb87c;
+}
+.transmission-steps p {
+  font-size: 12px;
+  line-height: 1.7;
+  color: #95aabd;
+}
+.scenario-result {
+  font-size: 15px;
+  line-height: 1.8;
+  border-left: 2px solid #c39f63;
+  padding: 14px 0 14px 18px;
+  color: #c4d2de;
+  margin-top: 28px;
+}
+.hypothetical {
+  border-color: #5e5037;
+  color: #d5b278 !important;
+}
+.portfolio-guide {
+  padding: 25px;
+  background: #111d28;
+  border: 1px solid #304251;
+  margin-bottom: 22px;
+}
+.portfolio-guide h2 {
+  font-size: 24px;
+}
+.portfolio-guide p,
+.portfolio-guide li {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #a5b6c5;
+}
+.portfolio-guide ol {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 35px;
+  padding-left: 20px;
+}
+.portfolio-guide strong {
+  color: #dbdfe0;
+}
+.guided-mode #understand {
+  scroll-margin-top: 20px;
+}
+@media (min-width: 1700px) {
+  .guided-atlas {
+    max-width: 1550px;
+    margin: auto;
+  }
+  .guide-map .map-wrap {
+    min-height: 510px;
+  }
+  .guide-map-layout {
+    grid-template-columns: minmax(0, 1fr) 340px;
+  }
+  .guide-country-summary {
+    padding: 28px;
+  }
+  .guide-country-summary h2 {
+    font-size: 30px;
+  }
+  .guide-country-summary dl > div {
+    padding: 16px 0;
+  }
+  .guide-country-summary dt {
+    font-size: 14px;
+  }
+}
+@media (max-width: 1100px) {
+  .concept-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .guide-map-layout {
+    grid-template-columns: minmax(0, 1fr) 265px;
+  }
+  .guide-country-summary {
+    padding: 20px 17px;
+  }
+  .guide-intro h2 {
+    font-size: 29px;
+  }
+  .guide-next {
+    gap: 35px;
+  }
+  .guide-scenario-grid {
+    grid-template-columns: 260px minmax(0, 1fr);
+  }
+  .guide-map-bottom > span {
+    display: none;
+  }
+}
+@media (max-width: 800px) {
+  .guide-map-layout {
+    grid-template-columns: 1fr;
+  }
+  .guide-country-summary {
+    border-left: 0;
+    border-top: 1px solid #30404e;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 24px;
+  }
+  .guide-country-summary > .eyebrow,
+  .guide-country-summary > h2 {
+    grid-column: 1;
+  }
+  .guide-country-summary > dl {
+    grid-column: 2;
+    grid-row: 1/4;
+    margin: 0;
+  }
+  .guide-country-summary > h2 {
+    margin: 8px 0 18px;
+  }
+  .guide-country-summary > .text-link {
+    grid-column: 1/-1;
+  }
+  .guide-trend {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 22px;
+  }
+  .guide-trend p {
+    margin-bottom: 0;
+  }
+  .guide-next {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .guide-depth {
+    border-left: 0;
+    border-top: 1px solid #34424e;
+    padding: 18px 0;
+  }
+  .guide-scenario-grid {
+    grid-template-columns: 1fr;
+  }
+  .guide-comparison-head {
+    gap: 20px;
+  }
+  .guide-section-heading {
+    align-items: flex-start;
+  }
+  .guide-options {
+    grid-template-columns: 1fr;
+  }
+  .portfolio-guide ol {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .guided-mode .topbar .version {
+    display: none;
+  }
+}
+@media (max-width: 560px) {
+  .guided-mode .rail {
+    display: none;
+  }
+  .guided-mode .main {
+    padding: 0 16px;
+  }
+  .guided-mode .page-heading {
+    height: 65px;
+  }
+  .guided-mode .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #0b1119;
+    gap: 8px;
+  }
+  .guided-mode .breadcrumb {
+    font-size: 10px;
+  }
+  .guided-mode .offline {
+    display: none;
+  }
+  .experience-switch button {
+    font-size: 12px;
+    padding: 5px 8px;
+  }
+  .guide-intro {
+    padding: 10px 0 25px;
+    gap: 0;
+  }
+  .guide-intro h2 {
+    font-size: 28px;
+  }
+  .guide-intro p {
+    font-size: 14px;
+  }
+  .scroll-cue {
+    display: none;
+  }
+  .guide-section-heading {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .guide-section-heading h2 {
+    font-size: 20px;
+  }
+  .guide-search-row {
+    gap: 10px;
+  }
+  .guide-search-box {
+    padding: 10px 8px;
+    gap: 6px;
+  }
+  .guide-search-box input {
+    font-size: 12px;
+  }
+  .guide-year {
+    gap: 4px;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 10px;
+  }
+  .guide-year select {
+    font-size: 12px;
+    padding: 8px;
+  }
+  .guide-country-picks {
+    gap: 4px;
+  }
+  .guide-country-picks > span {
+    display: none;
+  }
+  .guide-country-picks button {
+    font-size: 11px;
+    padding: 5px 8px;
+  }
+  .guide-map .map-wrap {
+    min-height: 340px;
+  }
+  .guide-country-summary {
+    display: block;
+    padding: 22px;
+  }
+  .guide-country-summary dl {
+    margin: 20px 0;
+  }
+  .guide-country-summary h2 {
+    font-size: 26px;
+  }
+  .guide-takeaway h3 {
+    font-size: 22px;
+  }
+  .guide-takeaway p {
+    font-size: 14px;
+  }
+  .concept-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .concept-grid article {
+    padding: 18px 0;
+  }
+  .concept-grid h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .concept-grid p {
+    margin-bottom: 6px;
+  }
+  .guide-trend {
+    padding: 18px;
+  }
+  .guide-comparison-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .guide-compare th,
+  .guide-compare td {
+    font-size: 12px;
+    padding: 13px 10px;
+  }
+  .guide-compare th:first-child,
+  .guide-compare td:first-child {
+    min-width: 130px;
+  }
+  .guide-next {
+    padding-bottom: 10px;
+  }
+  .guide-next h2 {
+    font-size: 24px;
+  }
+  .transmission-steps {
+    gap: 10px;
+  }
+  .transmission-steps h4 {
+    font-size: 12px;
+  }
+  .transmission-steps strong {
+    font-size: 23px;
+  }
+  .transmission-steps p {
+    font-size: 11px;
+  }
+  .guide-lead {
+    font-size: 14px;
+  }
+  .guided-mode #understand {
+    scroll-margin-top: 65px;
+  }
+  .guided-mode footer {
+    font-size: 9px;
+    letter-spacing: 0;
+  }
+  .guided-mode .guide-details {
+    font-size: 13px;
+  }
+  .guided-mode .guide-map-bottom {
+    justify-content: flex-end;
+  }
+}
+.guided-mobile-nav {
+  display: none;
+}
+.unit-guide {
+  color: #849eaf;
+  font-size: 12px;
+  margin: 0 0 22px;
+}
+.guided-mode .population-toggle {
+  display: none;
+}
+@media (max-width: 560px) {
+  .guided-mobile-nav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    padding: 10px 0;
+    border-bottom: 1px solid #273746;
+  }
+  .guided-mobile-nav button {
+    font-size: 12px;
+    border: 0;
+    padding: 8px 4px;
+  }
+  .guided-mobile-nav button[aria-current="page"] {
+    background: #2b302f;
+    color: #dab67d;
+  }
+}

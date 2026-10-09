@@ -1,6 +1,10 @@
-# ATLAS build status — 2026-10-08
+# ATLAS build status — 2026-10-09
 
 This is a functioning partial implementation, not completion of the full original specification. The application remains locally runnable. No unavailable feature is filled with invented observations or performance.
+
+## Guided experience
+
+The default experience now has four navigation choices and a scrolling country → explanation → comparison journey. It retains the graphite/amber visual design, real data, explicit missing values and research access. A one-slider teaching scenario introduces the structural solver without exposing matrix syntax. Ordinary scrolling over the guided map scrolls the page. Desktop and mobile guided layouts have visual baselines, with additional wide/tablet checks, missing-data/error coverage and end-to-end scenario validation. This improves presentation; it does not resolve the scientific gaps below.
 
 ## Completion matrix
 
@@ -18,7 +22,7 @@ This is a functioning partial implementation, not completion of the full origina
 ## Validation evidence
 
 - Backend: 24 Pytest cases (analytic orientation, propagation, unstable inputs, bond finite differences, CVaR fractional tail mass, allocation feasibility, CSV validation, chronology, source hashes, tiny training, checkpoint replay and API contracts).
-- Browser: 10 Playwright cases cover navigation/search, historical years, 1440/1920/820/390px layouts, error recovery, end-to-end labs, offline network isolation, rendered polygons, actual map hover/click, population overlay and screenshot comparison.
+- Browser: 17 Playwright cases cover navigation/search, historical years, 1440/1920/820/390px layouts, error recovery, end-to-end labs, offline network isolation, rendered polygons, actual map hover/click, population overlay and screenshot comparison.
 - Final build/test outputs are recorded in `docs/VALIDATION.md`; all listed checks passed.
 - Three notebooks executed and saved with real outputs using `scripts/check_notebooks.py`.
 - Screenshot inspection found and fixed duplicated wide-map worlds, map-worker loading, chart-legend overlap, table wrapping, stale scenario outputs, and mobile navigation labels.

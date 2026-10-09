@@ -5,6 +5,7 @@ test("country selection, search, years, geography and navigation", async ({
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto("/");
+  await page.getByRole("button", { name: "Research", exact: true }).click();
   await expect(page.locator(".country-title h2")).toHaveText("Japan");
   await expect(page.locator(".maplibregl-canvas")).toBeVisible();
   await page.getByLabel("Search countries").fill("Canada");
@@ -34,6 +35,7 @@ for (const [name, width, height] of [
   test(`layout ${name}`, async ({ page }) => {
     await page.setViewportSize({ width, height });
     await page.goto("/");
+    await page.getByRole("button", { name: "Research", exact: true }).click();
     await expect(page.locator(".country-title h2")).toHaveText("Japan");
     await page.waitForTimeout(1800);
     expect(
@@ -53,6 +55,7 @@ test("API failure has recoverable error state", async ({ page }) => {
     route.fulfill({ status: 503, body: "offline" }),
   );
   await page.goto("/");
+  await page.getByRole("button", { name: "Research", exact: true }).click();
   await expect(page.getByRole("alert")).toContainText(
     "Economic cache could not be loaded",
   );
@@ -64,6 +67,7 @@ test("quantitative workspaces use backend results", async ({ page }) => {
   const errors: string[] = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto("/");
+  await page.getByRole("button", { name: "Research", exact: true }).click();
   await page.getByRole("button", { name: "Shock Laboratory" }).click();
   await page.getByRole("button", { name: "Run structural model" }).click();
   await expect(
@@ -130,6 +134,7 @@ test("offline map and indicators never require a remote request", async ({
     return route.continue();
   });
   await page.goto("/");
+  await page.getByRole("button", { name: "Research", exact: true }).click();
   await expect(page.locator(".country-title h2")).toHaveText("Japan");
   await page.waitForTimeout(1500);
   await expect(page.locator(".map-error")).toHaveCount(0);
@@ -141,6 +146,7 @@ test("geographic polygons, hover, click and population layer", async ({
 }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("/");
+  await page.getByRole("button", { name: "Research", exact: true }).click();
   await expect(page.locator(".country-title h2")).toHaveText("Japan");
   await expect
     .poll(async () =>
@@ -175,6 +181,7 @@ test("geographic polygons, hover, click and population layer", async ({
 test("visual regression desktop", async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("/");
+  await page.getByRole("button", { name: "Research", exact: true }).click();
   await expect(page.locator(".country-title h2")).toHaveText("Japan");
   await expect
     .poll(async () =>

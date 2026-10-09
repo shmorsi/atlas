@@ -62,6 +62,13 @@ flowchart LR
 
 ## Navigation
 
+ATLAS opens in **Guided** mode: choose a country, read plain-language explanations, follow its growth history, and compare two economies. Scroll down in that order. Map gestures leave ordinary page scrolling available; use the zoom buttons or the map's modified gesture. The **What if?** page introduces cost transmission with one slider and a clearly labeled fictional teaching network.
+
+Choose **Research** in the top bar for the full terminal, editable equations, diagnostics, portfolio analysis and saved forecasting experiments. Switching modes preserves the selected country and observation year. Advanced controls remain available without crowding the introductory journey.
+
+See [the finishing plan](docs/FINISHING_PLAN.md) for measurable release criteria and the research/data work still outstanding.
+
+
 Search countries by name/code, select by map or keyboard-accessible list, change common observation year, choose an indicator and region, and toggle globe/flat projection. Cmd/Ctrl+K focuses search. Escape clears search. Tables offer an accessible alternative to the map. Mobile stacks panels and scrolls wide comparison tables.
 
 ## Scientific contract
