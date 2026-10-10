@@ -1,5 +1,28 @@
 # ATLAS
 
+**An economic research terminal by [Sherif Morsi](https://github.com/shmorsi): explore real country data, trace production dependencies, and inspect reproducible PyTorch experiments.**
+
+[![Validate local release](https://github.com/shmorsi/atlas/actions/workflows/validate.yml/badge.svg)](https://github.com/shmorsi/atlas/actions/workflows/validate.yml)
+
+[Project overview & screenshots](https://shmorsi.github.io/projects/atlas.html) · [Download release](https://github.com/shmorsi/atlas/releases/tag/v0.1.1) · [Research report](docs/RESEARCH_REPORT.md) · [Validation evidence](docs/VALIDATION.md)
+
+![ATLAS country exploration](docs/screenshots/atlas-overview.png)
+
+## Start here
+
+- **Explore:** 177 geographic entities, dated World Bank observations, an offline map, and a guided country-comparison journey.
+- **Trace:** seven OECD production tables aggregated to 405 nodes across 81 areas, with documented orientation, independent sample audits and hypothetical cost propagation.
+- **Evaluate:** 12 real trained PyTorch checkpoints, all-seed baselines and reproducible inference. The graph experiment has one held-out year; ridge performs best.
+- **Verify:** 40 backend and 22 browser tests passed locally. Setup, backend checks and production builds passed GitHub Actions on Windows, macOS and Linux.
+
+This is a **local application**, not a hosted trading service. The proposed expanded ETF/event Scenario Studio is [future design work](docs/SCENARIO_STUDIO_RESEARCH.md), not an implemented feature. The [exact release scope](docs/BUILD_STATUS.md) is documented.
+
+<details><summary>See the OECD network workspace</summary>
+
+![Historical production dependencies](docs/screenshots/atlas-network.png)
+
+</details>
+
 Local-first global economic intelligence and quantitative research terminal. React + TypeScript + Vite + MapLibre + ECharts; Python + FastAPI + DuckDB/Parquet. No hosted services or credentials.
 
 ## Run

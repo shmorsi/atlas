@@ -41,7 +41,7 @@ The packaged app includes derived OECD matrices. Rebuilding them requires the or
 
 There is no identified oil/monetary causal model, validated shock-to-market bridge, release-vintage-aware forecast dataset, redistributable ETF history, or multi-scenario resilient allocation model. These are substantive research objectives, not interface switches. The neural experiment has only 10 held-out annual outcomes and does not consistently beat its baselines. Its intervals are not calibrated reliability guarantees.
 
-The release has been tested on macOS/Chromium; Windows/Linux clean installations and Safari/Firefox remain unverified. Beginner comprehension and full assistive-technology review require human testing. A large map/chart bundle advisory and an upstream TestClient deprecation warning remain. The application must stay bound to loopback until authentication and service-specific security work are separately designed.
+Setup, backend tests, artifact replay and frontend builds passed clean GitHub runners on macOS, Windows and Linux. Browser tests passed on local macOS/Chromium; Safari/Firefox remain unverified. Beginner comprehension and full assistive-technology review require human testing. A large map/chart bundle advisory and an upstream TestClient deprecation warning remain. The application must stay bound to loopback until authentication and service-specific security work are separately designed.
 
 ## Packaging and evidence
 

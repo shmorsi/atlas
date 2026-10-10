@@ -10,7 +10,7 @@ import json
 
 app = FastAPI(
     title="ATLAS Research API",
-    version="0.1.0",
+    version="0.1.1",
     description="Offline observations and explicitly labeled quantitative models.",
 )
 app.add_middleware(RequestLimits)
@@ -27,7 +27,7 @@ app.add_middleware(
 
 @app.get("/api/health")
 def health():
-    return {"status": "ok", "mode": "offline", "version": "0.1.0"}
+    return {"status": "ok", "mode": "offline", "version": "0.1.1"}
 
 
 @app.get("/api/countries", response_model=CountriesResponse)

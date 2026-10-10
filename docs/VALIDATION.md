@@ -26,3 +26,7 @@ Earlier evidence: all three learning notebooks executed with saved outputs; setu
 A passing engineering suite does not establish causal identification, investment profitability or forecast reliability. The graph experiment has only one held-out year; ridge is the best tested baseline. Read RESEARCH_REPORT.md and BUILD_STATUS.md for the scientific boundary.
 
 After the full suite, the three new network/event tests passed again (10.4 seconds), including readable mobile headline cards and the extended resize check.
+
+## Cross-platform CI — 2026-10-10
+
+[GitHub Actions run 38019581232](https://github.com/shmorsi/atlas/actions/runs/38019581232) passed on ubuntu-latest, macos-latest and windows-latest after fixing shell invocation of the Windows Python executable. Each job installed dependencies, ran setup and artifact checks, ran all backend tests, verified model replay and built the production frontend. This establishes clean runner setup/backend/build coverage; browser interaction tests remain local Chromium evidence.
