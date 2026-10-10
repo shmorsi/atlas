@@ -1,7 +1,12 @@
 from fastapi import FastAPI, HTTPException, Query, Response
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.trustedhost import TrustedHostMiddleware
-from atlas.schemas import ForecastResponse, WalkForwardRequest, NetworkScenarioRequest
+from atlas.schemas import (
+    ForecastResponse,
+    WalkForwardRequest,
+    NetworkScenarioRequest,
+    StudioRequest,
+)
 from fastapi.middleware.cors import CORSMiddleware
 from atlas import data
 from atlas.http_limits import RequestLimits
@@ -10,7 +15,7 @@ import json
 
 app = FastAPI(
     title="ATLAS Research API",
-    version="0.1.1",
+    version="0.1.2",
     description="Offline observations and explicitly labeled quantitative models.",
 )
 app.add_middleware(RequestLimits)
@@ -27,7 +32,7 @@ app.add_middleware(
 
 @app.get("/api/health")
 def health():
-    return {"status": "ok", "mode": "offline", "version": "0.1.1"}
+    return {"status": "ok", "mode": "offline", "version": "0.1.2"}
 
 
 @app.get("/api/countries", response_model=CountriesResponse)
@@ -80,12 +85,31 @@ def sources():
                 "retrieved_at": "2026-10-09",
             }
         )
-    current_rates = json.loads((data.DATA / "processed/treasury-current.json").read_text())["source"]
+    current_rates = json.loads(
+        (data.DATA / "processed/treasury-current.json").read_text()
+    )["source"]
     for source in current_rates["sources"]:
-        items.append({**source, "source": current_rates["name"], "label": f"Treasury par yields — {source['year']}", "url": f"https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value={source['year']}", "retrieved_at": current_rates["retrieved_at"], "license": "US federal government data; Treasury attribution retained"})
+        items.append(
+            {
+                **source,
+                "source": current_rates["name"],
+                "label": f"Treasury par yields — {source['year']}",
+                "url": f"https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value={source['year']}",
+                "retrieved_at": current_rates["retrieved_at"],
+                "license": "US federal government data; Treasury attribution retained",
+            }
+        )
     event_cache = json.loads((data.DATA / "processed/events.json").read_text())
     for source in event_cache["sources"]:
-        items.append({**source, "source": source["name"], "label": source["name"] + " — official releases", "retrieved_at": event_cache["retrieved_at"], "license": "Attributed headlines and links; source terms apply"})
+        items.append(
+            {
+                **source,
+                "source": source["name"],
+                "label": source["name"] + " — official releases",
+                "retrieved_at": event_cache["retrieved_at"],
+                "license": "Attributed headlines and links; source terms apply",
+            }
+        )
     items.extend(data.latest_annual()["sources"])
     return items
 
@@ -288,6 +312,32 @@ def network_evaluation():
     if not path.exists():
         raise HTTPException(404, "Graph experiment has not been trained")
     return json.loads(path.read_text())
+
+
+@app.post("/api/studio/simulate")
+def studio_simulate(request: StudioRequest):
+    from atlas.studio import simulate
+
+    try:
+        return simulate(**request.model_dump())
+    except ValueError as e:
+        raise HTTPException(422, str(e))
+
+
+@app.get("/api/network/replay")
+def graph_checkpoint_replay(model: str = "graph_seed17"):
+    from atlas.graph_forecast import replay
+
+    try:
+        return {
+            "framework": "PyTorch",
+            "model": model,
+            "target_year": 2022,
+            "predictions": replay(model).tolist(),
+            "kind": "held_out_historical_replay",
+        }
+    except ValueError as e:
+        raise HTTPException(422, str(e))
 
 
 @app.get("/api/events")

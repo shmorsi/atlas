@@ -436,14 +436,14 @@ export function GuidedAtlas({
           <span className="eyebrow">KEEP EXPLORING</span>
           <h2>What happens when costs rise?</h2>
           <p>
-            Try a clearly labeled teaching example to see how a change can reach
-            connected industries.
+            Follow cost changes through the measured OECD network. Combine
+            shocks, compare assumptions and inspect real PyTorch models.
           </p>
           <button
             className="primary"
             onClick={() => onWorkspace("Shock Laboratory")}
           >
-            Explore a what-if example
+            Open Scenario Studio
           </button>
         </div>
         <div className="guide-depth">
@@ -464,145 +464,5 @@ export function GuidedAtlas({
         </div>
       </section>
     </div>
-  );
-}
-export function GuidedScenario({ onAdvanced }: { onAdvanced: () => void }) {
-  const [pressure, setPressure] = useState(10),
-    [result, setResult] = useState<any>(null),
-    [error, setError] = useState(""),
-    [busy, setBusy] = useState(false);
-  useEffect(() => {
-    setResult(null);
-    setError("");
-  }, [pressure]);
-  async function run() {
-    setBusy(true);
-    setError("");
-    try {
-      setResult(
-        await api("/shocks", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            coefficients: [
-              [0.1, 0.2, 0.05],
-              [0, 0.15, 0.2],
-              [0, 0, 0.1],
-            ],
-            shock: [pressure / 100, 0, 0],
-            mode: "price",
-          }),
-        }),
-      );
-    } catch (e) {
-      setError(String(e));
-    } finally {
-      setBusy(false);
-    }
-  }
-  return (
-    <section className="guided-scenario">
-      <div className="guide-section-heading">
-        <div>
-          <span className="step-number">01</span>
-          <h2>Follow a change through the economy</h2>
-        </div>
-        <span className="evidence-chip hypothetical">
-          HYPOTHETICAL TEACHING EXAMPLE
-        </span>
-      </div>
-      <p className="guide-lead">
-        Energy suppliers sell to manufacturers. Manufacturers sell to service
-        businesses. When one faces higher costs, some of that pressure can
-        travel along the chain.
-      </p>
-      <div className="guide-scenario-grid">
-        <div className="scenario-input">
-          <h3>Start with cost pressure</h3>
-          <p>
-            Choose a direct increase in costs for the energy sector of this
-            fictional, three-industry economy.
-          </p>
-          <label htmlFor="cost-pressure">
-            Direct cost pressure <strong>{pressure}%</strong>
-          </label>
-          <input
-            id="cost-pressure"
-            type="range"
-            min="0"
-            max="30"
-            step="1"
-            value={pressure}
-            disabled={busy}
-            onChange={(e) => setPressure(+e.target.value)}
-          />
-          <div className="range-labels">
-            <span>No change</span>
-            <span>30% increase</span>
-          </div>
-          <button className="primary" disabled={busy} onClick={run}>
-            {busy ? "Calculating…" : "See how it spreads"}
-          </button>
-          <p className="guide-small">
-            This is not an oil-price forecast or a result for the country you
-            selected. Measured OECD data are available in the Research view’s
-            Economic Network.
-          </p>
-        </div>
-        <div className="scenario-explanation">
-          <h3>
-            {result
-              ? "The pressure reaches all three industries."
-              : "Three connected industries."}
-          </h3>
-          <div className="transmission-steps">
-            {["Energy", "Manufacturing", "Services"].map((name, i) => (
-              <div key={name}>
-                <span>{String(i + 1).padStart(2, "0")}</span>
-                <h4>{name}</h4>
-                <strong>
-                  {result ? `${(result.total[i] * 100).toFixed(2)}%` : "—"}
-                </strong>
-                <p>
-                  {result
-                    ? "Modeled total cost change"
-                    : i === 0
-                      ? "Receives the direct cost increase."
-                      : i === 1
-                        ? "Buys inputs from energy suppliers."
-                        : "Buys inputs from both industries."}
-                </p>
-              </div>
-            ))}
-          </div>
-          {result && (
-            <p className="scenario-result" role="status">
-              With {pressure}% direct cost pressure on energy, manufacturing
-              costs rise {(result.total[1] * 100).toFixed(2)}% in this example.
-              These results assume firms pass costs on and keep using the same
-              inputs.
-            </p>
-          )}
-          {error && (
-            <p className="error" role="alert">
-              {error}
-            </p>
-          )}
-        </div>
-      </div>
-      <details className="guide-details">
-        <summary>What does this example assume?</summary>
-        <p>
-          The input relationships are synthetic teaching values. The model holds
-          them fixed, allows repeated cost transmission, and assumes full
-          pass-through. It does not include substitution, consumer demand,
-          policy responses, timing, or financial-market prices. A result is an
-          implication of these assumptions, not a prediction of an actual event.
-        </p>
-      </details>
-      <button className="text-button" onClick={onAdvanced}>
-        Inspect the equations & change the network
-      </button>
-    </section>
   );
 }

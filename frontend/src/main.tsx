@@ -20,7 +20,10 @@ import { Chart } from "./Chart";
 import { api, Country, Observation, format, indicators } from "./types";
 import "./style.css";
 import "./guided.css";
-import { GuidedAtlas, GuidedScenario } from "./GuidedExperience";
+import { GuidedAtlas } from "./GuidedExperience";
+const ScenarioStudio = lazy(() =>
+  import("./ScenarioStudio").then((m) => ({ default: m.ScenarioStudio })),
+);
 const CurrentEvents = lazy(() =>
   import("./CurrentEvents").then((m) => ({ default: m.CurrentEvents })),
 );
@@ -651,7 +654,7 @@ function App() {
             <NetworkWorkspace selected={selected} onSelect={setSelected} />
           ) : workspace === "Shock Laboratory" ? (
             experience === "guided" ? (
-              <GuidedScenario onAdvanced={() => setExperience("research")} />
+              <ScenarioStudio onAdvanced={() => setExperience("research")} />
             ) : (
               <StructuralLab />
             )

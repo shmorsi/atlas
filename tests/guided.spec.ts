@@ -22,22 +22,17 @@ test("guided journey explains data and preserves research access", async ({
   await page.getByLabel("Compare with").selectOption("JPN");
   await expect(page.locator(".guide-compare th").last()).toHaveText("Japan");
   await page
-    .getByRole("button", { name: "Explore a what-if example", exact: true })
+    .getByRole("button", { name: "Open Scenario Studio", exact: true })
     .click();
   await expect(
-    page.getByText("HYPOTHETICAL TEACHING EXAMPLE", { exact: true }),
+    page.getByRole("heading", { name: "What changes?" }),
   ).toBeVisible();
-  await expect(page.getByLabel("Technical coefficients")).toHaveCount(0);
   await page.getByRole("button", { name: "See how it spreads" }).click();
-  await expect(page.getByRole("status")).toContainText(
-    "manufacturing costs rise 2.61%",
-  );
-  await page.getByRole("slider").fill("20");
-  await expect(page.locator(".scenario-result")).toHaveCount(0);
-  await page.getByRole("button", { name: "See how it spreads" }).click();
-  await expect(page.getByRole("status")).toContainText("5.23%");
+  await expect(
+    page.getByRole("region", { name: "Scenario results" }),
+  ).toBeVisible();
   await page
-    .getByRole("button", { name: "Inspect the equations & change the network" })
+    .getByRole("button", { name: "Open the mathematical sandbox" })
     .click();
   await expect(page.getByLabel("Technical coefficients")).toBeVisible();
   expect(errors).toEqual([]);
@@ -82,7 +77,9 @@ for (const [name, width, height] of [
         .getByRole("button", { name: "What if?", exact: true })
         .click();
       await page.getByRole("button", { name: "See how it spreads" }).click();
-      await expect(page.getByRole("status")).toContainText("2.61%");
+      await expect(
+        page.getByRole("region", { name: "Scenario results" }),
+      ).toBeVisible();
       expect(
         await page.evaluate(
           () => document.documentElement.scrollWidth <= innerWidth,

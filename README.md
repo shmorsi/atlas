@@ -4,18 +4,21 @@
 
 [![Validate local release](https://github.com/shmorsi/atlas/actions/workflows/validate.yml/badge.svg)](https://github.com/shmorsi/atlas/actions/workflows/validate.yml)
 
-[Project overview & screenshots](https://shmorsi.github.io/projects/atlas.html) · [Download release](https://github.com/shmorsi/atlas/releases/tag/v0.1.1) · [Research report](docs/RESEARCH_REPORT.md) · [Validation evidence](docs/VALIDATION.md)
+[Project overview & screenshots](https://shmorsi.github.io/projects/atlas.html) · [Download release](https://github.com/shmorsi/atlas/releases/tag/v0.1.2) · [Research report](docs/RESEARCH_REPORT.md) · [Validation evidence](docs/VALIDATION.md)
 
 ![ATLAS country exploration](docs/screenshots/atlas-overview.png)
 
 ## Start here
 
+![Scenario Studio: inspectable economic cost propagation](docs/screenshots/studio-1440.png)
+
+
 - **Explore:** 177 geographic entities, dated World Bank observations, an offline map, and a guided country-comparison journey.
 - **Trace:** seven OECD production tables aggregated to 405 nodes across 81 areas, with documented orientation, independent sample audits and hypothetical cost propagation.
 - **Evaluate:** 12 real trained PyTorch checkpoints, all-seed baselines and reproducible inference. The graph experiment has one held-out year; ridge performs best.
-- **Verify:** 40 backend and 22 browser tests passed locally. Setup, backend checks and production builds passed GitHub Actions on Windows, macOS and Linux.
+- **Inspect:** PyTorch solves and differentiates combined cost scenarios; neural evidence replays real graph checkpoints against held-out observations and baselines. See [Scenario Studio mathematics](docs/SCENARIO_STUDIO.md) and [validation](docs/VALIDATION.md).
 
-This is a **local application**, not a hosted trading service. The proposed expanded ETF/event Scenario Studio is [future design work](docs/SCENARIO_STUDIO_RESEARCH.md), not an implemented feature. The [exact release scope](docs/BUILD_STATUS.md) is documented.
+This is a **local application**, not a hosted trading service. The **Scenario Studio** implements combined production-cost shocks, assumption comparisons, source attribution and a neural evidence view. The broader ETF/event extension remains [future design work](docs/SCENARIO_STUDIO_RESEARCH.md). The [exact release scope](docs/BUILD_STATUS.md) is documented.
 
 <details><summary>See the OECD network workspace</summary>
 

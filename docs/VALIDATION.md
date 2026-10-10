@@ -1,3 +1,15 @@
+# Scenario Studio validation — 2026-10-10
+
+The v0.1.2 update passed **44 backend tests** (5.57 seconds) and the complete **27-test Chromium suite** (1.0 minute) against a production FastAPI build at localhost:8002. TypeScript/Vite build and source/model integrity checks also passed. The suite replays all six GRU and six graph/no-graph checkpoints.
+
+New mathematical checks compare PyTorch against the independent SciPy network solver, test superposition and zero pass-through, reconcile source contributions and the finite-round tail, verify autograd using finite differences, and reject ambiguous or invalid requests. Browser checks exercise combined shocks, exports, live checkpoint replay, failed and superseded requests, and 1440/820/390 pixel layouts. All existing tests remain in the suite; the former fictional guided scenario journey now checks the observed-network studio and access to the mathematical sandbox.
+
+Desktop/mobile screenshots were inspected. A narrow-screen map framing issue was corrected with container resize observation and initial geographic bounds. The new studio is lazy-loaded (22.46 kB JS / 7.31 kB gzip, plus 8.40 kB CSS / 2.37 kB gzip). The pre-existing large map/chart bundle advisory and upstream TestClient deprecation warning remain. These are local Chromium results, not cross-browser or human comprehension certification.
+
+The historical records below describe the previous v0.1.1 baseline; its cross-platform CI results should not be mistaken for validation of a later commit.
+
+---
+
 # Validation record — 2026-10-09
 
 Environment: macOS ARM64, Python 3.12.14, Node 22.23.3, Playwright Chromium 156. All model execution used CPU. Final browser checks target a single production FastAPI server on loopback port 8001.

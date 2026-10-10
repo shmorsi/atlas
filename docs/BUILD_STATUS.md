@@ -1,4 +1,4 @@
-# ATLAS release status — 2026-10-09
+# ATLAS release status — 2026-10-10
 
 A packaged local research terminal with production asset serving, reproducible PyTorch experiments, actual OECD tables, dated public-source caches, and a simpler Guided experience. This is the release scope; comprehensive world news, real-time trading and validated causal forecasting are not claimed.
 
@@ -6,7 +6,7 @@ A packaged local research terminal with production asset serving, reproducible P
 |---|---|---|
 | Country exploration | 177 geometries; 42,900 frozen 1960–2024 WDI rows; separate 660-row 2025 update (592 nonmissing); comparison, maps, search, Guided/Research modes | Revised history, unknown release vintages, explicit missing values |
 | Production dependencies | Seven OECD annual tables, 2016–2022; 81 areas × five groups; supplier map, actual bilateral intermediate flows, sector dependence | Aggregated historical statistical tables, not current transport routes or infrastructure |
-| Scenarios | 405-node price system, direct/first/higher-order effects, contribution diagnostics; separate editable teaching price/quantity solver | Fixed coefficients and full pass-through; no identified causal oil/monetary or asset-price bridge |
+| Scenarios | PyTorch 405-node Scenario Studio, up to five cost shocks, adjustable pass-through, autograd source sensitivities, attribution, assumption comparisons, JSON export; separate teaching sandbox | Fixed historical coefficients and uniform selected pass-through; no identified causal oil/monetary or asset-price bridge |
 | Rates and portfolios | 694 Treasury curve dates through 2026-10-09; bond math; total-return CSV; CVXPY variance/CVaR optimization; repeated-cost walk-forward backtests | No bundled ETF total-return histories, impact/tax model or multiple-stress robust optimizer |
 | PyTorch | Six GRU checkpoints and six graph/no-graph checkpoints; chronological evaluation; baselines; actual inference replay | Small annual samples; graph ridge baseline wins; no consistent neural advantage or calibrated reliability guarantee |
 | Events | 30 dated official Fed/ECB releases, filters, source links, explanatory transmission channels, explicit update button | Selected official feeds, not comprehensive global news; no headline-to-return predictions |

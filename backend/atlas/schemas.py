@@ -110,3 +110,16 @@ class NetworkScenarioRequest(StrictModel):
     ] = "Energy"
     shock: float = Field(default=0.1, ge=-0.5, le=0.5)
     year: int = Field(default=2022, ge=2016, le=2022)
+
+
+class StudioShock(StrictModel):
+    country: str = Field(pattern=r"^[A-Z]{3}$")
+    sector: Literal["Primary", "Energy", "Manufacturing", "Construction", "Services"]
+    shock: float = Field(ge=-0.5, le=0.5)
+
+
+class StudioRequest(StrictModel):
+    shocks: list[StudioShock] = Field(min_length=1, max_length=5)
+    year: int = Field(default=2022, ge=2016, le=2022)
+    pass_through: float = Field(default=1, ge=0, le=1)
+    focus: str = Field(default="JPN", pattern=r"^[A-Z]{3}$")
