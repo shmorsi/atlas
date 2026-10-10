@@ -2,7 +2,8 @@ import { spawnSync } from "node:child_process";
 import { existsSync } from "node:fs";
 const win = process.platform === "win32";
 function run(cmd, args) {
-  const r = spawnSync(cmd, args, { stdio: "inherit", shell: win });
+  const r = spawnSync(cmd, args, { stdio: "inherit" });
+  if (r.error) console.error(r.error.message);
   if (r.status !== 0) process.exit(r.status || 1);
 }
 const venv = win ? ".venv/Scripts/python.exe" : ".venv/bin/python";
