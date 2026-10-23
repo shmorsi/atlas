@@ -4,7 +4,7 @@ import pytest
 from fastapi.testclient import TestClient
 from atlas.api import app
 from atlas import updates
-from atlas.treasury import curves, parse_xml
+from atlas.treasury import curves
 from atlas.data import DATA
 
 

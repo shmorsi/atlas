@@ -6,7 +6,7 @@ A research terminal, not a product.
 
 Headline result: a ridge baseline beat every PyTorch graph and no-graph model on the one held-out year (2022 test RMSE 14.0001 vs 14.2782 log pp for the best neural run). The GRU forecaster does not consistently beat ridge either.
 
-Latency figures in the docs (median 6.47 to 40.51 ms) are warm loopback requests on one macOS ARM64 machine, not load tests.
+Warm loopback medians in `docs/LOCAL_LATENCY.json` — one macOS ARM64 machine, ten sequential requests each, not a load test — are 5.31 ms for Japan's network profile, 6.47 ms for 2025 countries, 11.0 ms for a 405-node scenario and 40.51 ms for GRU replay.
 
 [![Validate local release](https://github.com/shmorsi/atlas/actions/workflows/validate.yml/badge.svg)](https://github.com/shmorsi/atlas/actions/workflows/validate.yml) [![Docker image](https://github.com/shmorsi/atlas/actions/workflows/docker.yml/badge.svg)](https://github.com/shmorsi/atlas/actions/workflows/docker.yml)
 
@@ -39,7 +39,7 @@ ATLAS has no authentication. Both paths below serve on 127.0.0.1 only; keep it t
 
 ### Local release (Node + Python)
 
-Prerequisites: Node 22+, Python 3.12–3.13, a modern WebGL2 browser. On Windows use Python from python.org and run in PowerShell; on macOS/Linux `python3` must refer to a supported Python. Tested on macOS ARM64 / Python 3.12.
+Prerequisites: Node 22+, Python 3.12–3.13, a modern WebGL2 browser. On Windows use Python from python.org and run in PowerShell; on macOS/Linux `python3` must refer to a supported Python. Debian and Ubuntu split out the standard-library venv module: if `python3 -m venv` says `ensurepip` is unavailable, install `python3.12-venv` (or `python3.13-venv`) and run setup again. Local browser checks were run on macOS ARM64 / Python 3.12. The [validate workflow](.github/workflows/validate.yml) runs this same setup, the backend tests, the release gate and the production build on Ubuntu, macOS and Windows.
 
 ```sh
 npm ci
@@ -49,7 +49,7 @@ npm run atlas
 
 Open http://127.0.0.1:8000. API documentation: http://127.0.0.1:8000/docs. Stop with Ctrl+C. Installation needs internet; normal startup uses bundled data and no external service. The startup command binds only to loopback, verifies source/model integrity, builds production assets, and serves the interface plus API from one FastAPI process. It does not use Vite in production. Set `ATLAS_PORT` to choose another port. For hot-reload development, use `npm run develop` (UI 5173 / API 8000).
 
-The supplied `.venv` and `node_modules` are local conveniences and not part of Git. Install your own dependencies after copying the project. `requirements-lock.txt` records this build's exact Python versions; `package-lock.json` pins JavaScript dependencies.
+The supplied `.venv` and `node_modules` are local conveniences and not part of Git. Install your own dependencies after copying the project. `requirements-lock.txt` records this build's exact Python versions; `package-lock.json` pins JavaScript dependencies. On Linux, setup installs the CPU-only PyTorch wheel pinned in the lock before the other packages — the same wheel the Docker image uses — so a fresh clone does not download the CUDA libraries the application never calls. macOS and Windows wheels from that pin are already CPU builds.
 
 ### Docker
 

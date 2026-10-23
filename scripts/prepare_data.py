@@ -1,6 +1,6 @@
 """Validate source observations and persist a normalized analytical cache."""
 
-import json, sys
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]

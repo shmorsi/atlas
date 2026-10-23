@@ -11,9 +11,7 @@ import {
   Search,
   Database,
   ChevronRight,
-  PanelLeftClose,
   Layers,
-  ArrowUpRight,
 } from "lucide-react";
 import { WorldMap } from "./WorldMap";
 import { Chart } from "./Chart";
@@ -87,7 +85,8 @@ function App() {
     [detailError, setDetailError] = useState(""),
     [detailLoading, setDetailLoading] = useState(false),
     [refresh, setRefresh] = useState(0),
-    [sources, setSources] = useState<any[]>([]);
+    [sources, setSources] = useState<any[]>([]),
+    [sourcesError, setSourcesError] = useState("");
   const search = useRef<HTMLInputElement>(null);
   const [inspectorWidth, setInspectorWidth] = useState(285);
   useEffect(() => {
@@ -130,7 +129,7 @@ function App() {
   useEffect(() => {
     api<any[]>("/sources")
       .then(setSources)
-      .catch(() => {});
+      .catch((e) => setSourcesError(String(e)));
     function key(e: KeyboardEvent) {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
@@ -707,6 +706,7 @@ function App() {
                 assumptions, structural estimates, historical portfolio analysis
                 and retrospective neural evaluations separately.
               </p>
+              {sourcesError && <p role="alert">{sourcesError}</p>}
               {sources.map((s, i) => (
                 <article key={i}>
                   <h3>{s.label || s.source}</h3>

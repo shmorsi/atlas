@@ -27,7 +27,7 @@ The backend is Python/FastAPI with genuine **PyTorch CPU training and inference*
 - Bounded request bodies, strict model names/shapes, host validation, checkpoint cache invalidation, source/model integrity gate and production asset serving.
 - Actual OECD network, 405 nodes × seven years, supplier map, source audit and exploratory PyTorch graph evaluation.
 - Official Fed/ECB event feeds, explicit bounded updates, retained caches on download failure, and separate current-year data.
-- Final backend/browser evidence is recorded in VALIDATION.md. Cross-platform CI configuration is supplied but has not been run remotely.
+- Final backend/browser evidence is recorded in VALIDATION.md. GitHub Actions runs setup, backend tests, artifact replay and the production build on Ubuntu, macOS and Windows. The Docker workflow builds the image and smoke-tests the loopback API and UI. Browser interaction tests remain local Chromium evidence.
 
 ## Portfolio backtest convention
 

@@ -94,16 +94,19 @@ def check():
             raise RuntimeError("Network archive differs from evaluated graph data")
     import numpy as np
 
+    graph_replayed = 0
     for key, predictions in graph_report["predictions"].items():
-        if key.startswith(("graph_", "no_graph_")) and not np.allclose(
-            replay(key), predictions, atol=1e-4, rtol=0
-        ):
+        if not key.startswith(("graph_", "no_graph_")):
+            continue
+        actual = replay(key)
+        if not np.allclose(actual, predictions, atol=1e-4, rtol=0):
             raise RuntimeError(f"Graph checkpoint replay mismatch: {key}")
+        graph_replayed += int(np.asarray(predictions).size)
     return {
         "status": "passed",
         "models": len(ready["models"]),
         "graph_models": 6,
-        "graph_node_predictions_replayed": 2430,
+        "graph_node_predictions_replayed": graph_replayed,
         "replayed_predictions": count,
         "device": "cpu",
         "framework": "PyTorch",

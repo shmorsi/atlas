@@ -1,5 +1,13 @@
 name: Validate local release
-on: [push, pull_request]
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   validate:
     strategy:
@@ -7,6 +15,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
     runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -18,6 +27,7 @@ jobs:
           python-version: '3.12'
       - run: npm ci
       - run: npm run setup
+      - run: node scripts/python.mjs -m pip check
       - run: npm run test:backend
       - run: npm run verify:release
       - run: npm run build

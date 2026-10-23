@@ -17,7 +17,8 @@ export function NetworkWorkspace({
     [result, setResult] = useState<any>(null),
     [error, setError] = useState(""),
     [busy, setBusy] = useState(false),
-    [report, setReport] = useState<any>(null);
+    [report, setReport] = useState<any>(null),
+    [evalError, setEvalError] = useState("");
   const generation = useRef(0);
   useEffect(() => {
     api("/network")
@@ -25,7 +26,7 @@ export function NetworkWorkspace({
       .catch((e) => setError(String(e)));
     api("/network/evaluation")
       .then(setReport)
-      .catch(() => {});
+      .catch((e) => setEvalError(String(e)));
   }, []);
   useEffect(() => {
     let live = true;
@@ -293,6 +294,7 @@ export function NetworkWorkspace({
           (2022). This is too little temporal evidence for a dependable
           forecasting claim.
         </p>
+        {evalError && <p role="alert">{evalError}</p>}
         {report && (
           <div className="table-scroll">
             <table>
