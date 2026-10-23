@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { saveGallery } from "./gallery";
 for (const width of [1440, 390]) {
   test(`observed production network and scenario at ${width}px`, async ({
     page,
@@ -44,10 +45,7 @@ for (const width of [1440, 390]) {
         () => document.documentElement.scrollWidth <= innerWidth,
       ),
     ).toBeTruthy();
-    await page.screenshot({
-      path: `docs/screenshots/network-${width}.png`,
-      fullPage: true,
-    });
+    await saveGallery(page, `docs/screenshots/network-${width}.png`);
     expect(errors).toEqual([]);
     await expect(page.getByRole("alert")).toHaveCount(0);
   });
@@ -73,20 +71,14 @@ test("official events filter, update failure feedback and transmission navigatio
   await expect(page.locator("table").first().getByRole("row")).not.toHaveCount(
     1,
   );
-  await page.screenshot({
-    path: "docs/screenshots/official-events.png",
-    fullPage: true,
-  });
+  await saveGallery(page, "docs/screenshots/official-events.png");
   await page.setViewportSize({ width: 390, height: 844 });
   await expect
     .poll(() =>
       page.evaluate(() => document.documentElement.scrollWidth <= innerWidth),
     )
     .toBeTruthy();
-  await page.screenshot({
-    path: "docs/screenshots/official-events-mobile.png",
-    fullPage: true,
-  });
+  await saveGallery(page, "docs/screenshots/official-events-mobile.png");
   await page.route("**/api/updates", (route) =>
     route.fulfill({
       json: {

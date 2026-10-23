@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { saveGallery } from "./gallery";
 async function open(page: any) {
   await page.goto("/");
   await page.getByRole("button", { name: "What if?", exact: true }).click();
@@ -63,10 +64,7 @@ for (const width of [1440, 820, 390])
         () => document.documentElement.scrollWidth <= innerWidth,
       ),
     ).toBeTruthy();
-    await page.screenshot({
-      path: `docs/screenshots/studio-${width}.png`,
-      fullPage: true,
-    });
+    await saveGallery(page, `docs/screenshots/studio-${width}.png`);
     await page.getByRole("button", { name: "02 / Neural evidence" }).click();
     await expect(
       page.locator(".studio-evidence table").first(),

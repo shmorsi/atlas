@@ -88,6 +88,11 @@ npx playwright install chromium
 npm run verify:release
 # With the production app running (macOS/Linux):
 ATLAS_TEST_URL=http://127.0.0.1:8000 npm run test:ui
+```
+
+Pixel comparisons use the committed macOS Chromium baselines. On other operating systems those comparisons are skipped, and the suite does not rewrite `docs/screenshots/`.
+
+```sh
 npm run package  # creates ../ATLAS-release.zip and SHA-256 checksum
 ```
 
