@@ -1,13 +1,16 @@
 """Add the latest completed annual WDI observations without changing the frozen forecast dataset."""
 
-import sys, json, datetime, hashlib
+import datetime
+import hashlib
+import json
+import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "backend"))
 from atlas.data import DATA, INDICATORS
-from atlas.updates import download, atomic_write
+from atlas.updates import atomic_write, download
 
-year = datetime.date.today().year - 1
+year = datetime.datetime.now().astimezone().date().year - 1
 countries = json.loads((DATA / "processed/countries.json").read_text())
 lookup = {c["wb_id"]: c["id"] for c in countries}
 rows = []

@@ -1,13 +1,14 @@
 import hashlib
 import json
+
 import numpy as np
 import pytest
-from fastapi.testclient import TestClient
 from atlas.api import app
 from atlas.data import DATA
-from atlas.forecast import load_checkpoint, infer
-from atlas.finance import walk_forward, parse_prices
+from atlas.finance import parse_prices, walk_forward
+from atlas.forecast import infer, load_checkpoint
 from atlas.treasury import parse_xml
+from fastapi.testclient import TestClient
 
 client = TestClient(app)
 

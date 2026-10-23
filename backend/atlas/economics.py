@@ -4,7 +4,10 @@ import numpy as np
 from scipy.linalg import solve
 
 
-def validate_coefficients(coefficients):
+def validate_coefficients(
+    coefficients: np.ndarray | list,
+) -> tuple[np.ndarray, float, float]:
+    """Return a finite nonnegative square matrix, its spectral radius, and its condition number."""
     a = np.asarray(coefficients, dtype=float)
     if a.ndim != 2 or a.shape[0] != a.shape[1] or not 1 <= len(a) <= 500:
         raise ValueError("A must be a square matrix with 1–500 nodes")
@@ -19,7 +22,12 @@ def validate_coefficients(coefficients):
     return a, rho, condition
 
 
-def propagate(coefficients, shock, mode="price"):
+def propagate(
+    coefficients: np.ndarray | list,
+    shock: np.ndarray | list,
+    mode: str = "price",
+) -> dict:
+    """Solve fixed-share price or quantity propagation. The result is hypothetical."""
     a, rho, condition = validate_coefficients(coefficients)
     s = np.asarray(shock, dtype=float)
     if s.shape != (len(a),) or not np.isfinite(s).all():

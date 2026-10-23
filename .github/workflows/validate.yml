@@ -28,6 +28,7 @@ jobs:
       - run: npm ci
       - run: npm run setup
       - run: node scripts/python.mjs -m pip check
+      - run: npm run lint:python
       - run: npm run test:backend
       - run: npm run verify:release
       - run: npm run build

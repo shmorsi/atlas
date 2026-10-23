@@ -1,6 +1,10 @@
 """Explicit, opt-in data refresh. Normal startup never accesses the internet."""
 
-import json, hashlib, datetime, urllib.request, concurrent.futures
+import concurrent.futures
+import datetime
+import hashlib
+import json
+import urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]

@@ -1,12 +1,24 @@
 """Deterministic cash-flow mathematics and historical portfolio analytics."""
 
-import csv, io, datetime, math
+import csv
+import datetime
+import io
+import math
+
+import cvxpy as cp
 import numpy as np
 from scipy.optimize import brentq
-import cvxpy as cp
 
 
-def bond(face, coupon, yield_rate, years, frequency=2, shift_bp=100):
+def bond(
+    face: float,
+    coupon: float,
+    yield_rate: float,
+    years: float,
+    frequency: int = 2,
+    shift_bp: float = 100,
+) -> dict:
+    """Price a fixed coupon bond and compare duration-convexity with a yield shift."""
     if (
         face <= 0
         or coupon < 0
@@ -46,7 +58,10 @@ def bond(face, coupon, yield_rate, years, frequency=2, shift_bp=100):
     }
 
 
-def yield_to_maturity(price, face, coupon, years, frequency=2):
+def yield_to_maturity(
+    price: float, face: float, coupon: float, years: float, frequency: int = 2
+) -> float:
+    """Solve the annual yield that reprices the coupon bond."""
     if price <= 0:
         raise ValueError("Price must be positive")
     return float(
@@ -58,7 +73,8 @@ def yield_to_maturity(price, face, coupon, years, frequency=2):
     )
 
 
-def parse_prices(text):
+def parse_prices(text: str) -> tuple[list[str], list[str], np.ndarray]:
+    """Parse a user-supplied price CSV into names, dates, and simple returns."""
     reader = csv.DictReader(io.StringIO(text))
     fields = reader.fieldnames or []
     if len(fields) < 3 or fields[0] != "date" or len(set(fields)) != len(fields):
@@ -89,13 +105,17 @@ def parse_prices(text):
     return fields[1:], [d.isoformat() for d in dates[1:]], p[1:] / p[:-1] - 1
 
 
-def empirical_cvar(losses, alpha=0.95):
+def empirical_cvar(losses: np.ndarray | list, alpha: float = 0.95) -> float:
+    """Empirical expected shortfall, including fractional tail mass."""
     # Rockafellar–Uryasev empirical expected shortfall, including fractional tail mass.
     q = float(np.quantile(losses, alpha, method="inverted_cdf"))
     return q + float(np.maximum(np.asarray(losses) - q, 0).mean()) / (1 - alpha)
 
 
-def portfolio_stats(returns, weights, periods=252):
+def portfolio_stats(
+    returns: np.ndarray, weights: np.ndarray | list, periods: int = 252
+) -> dict:
+    """Volatility, drawdown, and related statistics for one fixed set of weights."""
     r = np.asarray(returns, float)
     w = np.asarray(weights, float)
     if (
@@ -130,7 +150,15 @@ def portfolio_stats(returns, weights, periods=252):
     }
 
 
-def optimize(returns, original, method="variance", cap=1, turnover_limit=2, cost_bps=0):
+def optimize(
+    returns: np.ndarray,
+    original: np.ndarray | list,
+    method: str = "variance",
+    cap: float = 1,
+    turnover_limit: float = 2,
+    cost_bps: float = 0,
+) -> dict:
+    """Long-only variance or CVaR allocation under cap and turnover limits."""
     r = np.asarray(returns, float)
     n = r.shape[1]
     original = np.asarray(original, float)
@@ -176,17 +204,17 @@ def optimize(returns, original, method="variance", cap=1, turnover_limit=2, cost
 
 
 def walk_forward(
-    returns,
-    dates,
-    original,
-    train_window=60,
-    rebalance_every=20,
-    periods=252,
-    method="variance",
-    cap=1,
-    turnover_limit=2,
-    cost_bps=10,
-):
+    returns: np.ndarray,
+    dates: list,
+    original: np.ndarray | list,
+    train_window: int = 60,
+    rebalance_every: int = 20,
+    periods: int = 252,
+    method: str = "variance",
+    cap: float = 1,
+    turnover_limit: float = 2,
+    cost_bps: float = 10,
+) -> dict:
     """Fit using only trailing observations, trade before the next return, hold/drift between trades."""
     r = np.asarray(returns, float)
     original = np.asarray(original, float)

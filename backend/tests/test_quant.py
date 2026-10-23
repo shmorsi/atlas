@@ -3,11 +3,11 @@ import pytest
 from atlas.economics import propagate
 from atlas.finance import (
     bond,
-    yield_to_maturity,
-    portfolio_stats,
     empirical_cvar,
     optimize,
     parse_prices,
+    portfolio_stats,
+    yield_to_maturity,
 )
 
 
@@ -77,8 +77,8 @@ def test_csv_rejects_incomplete_prices():
 
 
 def test_quant_api_contracts():
-    from fastapi.testclient import TestClient
     from atlas.api import app
+    from fastapi.testclient import TestClient
 
     client = TestClient(app)
     assert client.post(
@@ -108,8 +108,9 @@ def test_quant_api_contracts():
 
 def test_portfolio_chronological_evaluation_and_cost():
     import datetime
-    from fastapi.testclient import TestClient
+
     from atlas.api import app
+    from fastapi.testclient import TestClient
 
     rows = ["date,TEST_A,TEST_B"] + [
         f"{datetime.date(2020, 1, 1) + datetime.timedelta(days=i)},{100 + i * 0.1 + np.sin(i)},{100 + i * 0.05 + np.cos(i)}"

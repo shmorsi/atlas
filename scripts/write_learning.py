@@ -1,7 +1,7 @@
 """Generate the checked-in learning guide from concise, code-linked chapters."""
 
-from pathlib import Path
 import json
+from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 chapters = [

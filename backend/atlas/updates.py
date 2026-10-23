@@ -1,11 +1,20 @@
 """Explicit, bounded public-source refresh. Offline startup never calls this module's downloader."""
 
-import datetime, email.utils, hashlib, json, os, tempfile, threading
+import datetime
+import email.utils
+import hashlib
+import json
+import os
+import ssl
+import tempfile
+import threading
+import urllib.request
+import xml.etree.ElementTree as ET
 from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import urlparse
-import urllib.request
-import ssl, certifi
-import xml.etree.ElementTree as ET
+
+import certifi
+
 from atlas.data import DATA
 from atlas.treasury import parse_xml
 
@@ -38,7 +47,7 @@ def parse_feed(raw, key):
     if b"<!DOCTYPE" in raw.upper() or b"<!ENTITY" in raw.upper():
         raise ValueError("Unsupported XML declaration")
     root = ET.fromstring(raw)
-    name, url, host = FEEDS[key]
+    name, _url, host = FEEDS[key]
     rows = []
     for item in root.findall(".//item"):
         title = (item.findtext("title") or "").strip()
@@ -149,9 +158,10 @@ def download(url):
     return content
 
 
-def refresh():
+def refresh() -> list[dict]:
+    """Download Treasury and official event feeds. Failure keeps the previous cache."""
     results = []
-    year = datetime.date.today().year
+    year = datetime.datetime.now().astimezone().date().year
     years = [year - 1, year]
     staged = {}
     phase = []
@@ -165,7 +175,7 @@ def refresh():
                 raise ValueError("Unexpected year")
             staged[DATA / f"raw/treasury-{y}.xml"] = raw
             phase.append({"source": f"Treasury {y}", "status": "validated"})
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001 — a failed download must not replace the cache
             phase.append(
                 {"source": f"Treasury {y}", "status": "failed", "detail": str(e)}
             )
@@ -188,7 +198,7 @@ def refresh():
             parse_feed(raw, key)
             staged[DATA / f"raw/events-{key}.xml"] = raw
             phase.append({"source": key, "status": "validated"})
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001 — a failed download must not replace the cache
             phase.append({"source": key, "status": "failed", "detail": str(e)})
     if all(r["status"] == "validated" for r in phase):
         for path, raw in staged.items():
@@ -212,13 +222,14 @@ def _job():
             else "partial_failure",
             "results": results,
         }
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001 — the refresh job reports failure instead of crashing
         final = {"status": "failed", "results": [{"detail": str(e)}]}
     with LOCK:
         STATE.update(final)
 
 
-def start_refresh():
+def start_refresh() -> dict:
+    """Start at most one background refresh and return its current state."""
     with LOCK:
         if STATE["status"] == "running":
             return dict(STATE)
@@ -227,6 +238,7 @@ def start_refresh():
         return dict(STATE)
 
 
-def status():
+def status() -> dict:
+    """Return the latest explicit refresh state."""
     with LOCK:
         return dict(STATE)

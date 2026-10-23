@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: If you use this software, please cite it using these metadata.
+title: ATLAS
+type: software
+authors:
+  - family-names: Morsi
+    given-names: Sherif
+    alias: shmorsi
+version: 0.1.2
+date-released: 2026-10-10
+url: https://github.com/shmorsi/atlas
+repository-code: https://github.com/shmorsi/atlas
+license: MIT
+keywords:
+  - input-output economics
+  - pytorch
+  - forecasting
+  - reproducible research
+abstract: >-
+  Local-first economic research terminal. One loopback process serves cached
+  World Bank and OECD observations, hypothetical production-network scenarios,
+  and saved PyTorch checkpoints. Held-out evaluations are reported with
+  baselines. On the committed 2022 graph test, ridge has the lowest RMSE. The
+  GRU checkpoints do not beat ridge on every seed.

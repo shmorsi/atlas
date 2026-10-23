@@ -1,10 +1,10 @@
 import numpy as np
 import torch
-from atlas.forecast import TemporalGaussian, EconomicGNN, dataset, infer
+from atlas.forecast import EconomicGNN, TemporalGaussian, dataset, infer
 
 
 def test_dataset_lag_and_periods():
-    x, y, years, _ = dataset()
+    x, _y, years, _ = dataset()
     assert x.shape[1:] == (5, 4)
     assert np.all(np.diff(years) > 0)
     assert np.isfinite(x).all()
@@ -61,6 +61,7 @@ def test_gnn_messages_and_gradient():
 
 def test_saved_checkpoints_reproduce_report():
     import json
+
     from atlas.data import DATA
 
     x, _, years, _ = dataset()

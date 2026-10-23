@@ -78,8 +78,8 @@ def check():
                 != source["sha256"]
             ):
                 raise RuntimeError("Public-source snapshot integrity failed")
-    from atlas.network import metadata, DIRECTORY
     from atlas.graph_forecast import replay
+    from atlas.network import DIRECTORY, metadata
 
     network = metadata()
     graph_report = json.loads((DATA / "models/gnn/evaluation.json").read_text())

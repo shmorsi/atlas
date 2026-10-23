@@ -1,12 +1,17 @@
 """Exploratory graph experiment: three training years, one validation year, one test year."""
 
-import copy, hashlib, json, time
+import copy
+import hashlib
+import json
+import time
 from pathlib import Path
+
 import numpy as np
 import torch
 from torch import nn
-from atlas.network import load, metadata, DIRECTORY
+
 from atlas.data import DATA
+from atlas.network import DIRECTORY, load, metadata
 
 
 class GraphPredictor(nn.Module):
@@ -184,7 +189,8 @@ def train_graph(output_dir=DATA / "models/gnn", epochs=250):
     return report
 
 
-def replay(model="graph_seed17"):
+def replay(model: str = "graph_seed17") -> np.ndarray:
+    """Replay one saved graph or no-graph checkpoint on the 2022 held-out year."""
     if model not in {
         f"{kind}_seed{s}" for kind in ["graph", "no_graph"] for s in [17, 29, 43]
     }:

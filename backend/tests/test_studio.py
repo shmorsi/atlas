@@ -1,9 +1,9 @@
 import numpy as np
 import pytest
-from fastapi.testclient import TestClient
 from atlas.api import app
 from atlas.network import scenario
 from atlas.studio import simulate
+from fastapi.testclient import TestClient
 
 SHOCK = {"country": "SAU", "sector": "Energy", "shock": 0.1}
 

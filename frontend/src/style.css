@@ -51,6 +51,34 @@ input:focus-visible {
 a {
   color: var(--amber);
 }
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.skip-link:focus {
+  position: fixed;
+  z-index: 20;
+  width: auto;
+  height: auto;
+  margin: 8px;
+  padding: 8px 12px;
+  overflow: visible;
+  clip: auto;
+  clip-path: none;
+  background: var(--panel);
+  color: #dce3eb;
+  border: 1px solid var(--amber);
+}
 button,
 select {
   transition: background 0.15s;
@@ -1351,5 +1379,15 @@ td button {
     padding: 0;
     font-size: 13px;
     overflow-wrap: anywhere;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

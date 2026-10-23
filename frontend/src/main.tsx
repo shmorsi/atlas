@@ -168,6 +168,9 @@ function App() {
     <div
       className={`app ${experience === "guided" ? "guided-mode" : "research-mode"}`}
     >
+      <a className="skip-link" href="#content">
+        Skip to content
+      </a>
       <aside className="rail">
         <a
           className="brand"
@@ -217,7 +220,7 @@ function App() {
           </div>
         </div>
       </aside>
-      <div className="main">
+      <div className="main" id="content" tabIndex={-1}>
         <header className="topbar">
           <div className="breadcrumb">
             Research terminal <ChevronRight size={14} />

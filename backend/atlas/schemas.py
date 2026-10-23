@@ -1,5 +1,6 @@
-from typing import Literal, Annotated
-from pydantic import BaseModel, Field, ConfigDict
+from typing import Annotated, Literal
+
+from pydantic import BaseModel, ConfigDict, Field
 
 
 class StrictModel(BaseModel):
