@@ -1,6 +1,6 @@
 # Inspected screenshot gallery
 
-Captured from the running production app with Playwright Chromium on Linux after the monochrome interface update. These are not mockups and they are not the macOS pixel baselines. The files in `tests/*-snapshots/` are the earlier macOS captures; CI skips that pixel compare on every operating system except macOS. Refresh both the gallery and those baselines on a Mac with the command in [DEVELOPMENT.md](DEVELOPMENT.md).
+Captured from the running production app with Playwright Chromium on Linux after the monochrome interface update. These are not mockups. The matching `*-linux.png` files under `tests/` were written by `npx playwright test --update-snapshots` on that same machine. The `*-darwin.png` files are the previous interface; refresh them on a Mac with the command in [DEVELOPMENT.md](DEVELOPMENT.md). CI does not run the pixel compare.
 
 ## Guided default / desktop
 

@@ -57,15 +57,17 @@ ATLAS_TEST_URL=http://127.0.0.1:8000 npm run test:ui
 
 `npm run lint:python` runs Ruff 0.16.10, the version pinned in `requirements-lock.txt`, on `backend` and `scripts`. The validate workflow runs the same command on Ubuntu, macOS, and Windows.
 
-Pixel comparisons use the macOS Chromium files under `tests/`. On other operating systems those comparisons are skipped. The gallery in `docs/screenshots/` is separate: the suite writes it on macOS, and on any OS when `ATLAS_CAPTURE_GALLERY=1`.
+Pixel comparisons use the Playwright snapshot for the OS that is running the suite. `npx playwright test --update-snapshots` writes that OS's files only. Do not rename a Linux PNG to a macOS filename.
 
-The current gallery was captured on Linux Chromium. The macOS pixel files were not replaced. On a Mac, after `npm run build` and with the app already running:
+The gallery in `docs/screenshots/` is separate. The suite writes it on macOS, and on any OS when `ATLAS_CAPTURE_GALLERY=1`. The current gallery and the `*-linux.png` baselines were captured on Linux Chromium after the monochrome interface change. The `*-darwin.png` files are the previous interface.
+
+On a Mac, after `npm run build` and with the app already running:
 
 ```sh
 ATLAS_TEST_URL=http://127.0.0.1:8000 npx playwright test --update-snapshots
 ```
 
-That refreshes `tests/*-snapshots/` and, because the platform is macOS, `docs/screenshots/` as well. Inspect both before committing.
+That refreshes the macOS files under `tests/*-snapshots/` and rewrites `docs/screenshots/`. Inspect both before committing. Until then, the three macOS pixel checks fail.
 
 The interface is a dark monochrome layout: Inter, hairline rules, square panels, and one light accent. Negative map values stay a muted red so the sign is still visible. Fonts are bundled; startup does not fetch a typeface.
 

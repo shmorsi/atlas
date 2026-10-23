@@ -101,9 +101,9 @@ Open http://127.0.0.1:8000. Needs Node 22+ and Python 3.12–3.13. Install needs
 ## Reproducibility and integrity
 
 - `requirements-lock.txt` and `package-lock.json` pin the dependency sets. On Linux, setup installs the CPU PyTorch wheel before the rest of the lock.
-- `npm run verify:release` replays 60 held-out GRU means and intervals and 2,430 graph node predictions from the saved checkpoints. The check is `scripts/check_release.py`.
-- Evaluation files, hashes, manifests, caches, checkpoints, `docs/LOCAL_LATENCY.json`, and `docs/ICIO_SAMPLE_AUDIT.json` are records. Do not edit them by hand.
-- The images in `docs/screenshots/` were captured from the running app on Linux Chromium after the interface update. The pixel baselines in `tests/` are still the earlier macOS captures. Other operating systems skip that pixel compare. Refresh the macOS baselines with the command in the [development guide](docs/DEVELOPMENT.md).
+- There is no separate pre-registration file. The splits, seeds, and baselines are the records in the evaluation JSON. `npm run verify:release` replays 60 held-out GRU means and intervals and 2,430 graph node predictions from the saved checkpoints (`scripts/check_release.py`) instead of trusting a retyped metric.
+- Evaluation files, hashes, manifests, caches, checkpoints, `docs/LOCAL_LATENCY.json`, and `docs/ICIO_SAMPLE_AUDIT.json` are records. Do not edit them by hand. The key-result figures in this file are the exact JSON tokens; `backend/tests/test_readme_figures.py` fails if they drift.
+- `docs/screenshots/` was captured from the running app on Linux Chromium. Playwright also wrote `*-linux.png` baselines with `npx playwright test --update-snapshots`. The `*-darwin.png` files are the previous interface; refresh them on a Mac with that same command before trusting a macOS pixel run. The command is in the [development guide](docs/DEVELOPMENT.md).
 - The validate workflow runs setup, Ruff, backend tests, the release gate, and the production build on Ubuntu, macOS, and Windows. Browser evidence in [`docs/VALIDATION.md`](docs/VALIDATION.md) is local Chromium.
 
 Cite this software with [`CITATION.cff`](CITATION.cff).
