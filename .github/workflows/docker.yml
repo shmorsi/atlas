@@ -1,0 +1,56 @@
+name: Docker image
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  build-and-smoke-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build image
+        run: docker build --pull -t atlas:ci .
+      - name: Start container on loopback
+        run: docker run -d --name atlas -p 127.0.0.1:8000:8000 atlas:ci
+      - name: Wait for health
+        run: |
+          for i in $(seq 1 60); do
+            state="$(docker inspect --format '{{.State.Health.Status}}' atlas)"
+            echo "attempt $i: $state"
+            if [ "$state" = healthy ]; then exit 0; fi
+            if [ "$(docker inspect --format '{{.State.Running}}' atlas)" != true ]; then break; fi
+            sleep 5
+          done
+          echo "Container did not become healthy"
+          exit 1
+      - name: Port is published to loopback only
+        run: |
+          docker port atlas 8000/tcp
+          test "$(docker port atlas 8000/tcp)" = "127.0.0.1:8000"
+      - name: Smoke test API and frontend
+        run: |
+          set -euo pipefail
+          base=http://127.0.0.1:8000
+          curl -fsS "$base/api/health" | tee health.json
+          python3 -c "import json; d=json.load(open('health.json')); assert d['status']=='ok', d"
+          curl -fsS "$base/api/ready" -o ready.json
+          python3 -c "import json; d=json.load(open('ready.json')); assert d['status']=='ready' and len(d['models'])==6, d"
+          curl -fsS "$base/api/countries?year=2025" -o countries.json
+          python3 -c "import json; d=json.load(open('countries.json')); assert d['kind']=='observed' and len(d['countries'])==177, len(d['countries'])"
+          curl -fsS "$base/api/forecast/replay?model=gru_multivariate_seed17&year=2024" -o replay.json
+          python3 -c "import json; d=json.load(open('replay.json')); assert d['framework']=='PyTorch' and d['device']=='cpu', d"
+          curl -fsS "$base/" -o index.html
+          grep -q '<div id="root">' index.html
+          asset="$(python3 -c "import re; print(re.search(r'/assets/[^\"]+[.]js', open('index.html').read()).group(0))")"
+          curl -fsS -o /dev/null "$base$asset"
+          curl -fsS -o /dev/null "$base/maplibre/maplibre-gl-worker.mjs"
+          echo "Smoke test passed"
+      - name: Container logs
+        if: always()
+        run: docker logs atlas || true
+      - name: Stop container
+        if: always()
+        run: docker rm -f atlas || true
