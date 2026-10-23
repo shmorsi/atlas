@@ -1,17 +1,22 @@
 # ATLAS
 
-**An economic research terminal by [Sherif Morsi](https://github.com/shmorsi): explore real country data, trace production dependencies, and inspect reproducible PyTorch experiments.**
+**A local-first economic research terminal: real country data, production-network scenarios and reproducible PyTorch experiments in one offline app.**
 
-[![Validate local release](https://github.com/shmorsi/atlas/actions/workflows/validate.yml/badge.svg)](https://github.com/shmorsi/atlas/actions/workflows/validate.yml)
+A research terminal, not a product.
+
+Headline result: a ridge baseline beat every PyTorch graph and no-graph model on the one held-out year (2022 test RMSE 14.0001 vs 14.2782 log pp for the best neural run). The GRU forecaster does not consistently beat ridge either.
+
+Latency figures in the docs (median 6.47 to 40.51 ms) are warm loopback requests on one macOS ARM64 machine, not load tests.
+
+[![Validate local release](https://github.com/shmorsi/atlas/actions/workflows/validate.yml/badge.svg)](https://github.com/shmorsi/atlas/actions/workflows/validate.yml) [![Docker image](https://github.com/shmorsi/atlas/actions/workflows/docker.yml/badge.svg)](https://github.com/shmorsi/atlas/actions/workflows/docker.yml)
 
 [Project overview & screenshots](https://shmorsi.github.io/projects/atlas.html) · [Download release](https://github.com/shmorsi/atlas/releases/tag/v0.1.2) · [Research report](docs/RESEARCH_REPORT.md) · [Validation evidence](docs/VALIDATION.md)
 
 ![ATLAS country exploration](docs/screenshots/atlas-overview.png)
 
-## Start here
+## What's inside
 
 ![Scenario Studio: inspectable economic cost propagation](docs/screenshots/studio-1440.png)
-
 
 - **Explore:** 177 geographic entities, dated World Bank observations, an offline map, and a guided country-comparison journey.
 - **Trace:** seven OECD production tables aggregated to 405 nodes across 81 areas, with documented orientation, independent sample audits and hypothetical cost propagation.
@@ -28,7 +33,11 @@ This is a **local application**, not a hosted trading service. The **Scenario St
 
 Local-first global economic intelligence and quantitative research terminal. React + TypeScript + Vite + MapLibre + ECharts; Python + FastAPI + DuckDB/Parquet. No hosted services or credentials.
 
-## Run
+## Quickstart
+
+ATLAS has no authentication. Both paths below serve on 127.0.0.1 only; keep it that way.
+
+### Local release (Node + Python)
 
 Prerequisites: Node 22+, Python 3.12–3.13, a modern WebGL2 browser. On Windows use Python from python.org and run in PowerShell; on macOS/Linux `python3` must refer to a supported Python. Tested on macOS ARM64 / Python 3.12.
 
@@ -41,6 +50,17 @@ npm run atlas
 Open http://127.0.0.1:8000. API documentation: http://127.0.0.1:8000/docs. Stop with Ctrl+C. Installation needs internet; normal startup uses bundled data and no external service. The startup command binds only to loopback, verifies source/model integrity, builds production assets, and serves the interface plus API from one FastAPI process. It does not use Vite in production. Set `ATLAS_PORT` to choose another port. For hot-reload development, use `npm run develop` (UI 5173 / API 8000).
 
 The supplied `.venv` and `node_modules` are local conveniences and not part of Git. Install your own dependencies after copying the project. `requirements-lock.txt` records this build's exact Python versions; `package-lock.json` pins JavaScript dependencies.
+
+### Docker
+
+```sh
+docker build -t atlas .
+docker run --rm -p 127.0.0.1:8000:8000 atlas
+```
+
+Open http://127.0.0.1:8000. The image runs the same single FastAPI process as `npm run atlas`: a Node stage builds the frontend, and a slim Python 3.12 stage installs `requirements-lock.txt` (CPU PyTorch) and serves the API plus the built UI. The bundled data and checkpoints are copied in from the repository, exactly as the release ships them. The build downloads only npm and Python packages; startup downloads nothing. The release integrity gate (`scripts/check_release.py`) runs during the build and again at startup.
+
+Always publish with the `127.0.0.1:` prefix. The server listens on all interfaces inside the container so Docker can forward the port, and the prefix keeps it reachable from this machine only. To use another host port, change the left side: `-p 127.0.0.1:8001:8000`. The container reports health from `/api/ready`. The [Docker workflow](.github/workflows/docker.yml) builds the image and smoke-tests the API and UI on every pull request.
 
 ## Data
 

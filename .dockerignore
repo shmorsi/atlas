@@ -1,0 +1,22 @@
+# Keep the build context to what the image needs.
+.git
+.github
+.venv
+node_modules
+dist
+**/__pycache__
+**/*.pyc
+.pytest_cache
+.DS_Store
+playwright-report
+test-results
+frontend/public/maplibre
+data/*.duckdb*
+data/*.sqlite*
+docs
+learning
+notebooks
+tests
+backend/tests
+*.zip
+*.zip.sha256
