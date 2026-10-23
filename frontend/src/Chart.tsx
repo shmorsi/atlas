@@ -27,9 +27,9 @@ export function Chart({
   useEffect(() => {
     const chart = echarts.init(el.current!, undefined, { renderer: "svg" });
     chart.setOption({
-      color: ["#d7ac65", "#79a8be", "#627e8f", "#627e8f"],
+      color: ["#f4f5f7", "#9aa1a8", "#6e757c", "#6e757c"],
       backgroundColor: "transparent",
-      textStyle: { fontFamily: "system-ui", color: "#8795a8", fontSize: 12 },
+      textStyle: { fontFamily: "Inter, sans-serif", color: "#b1b6bc", fontSize: 12 },
       animation: false,
       ...option,
     });

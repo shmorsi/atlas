@@ -161,7 +161,7 @@ export function StructuralLab({ network = false }: { network?: boolean }) {
                 legend: {
                   top: 0,
                   data: ["Direct", "First-order", "Higher-order"],
-                  textStyle: { color: "#9faebf" },
+                  textStyle: { color: "#b1b6bc" },
                 },
                 grid: { left: 55, right: 20, bottom: 40, top: 45 },
                 xAxis: {
@@ -169,17 +169,17 @@ export function StructuralLab({ network = false }: { network?: boolean }) {
                   data: result.total.map(
                     (_: any, i: number) => `Sector ${i + 1}`,
                   ),
-                  axisLabel: { color: "#9faebf" },
+                  axisLabel: { color: "#b1b6bc" },
                 },
                 yAxis: {
                   type: "value",
-                  axisLabel: { color: "#9faebf" },
-                  splitLine: { lineStyle: { color: "#26313e" } },
+                  axisLabel: { color: "#b1b6bc" },
+                  splitLine: { lineStyle: { color: "#2a2e33" } },
                 },
                 series: [
-                  ["Direct", "direct", "#d7ac65"],
-                  ["First-order", "first_order", "#538b99"],
-                  ["Higher-order", "higher_order", "#82b0a5"],
+                  ["Direct", "direct", "#f4f5f7"],
+                  ["First-order", "first_order", "#8e949b"],
+                  ["Higher-order", "higher_order", "#c5c8cc"],
                 ].map(([name, key, color]) => ({
                   name,
                   type: "bar" as const,
@@ -572,18 +572,18 @@ export function PortfolioLab() {
               height={240}
               option={{
                 tooltip: { trigger: "axis" },
-                legend: { top: 0, textStyle: { color: "#9aaaba" } },
+                legend: { top: 0, textStyle: { color: "#b1b6bc" } },
                 grid: { left: 48, right: 20, top: 35, bottom: 35 },
                 xAxis: {
                   type: "category",
                   data: result.held_out.wealth.map((_: any, i: number) => i),
-                  axisLabel: { color: "#9aaaba" },
+                  axisLabel: { color: "#b1b6bc" },
                 },
                 yAxis: {
                   type: "value",
                   scale: true,
-                  axisLabel: { color: "#9aaaba" },
-                  splitLine: { lineStyle: { color: "#26313e" } },
+                  axisLabel: { color: "#b1b6bc" },
+                  splitLine: { lineStyle: { color: "#2a2e33" } },
                 },
                 series: [
                   {
@@ -591,14 +591,14 @@ export function PortfolioLab() {
                     type: "line",
                     showSymbol: false,
                     data: result.original_held_out.wealth,
-                    lineStyle: { color: "#638a9d" },
+                    lineStyle: { color: "#8e949b" },
                   },
                   {
                     name: "Optimized",
                     type: "line",
                     showSymbol: false,
                     data: result.held_out.wealth,
-                    lineStyle: { color: "#d7ac65" },
+                    lineStyle: { color: "#f4f5f7" },
                   },
                 ],
               }}
@@ -680,31 +680,31 @@ export function ForecastLab() {
               height={300}
               option={{
                 tooltip: { trigger: "axis" },
-                legend: { top: 0, textStyle: { color: "#a9b8c8" } },
+                legend: { top: 0, textStyle: { color: "#b1b6bc" } },
                 grid: { left: 55, right: 25, top: 40, bottom: 35 },
                 xAxis: {
                   type: "category",
                   data: report.test_years,
-                  axisLabel: { color: "#a9b8c8" },
+                  axisLabel: { color: "#b1b6bc" },
                 },
                 yAxis: {
                   type: "value",
                   name: "annual %",
-                  axisLabel: { color: "#a9b8c8" },
-                  splitLine: { lineStyle: { color: "#26313e" } },
+                  axisLabel: { color: "#b1b6bc" },
+                  splitLine: { lineStyle: { color: "#2a2e33" } },
                 },
                 series: [
                   {
                     name: "Observed (revised)",
                     type: "line",
                     data: report.test_actual,
-                    lineStyle: { color: "#d7ac65" },
+                    lineStyle: { color: "#f4f5f7" },
                   },
                   {
                     name: "Prediction",
                     type: "line",
                     data: p.mean,
-                    lineStyle: { color: "#79a8be" },
+                    lineStyle: { color: "#9aa1a8" },
                   },
                   ...(p.lower80
                     ? [
@@ -714,7 +714,7 @@ export function ForecastLab() {
                           data: p.lower80,
                           symbol: "none",
                           lineStyle: {
-                            color: "#627e8f",
+                            color: "#6e757c",
                             type: "dashed" as const,
                           },
                         },
@@ -724,7 +724,7 @@ export function ForecastLab() {
                           data: p.upper80,
                           symbol: "none",
                           lineStyle: {
-                            color: "#627e8f",
+                            color: "#6e757c",
                             type: "dashed" as const,
                           },
                         },
@@ -820,19 +820,19 @@ export function HistoricalLab({
           xAxis: {
             type: "category",
             data: series.map((o) => o.year),
-            axisLabel: { color: "#99aabb" },
+            axisLabel: { color: "#b1b6bc" },
           },
           yAxis: {
             type: "value",
-            axisLabel: { color: "#99aabb" },
-            splitLine: { lineStyle: { color: "#26313e" } },
+            axisLabel: { color: "#b1b6bc" },
+            splitLine: { lineStyle: { color: "#2a2e33" } },
           },
           series: [
             {
               type: "bar",
               data: series.map((o) => ({
                 value: o.value,
-                itemStyle: { color: o.year === event ? "#d7ac65" : "#4c7588" },
+                itemStyle: { color: o.year === event ? "#f4f5f7" : "#5c636a" },
               })),
             },
           ],

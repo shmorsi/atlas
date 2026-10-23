@@ -338,12 +338,12 @@ export function GuidedAtlas({
                     xAxis: {
                       type: "category",
                       data: series.map((o) => o.year),
-                      axisLabel: { color: "#93a7b9" },
+                      axisLabel: { color: "#b1b6bc" },
                     },
                     yAxis: {
                       type: "value",
-                      axisLabel: { color: "#93a7b9", formatter: "{value}%" },
-                      splitLine: { lineStyle: { color: "#263542" } },
+                      axisLabel: { color: "#b1b6bc", formatter: "{value}%" },
+                      splitLine: { lineStyle: { color: "#2a2e33" } },
                     },
                     series: [
                       {
@@ -351,7 +351,7 @@ export function GuidedAtlas({
                         data: series.map((o) => o.value),
                         showSymbol: false,
                         connectNulls: false,
-                        lineStyle: { color: "#d7ac65", width: 2 },
+                        lineStyle: { color: "#f4f5f7", width: 2 },
                       },
                     ],
                   }}

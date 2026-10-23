@@ -26,7 +26,7 @@ export function ExposureMap({
           {
             id: "ocean",
             type: "background",
-            paint: { "background-color": "#0b1520" },
+            paint: { "background-color": "#07080a" },
           },
         ],
       },
@@ -53,7 +53,7 @@ export function ExposureMap({
         id: "countries",
         type: "fill",
         source: "world",
-        paint: { "fill-color": "#293a49", "fill-outline-color": "#536674" },
+        paint: { "fill-color": "#1c1f23", "fill-outline-color": "#3a3f45" },
       });
       m.addSource("connections", {
         type: "geojson",
@@ -64,7 +64,7 @@ export function ExposureMap({
         type: "line",
         source: "connections",
         paint: {
-          "line-color": "#91b3bb",
+          "line-color": "#8e949b",
           "line-opacity": 0.65,
           "line-width": [
             "interpolate",
@@ -127,19 +127,19 @@ export function ExposureMap({
       expression.push(
         code,
         magnitude > 0.05
-          ? "#d7ac65"
+          ? "#e7eaee"
           : magnitude > 0.01
-            ? "#998754"
+            ? "#8e949b"
             : magnitude > 0.001
-              ? "#477f85"
+              ? "#5c636a"
               : magnitude > 0
-                ? "#2d525e"
-                : "#293a49",
+                ? "#3a3e44"
+                : "#1c1f23",
       );
     });
-    expression.push("#293a49");
+    expression.push("#1c1f23");
     if (!values.size) {
-      map.current.setPaintProperty("countries", "fill-color", "#293a49");
+      map.current.setPaintProperty("countries", "fill-color", "#1c1f23");
       return;
     }
     map.current.setPaintProperty("countries", "fill-color", expression as any);
@@ -155,7 +155,7 @@ export function ExposureMap({
         {scenario
           ? "Absolute modeled country cost change"
           : "Supplier inputs as a share of the selected buyer’s gross output"}
-        : amber &gt;5%; olive &gt;1%; teal &gt;0.1%; dark teal &gt;0. Gray
+        : light &gt;5%; mid &gt;1%; dim &gt;0.1%; faint &gt;0. Near-black
         includes zero and unavailable. Exact values and direction appear in the
         tables.{" "}
         {profile &&

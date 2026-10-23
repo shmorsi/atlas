@@ -83,8 +83,8 @@ const presets = [
 ];
 const pct = (v: number) => `${v > 0 ? "+" : ""}${(v * 100).toFixed(3)}%`;
 const axis = {
-  axisLabel: { color: "#9bb0c0" },
-  axisLine: { lineStyle: { color: "#2d404b" } },
+  axisLabel: { color: "#b1b6bc" },
+  axisLine: { lineStyle: { color: "#2a2e33" } },
 };
 export function ScenarioStudio({ onAdvanced }: { onAdvanced: () => void }) {
   const [nodes, setNodes] = useState<Node[]>([]),
@@ -489,15 +489,15 @@ export function ScenarioStudio({ onAdvanced }: { onAdvanced: () => void }) {
                       },
                       yAxis: {
                         type: "value",
-                        axisLabel: { color: "#9bb0c0", formatter: "{value}%" },
-                        splitLine: { lineStyle: { color: "#24313d" } },
+                        axisLabel: { color: "#b1b6bc", formatter: "{value}%" },
+                        splitLine: { lineStyle: { color: "#2a2e33" } },
                       },
                       series: [
                         {
                           type: "line",
                           data: result.rounds.map((r) => r.total * 100),
-                          lineStyle: { color: "#d7ac65", width: 3 },
-                          areaStyle: { color: "#d7ac65", opacity: 0.08 },
+                          lineStyle: { color: "#f4f5f7", width: 3 },
+                          areaStyle: { color: "#f4f5f7", opacity: 0.08 },
                         },
                       ],
                     }}
@@ -550,8 +550,8 @@ export function ScenarioStudio({ onAdvanced }: { onAdvanced: () => void }) {
                       },
                       yAxis: {
                         type: "value",
-                        axisLabel: { color: "#9bb0c0", formatter: "{value}%" },
-                        splitLine: { lineStyle: { color: "#24313d" } },
+                        axisLabel: { color: "#b1b6bc", formatter: "{value}%" },
+                        splitLine: { lineStyle: { color: "#2a2e33" } },
                       },
                       series: [
                         {
@@ -560,7 +560,7 @@ export function ScenarioStudio({ onAdvanced }: { onAdvanced: () => void }) {
                             r.within_price_domain ? r.total * 100 : null,
                           ),
                           itemStyle: {
-                            color: "#75b5bd",
+                            color: "#8f5d5d",
                             borderRadius: [4, 4, 0, 0],
                           },
                           barMaxWidth: 36,
@@ -611,7 +611,7 @@ export function ScenarioStudio({ onAdvanced }: { onAdvanced: () => void }) {
                           <i
                             style={{
                               width: `${(Math.abs(c.total) / (Math.abs(result.countries[0].total) || 1)) * 100}%`,
-                              background: c.total < 0 ? "#75b5bd" : "#d7ac65",
+                              background: c.total < 0 ? "#8f5d5d" : "#f4f5f7",
                             }}
                           />
                         </div>

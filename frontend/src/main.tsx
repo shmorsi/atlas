@@ -16,6 +16,8 @@ import {
 import { WorldMap } from "./WorldMap";
 import { Chart } from "./Chart";
 import { api, Country, Observation, format, indicators } from "./types";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
 import "./style.css";
 import "./guided.css";
 import { GuidedAtlas } from "./GuidedExperience";
@@ -177,7 +179,8 @@ function App() {
           href="#"
           onClick={() => setWorkspace("World Atlas")}
         >
-          <span className="brand-mark">A</span>ATLAS
+          <span className="brand-mark">A</span>
+          <span className="brand-word">ATLAS</span>
           <span className="edition">RESEARCH</span>
         </a>
         <div className="rail-label">
@@ -245,7 +248,7 @@ function App() {
             </button>
           </div>
           <span className="offline">SAVED DATA</span>
-          <span className="version">ATLAS / 0.1</span>
+          <span className="version">ATLAS / 0.1.2</span>
         </header>
         {experience === "guided" && (
           <nav className="guided-mobile-nav" aria-label="Explore ATLAS">
@@ -526,24 +529,24 @@ function App() {
                                     type: "category",
                                     data: series.map((o) => o.year),
                                     axisLabel: {
-                                      color: "#8795a8",
+                                      color: "#b1b6bc",
                                       interval: Math.max(
                                         1,
                                         Math.floor(series.length / 4),
                                       ),
                                     },
                                     axisLine: {
-                                      lineStyle: { color: "#293543" },
+                                      lineStyle: { color: "#2a2e33" },
                                     },
                                   },
                                   yAxis: {
                                     type: "value",
                                     axisLabel: {
-                                      color: "#8795a8",
+                                      color: "#b1b6bc",
                                       formatter: (v) => format(v, indicator),
                                     },
                                     splitLine: {
-                                      lineStyle: { color: "#202c38" },
+                                      lineStyle: { color: "#22262b" },
                                     },
                                   },
                                   series: [
@@ -552,9 +555,9 @@ function App() {
                                       data: series.map((o) => o.value),
                                       connectNulls: false,
                                       showSymbol: false,
-                                      lineStyle: { color: "#d7ac65", width: 2 },
+                                      lineStyle: { color: "#f4f5f7", width: 2 },
                                       areaStyle: {
-                                        color: "#d7ac65",
+                                        color: "#f4f5f7",
                                         opacity: 0.06,
                                       },
                                     },

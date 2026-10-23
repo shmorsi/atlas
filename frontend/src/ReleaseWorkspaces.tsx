@@ -53,14 +53,14 @@ export function TreasuryCurves() {
                 data: curve.points.map((p: any) =>
                   p.months < 12 ? `${p.months}m` : `${p.months / 12}y`,
                 ),
-                axisLabel: { color: "#a9b8c8" },
+                axisLabel: { color: "#b1b6bc" },
               },
               yAxis: {
                 type: "value",
                 name: "Yield (%)",
                 scale: true,
-                axisLabel: { color: "#a9b8c8" },
-                splitLine: { lineStyle: { color: "#26313e" } },
+                axisLabel: { color: "#b1b6bc" },
+                splitLine: { lineStyle: { color: "#2a2e33" } },
               },
               series: [
                 {
@@ -68,7 +68,7 @@ export function TreasuryCurves() {
                   type: "line",
                   data: curve.points.map((p: any) => p.yield_percent),
                   connectNulls: false,
-                  lineStyle: { color: "#d7ac65" },
+                  lineStyle: { color: "#f4f5f7" },
                 },
               ],
             }}

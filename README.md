@@ -9,7 +9,7 @@
 
 [Project page](https://shmorsi.github.io/projects/atlas.html) · [v0.1.2](https://github.com/shmorsi/atlas/releases/tag/v0.1.2) · [Research report](docs/RESEARCH_REPORT.md) · [Validation](docs/VALIDATION.md) · [API](docs/API.md)
 
-![Research World Atlas for Japan in 2025: flat map, GDP growth history, and a comparison with the United States](docs/screenshots/atlas-overview.png)
+![Research World Atlas for Japan: flat map, GDP growth history, and a comparison with the United States](docs/screenshots/desktop.png)
 
 ## Key results
 
@@ -82,7 +82,7 @@ flowchart LR
 
 Country exploration, the OECD network, Scenario Studio, rates, portfolios, forecasting, and official events are separate workspaces. Observed history, hypothetical input-output effects, bond valuations, and learned predictions stay labeled apart. Detail: [`docs/API.md`](docs/API.md), [`docs/SCENARIO_STUDIO.md`](docs/SCENARIO_STUDIO.md), [`docs/BUILD_STATUS.md`](docs/BUILD_STATUS.md). The rest of the inspected layouts are in [`docs/SCREENSHOTS.md`](docs/SCREENSHOTS.md).
 
-![Economic Network for Japan in 2022: sector flows, a supplier map, and hypothetical propagation rounds](docs/screenshots/atlas-network.png)
+![Economic Network for Japan in 2022: sector flows, a supplier map, and a hypothetical propagation chart](docs/screenshots/network-1440.png)
 
 ![Scenario Studio on the 2022 OECD network: shock controls, an exposure map, and direct versus higher-order effects](docs/screenshots/studio-1440.png)
 
@@ -103,7 +103,7 @@ Open http://127.0.0.1:8000. Needs Node 22+ and Python 3.12–3.13. Install needs
 - `requirements-lock.txt` and `package-lock.json` pin the dependency sets. On Linux, setup installs the CPU PyTorch wheel before the rest of the lock.
 - `npm run verify:release` replays 60 held-out GRU means and intervals and 2,430 graph node predictions from the saved checkpoints. The check is `scripts/check_release.py`.
 - Evaluation files, hashes, manifests, caches, checkpoints, `docs/LOCAL_LATENCY.json`, and `docs/ICIO_SAMPLE_AUDIT.json` are records. Do not edit them by hand.
-- Screenshot baselines are macOS Chromium images. Other operating systems run the behavioral UI tests, skip the pixel compare, and do not rewrite `docs/screenshots/`.
+- The images in `docs/screenshots/` were captured from the running app on Linux Chromium after the interface update. The pixel baselines in `tests/` are still the earlier macOS captures. Other operating systems skip that pixel compare. Refresh the macOS baselines with the command in the [development guide](docs/DEVELOPMENT.md).
 - The validate workflow runs setup, Ruff, backend tests, the release gate, and the production build on Ubuntu, macOS, and Windows. Browser evidence in [`docs/VALIDATION.md`](docs/VALIDATION.md) is local Chromium.
 
 Cite this software with [`CITATION.cff`](CITATION.cff).
