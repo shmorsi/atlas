@@ -35,7 +35,8 @@ LOCK = threading.Lock()
 STATE = {"status": "idle", "results": []}
 
 
-def atomic_write(path, content):
+def atomic_write(path, content: bytes) -> None:
+    """Replace a file by writing a temporary sibling and renaming it into place."""
     path.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.NamedTemporaryFile(dir=path.parent, delete=False) as f:
         f.write(content)
@@ -43,7 +44,8 @@ def atomic_write(path, content):
     os.replace(name, path)
 
 
-def parse_feed(raw, key):
+def parse_feed(raw: bytes, key: str) -> list[dict]:
+    """Parse one official RSS feed into dated headline rows."""
     if b"<!DOCTYPE" in raw.upper() or b"<!ENTITY" in raw.upper():
         raise ValueError("Unsupported XML declaration")
     root = ET.fromstring(raw)
@@ -77,7 +79,8 @@ def parse_feed(raw, key):
     return sorted(rows, key=lambda r: r["published_at"], reverse=True)[:20]
 
 
-def prepare_rates(years):
+def prepare_rates(years: list[int]) -> dict:
+    """Turn downloaded Treasury XML into the current par-curve cache."""
     sources = []
     grouped = {}
     now = datetime.datetime.now(datetime.timezone.utc).isoformat()
@@ -111,7 +114,8 @@ def prepare_rates(years):
     return result["source"]
 
 
-def prepare_events():
+def prepare_events() -> dict:
+    """Turn downloaded official feeds into the events cache."""
     entries = []
     sources = []
     for key, (name, url, host) in FEEDS.items():
@@ -145,7 +149,8 @@ def prepare_events():
     return result
 
 
-def download(url):
+def download(url: str) -> bytes:
+    """Fetch one HTTPS document with a timeout, a size cap, and the CA bundle."""
     request = urllib.request.Request(
         url, headers={"User-Agent": "ATLAS-local-research/0.1"}
     )

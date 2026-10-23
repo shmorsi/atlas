@@ -734,14 +734,13 @@ function App() {
               </p>
             </section>
           ) : (
-            <section className="research empty">
+            <section className="research empty" role="alert">
               <FlaskConical size={28} />
-              <div className="eyebrow">RESEARCH MODULE / NOT YET AVAILABLE</div>
+              <div className="eyebrow">UNKNOWN WORKSPACE</div>
               <h2>{workspace}</h2>
               <p>
-                This module needs validated data and tested models before
-                results can be displayed. See the build status for
-                implementation progress.
+                This name is not one of the workspaces in this release. The
+                navigation lists every workspace that can show results.
               </p>
               <button onClick={() => setWorkspace("Research & Methods")}>
                 View sources & methodology

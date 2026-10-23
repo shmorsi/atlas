@@ -9,7 +9,7 @@
 
 [Project page](https://shmorsi.github.io/projects/atlas.html) · [v0.1.2](https://github.com/shmorsi/atlas/releases/tag/v0.1.2) · [Research report](docs/RESEARCH_REPORT.md) · [Validation](docs/VALIDATION.md) · [API](docs/API.md)
 
-![ATLAS country workspace: map, indicator, and source-backed history](docs/screenshots/atlas-overview.png)
+![Research World Atlas for Japan in 2025: flat map, GDP growth history, and a comparison with the United States](docs/screenshots/atlas-overview.png)
 
 ## Key results
 
@@ -80,9 +80,11 @@ flowchart LR
   MAP --> UI
 ```
 
-Country exploration, the OECD network, Scenario Studio, rates, portfolios, forecasting, and official events are separate workspaces. Observed history, hypothetical input-output effects, bond valuations, and learned predictions stay labeled apart. Detail: [`docs/API.md`](docs/API.md), [`docs/SCENARIO_STUDIO.md`](docs/SCENARIO_STUDIO.md), [`docs/BUILD_STATUS.md`](docs/BUILD_STATUS.md).
+Country exploration, the OECD network, Scenario Studio, rates, portfolios, forecasting, and official events are separate workspaces. Observed history, hypothetical input-output effects, bond valuations, and learned predictions stay labeled apart. Detail: [`docs/API.md`](docs/API.md), [`docs/SCENARIO_STUDIO.md`](docs/SCENARIO_STUDIO.md), [`docs/BUILD_STATUS.md`](docs/BUILD_STATUS.md). The rest of the inspected layouts are in [`docs/SCREENSHOTS.md`](docs/SCREENSHOTS.md).
 
-![Scenario Studio: inspectable cost propagation on an observed network](docs/screenshots/studio-1440.png)
+![Economic Network for Japan in 2022: sector flows, a supplier map, and hypothetical propagation rounds](docs/screenshots/atlas-network.png)
+
+![Scenario Studio on the 2022 OECD network: shock controls, an exposure map, and direct versus higher-order effects](docs/screenshots/studio-1440.png)
 
 ## Quickstart
 

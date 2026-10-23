@@ -69,7 +69,8 @@ def parse_xml(raw: bytes, include_six_week: bool = False) -> list[dict]:
     return sorted(rows, key=lambda r: (r["date"], r["months"]))
 
 
-def prepare():
+def prepare() -> dict:
+    """Write the 2024 Treasury parquet and its source manifest from the raw XML."""
     raw = (DATA / "raw/treasury-2024.xml").read_bytes()
     rows = parse_xml(raw)
     if any(not r["date"].startswith("2024-") for r in rows):

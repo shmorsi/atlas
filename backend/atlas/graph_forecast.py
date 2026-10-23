@@ -26,7 +26,8 @@ class GraphPredictor(nn.Module):
         return self.head(torch.tanh(self.local(x) + self.message(message))).squeeze(-1)
 
 
-def panel():
+def panel() -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Build the 2016–2022 country-sector panel used by the graph experiment."""
     tables = [load(y) for y in range(2016, 2023)]
     output = np.array([d["output"] for d in tables])
     valid = (output > 0).all(0)
@@ -55,7 +56,8 @@ def panel():
     return np.array(x), np.array(graphs), np.array(targets)
 
 
-def train_graph(output_dir=DATA / "models/gnn", epochs=250):
+def train_graph(output_dir=DATA / "models/gnn", epochs: int = 250) -> dict:
+    """Train the graph and no-graph seeds and write their checkpoints and evaluation."""
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     start = time.perf_counter()

@@ -81,7 +81,10 @@ def dataset() -> tuple[np.ndarray, np.ndarray, np.ndarray, list]:
     return np.array(x), np.array(targets), np.array(target_year), specs
 
 
-def metrics(y, mean, sd=None):
+def metrics(
+    y: np.ndarray, mean: np.ndarray, sd: np.ndarray | None = None
+) -> dict:
+    """MAE and RMSE, plus Gaussian interval diagnostics when a scale is supplied."""
     out = {
         "mae": float(np.mean(np.abs(y - mean))),
         "rmse": float(np.sqrt(np.mean((y - mean) ** 2))),
@@ -103,7 +106,10 @@ def metrics(y, mean, sd=None):
     return out
 
 
-def train(output: Path, epochs=300, seeds=(17, 29, 43)):
+def train(
+    output: Path, epochs: int = 300, seeds: tuple[int, ...] = (17, 29, 43)
+) -> dict:
+    """Train every listed GRU seed and write checkpoints plus evaluation.json."""
     output.mkdir(parents=True, exist_ok=True)
     start = time.perf_counter()
     x, y, years, specs = dataset()

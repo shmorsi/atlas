@@ -16,7 +16,8 @@ INDICATORS = {
 }
 
 
-def prepare():
+def prepare() -> None:
+    """Normalize the raw country file and World Bank cache into the processed tables."""
     geo = json.loads((DATA / "raw/countries.geojson").read_text())
     countries = []
     for i, f in enumerate(geo["features"]):
