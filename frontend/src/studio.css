@@ -293,7 +293,7 @@
 .studio-mechanism > svg {
   transform: rotate(-90deg);
   flex-shrink: 0;
-  color: #818181;
+  color: #8e8e93;
 }
 .studio-takeaways {
   display: grid;

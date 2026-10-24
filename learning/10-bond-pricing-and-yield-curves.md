@@ -6,7 +6,7 @@ F is face value, c annual coupon rate, y nominal annual yield, m coupon frequenc
 
 ## Derivation and implementation
 
-P=Σ CF[k](1+y/m)^−k. Modified duration is −P′(y)/P. Convexity is P″(y)/P. The second-order expansion gives ΔP/P≈−DmodΔy+½CΔy².
+`P = Σ CF[k] (1+y/m)^(−k)`. Modified duration is `−P′(y)/P`. Convexity is `P″(y)/P`. The second-order expansion gives `ΔP/P ≈ −Dmod Δy + ½ C Δy²`.
 
 [Read the implementation](../backend/atlas/finance.py).
 

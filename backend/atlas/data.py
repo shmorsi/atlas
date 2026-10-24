@@ -1,3 +1,5 @@
+"""Frozen country cache: geometries, World Bank rows, and read-only queries."""
+
 import json
 import math
 import sqlite3

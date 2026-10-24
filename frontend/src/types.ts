@@ -21,12 +21,14 @@ export const indicators: Record<string, { label: string; unit: string }> = {
   "NY.GDP.MKTP.KD.ZG": { label: "Real GDP growth", unit: "%" },
   "NE.TRD.GNFS.ZS": { label: "Trade / GDP", unit: "%" },
 };
-export function format(value: number | null | undefined, code: string) {
+/** Format one cached observation for display. Null stays "Not available". */
+export function format(value: number | null | undefined, code: string): string {
   if (value == null) return "Not available";
   if (code === "NY.GDP.MKTP.KD.ZG" || code === "NE.TRD.GNFS.ZS")
     return `${value.toFixed(2)}%`;
   return `${code === "NY.GDP.MKTP.CD" ? "$" : ""}${Intl.NumberFormat("en", { notation: "compact", maximumFractionDigits: 2 }).format(value)}`;
 }
+/** Fetch one local API path and surface the response status on failure. */
 export async function api<T>(path: string, init?: RequestInit): Promise<T> {
   const r = await fetch("/api" + path, init);
   if (!r.ok) {

@@ -16,7 +16,7 @@ Not a trading system, a forecast product, or a hosted service. Not a causal mode
 - A US real GDP growth forecast. Feature windows end at t−2. Ten held-out years, 2015–2024. Multivariate and domestic-only GRUs, the same three seeds, and the same kinds of baselines are saved. The nominal Gaussian intervals are not recalibrated. Record: [`data/models/evaluation.json`](../data/models/evaluation.json).
 - Scenario Studio solves a linear input-output system. It is not a learned model. The page labels the result as a hypothetical cost change.
 
-The protocol, parameter counts, and the four-decimal printing of the same files are in [`RESEARCH_REPORT.md`](RESEARCH_REPORT.md).
+The protocol, parameter counts, and the four-decimal printing of the same files are in [`RESEARCH_REPORT.md`](RESEARCH_REPORT.md). `docs/figures/held-out-rmse.svg` is drawn from the same tokens by [`scripts/render_readme_figures.py`](../scripts/render_readme_figures.py). This card still has no second results table.
 
 ## Reproduction
 

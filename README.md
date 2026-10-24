@@ -1,6 +1,6 @@
 # ATLAS
 
-**A local-first economic research terminal: cached country data, production-network scenarios, and reproducible PyTorch experiments in one offline app.**
+**A local research terminal that traces a cost shock through observed production networks, and prints the forecasts that lost.**
 
 [![Validate local release](https://github.com/shmorsi/atlas/actions/workflows/validate.yml/badge.svg)](https://github.com/shmorsi/atlas/actions/workflows/validate.yml)
 [![Docker image](https://github.com/shmorsi/atlas/actions/workflows/docker.yml/badge.svg)](https://github.com/shmorsi/atlas/actions/workflows/docker.yml)
@@ -9,11 +9,37 @@
 
 [Project page](https://shmorsi.github.io/projects/atlas.html) · [v0.1.2](https://github.com/shmorsi/atlas/releases/tag/v0.1.2) · [Research report](docs/RESEARCH_REPORT.md) · [Validation](docs/VALIDATION.md) · [API](docs/API.md)
 
+![Held-out test RMSE. Bar lengths use the committed JSON values. The accent marks the lowest error in each panel. Labels are the exact tokens.](docs/figures/held-out-rmse.svg)
+
+Ridge has the lowest graph-experiment test RMSE, `14.000078463484256`. On US real GDP growth, ridge test RMSE is `1.9775866886855997`. Multivariate seed 17 (`1.9452490484149925`) and domestic-only seed 17 (`1.977209393996446`) are the two GRU runs below it. The other four are not. A warm 405-node scenario median on one machine is `11.0` ms. The chart is drawn from those tokens. The full tables are in [Results](#results).
+
+## Quick start
+
+No authentication. The app listens on loopback only.
+
+```sh
+npm ci
+npm run setup
+npm run atlas
+```
+
+Open http://127.0.0.1:8000. Needs Node 22+ and Python 3.12–3.13. Install needs a network; startup does not. Docker, Windows paths, the Linux CPU PyTorch wheel, and hot reload are in the [development guide](docs/DEVELOPMENT.md).
+
 ![Research World Atlas for Japan: flat map, GDP growth history, and a comparison with the United States](docs/screenshots/desktop.png)
 
-## Key results
+## Architecture
 
-Figures below are copied from committed files. Nothing here is rounded, interpolated, or estimated. [`docs/RESEARCH_REPORT.md`](docs/RESEARCH_REPORT.md) prints the same evaluations to four decimal places; the JSON files are the source.
+![ATLAS pipeline: cached sources, checks, saved PyTorch weights, a loopback FastAPI process, and React workspaces](docs/figures/architecture.svg)
+
+Country exploration, the OECD network, Scenario Studio, rates, portfolios, forecasting, and official events are separate workspaces. Observed history, hypothetical input-output effects, bond valuations, and learned predictions stay labeled apart. Detail: [`docs/API.md`](docs/API.md), [`docs/SCENARIO_STUDIO.md`](docs/SCENARIO_STUDIO.md), [`docs/BUILD_STATUS.md`](docs/BUILD_STATUS.md). The rest of the inspected layouts are in [`docs/SCREENSHOTS.md`](docs/SCREENSHOTS.md).
+
+![Economic Network for Japan in 2022: sector flows, a supplier map, and a hypothetical propagation chart](docs/screenshots/network-1440.png)
+
+![Scenario Studio on the 2022 OECD network: shock controls, an exposure map, and direct versus higher-order effects](docs/screenshots/studio-1440.png)
+
+## Results
+
+Figures below are copied from committed files. Nothing here is rounded, interpolated, or estimated. [`docs/RESEARCH_REPORT.md`](docs/RESEARCH_REPORT.md) prints the same evaluations to four decimal places; the JSON files are the source. [`scripts/render_readme_figures.py`](scripts/render_readme_figures.py) draws the chart from the same tokens.
 
 **Graph experiment, one held-out year (2022).** Target is the next annual log change in country-sector gross output. Train 2018–2020, validation 2021, test 2022, 405 dependent nodes, 81 parameters. Ridge has the lowest test RMSE. The graph does not beat the zero-edge ablation on every seed. Source: [`data/models/gnn/evaluation.json`](data/models/gnn/evaluation.json).
 
@@ -54,59 +80,21 @@ Figures below are copied from committed files. Nothing here is rounded, interpol
 
 The bundled atlas also holds 177 Natural Earth geometries, 42,900 frozen 1960–2024 World Bank rows, a separate 2025 cache of 660 rows (592 nonmissing), seven OECD tables aggregated to 405 nodes across 81 areas, 694 observed Treasury par curves through 2026-10-09, and 30 dated Fed/ECB releases. Those counts are recorded in [`docs/BUILD_STATUS.md`](docs/BUILD_STATUS.md) and [`docs/RESEARCH_REPORT.md`](docs/RESEARCH_REPORT.md).
 
-## Why this matters
+## Why the losses stay on the page
 
 The evaluation is allowed to lose. A ridge baseline beats every saved graph and no-graph checkpoint on the only held-out network year. The forecast experiment keeps every seed, including the ones that do not beat ridge. Scenarios are labeled hypothetical. Revised World Bank history has no release vintages, so it is not a point-in-time backtest.
 
 The engineering around that record is the rest of the project: one loopback FastAPI process, hashed inputs, typed requests, and a release gate that replays the saved checkpoints instead of trusting a stored metric. It is a local research instrument, not a hosted trading system.
 
-## Architecture
+## Limitations
 
-```mermaid
-flowchart LR
-  WB[World Bank download] --> RAW[Immutable raw cache and hashes]
-  NE[Natural Earth] --> RAW
-  OECD[OECD ICIO tables] --> RAW
-  RAW --> V[Validate and normalize]
-  V --> PQ[Parquet]
-  V --> GEO[Local GeoJSON]
-  V --> SQL[SQLite provenance]
-  PQ --> DB[DuckDB]
-  DB --> API[FastAPI on 127.0.0.1]
-  Q[NumPy, SciPy, and CVXPY] --> API
-  PT[Saved PyTorch checkpoints] --> API
-  API --> UI[React research workspaces]
-  GEO --> MAP[MapLibre offline map]
-  MAP --> UI
-```
-
-Country exploration, the OECD network, Scenario Studio, rates, portfolios, forecasting, and official events are separate workspaces. Observed history, hypothetical input-output effects, bond valuations, and learned predictions stay labeled apart. Detail: [`docs/API.md`](docs/API.md), [`docs/SCENARIO_STUDIO.md`](docs/SCENARIO_STUDIO.md), [`docs/BUILD_STATUS.md`](docs/BUILD_STATUS.md). The rest of the inspected layouts are in [`docs/SCREENSHOTS.md`](docs/SCREENSHOTS.md).
-
-![Economic Network for Japan in 2022: sector flows, a supplier map, and a hypothetical propagation chart](docs/screenshots/network-1440.png)
-
-![Scenario Studio on the 2022 OECD network: shock controls, an exposure map, and direct versus higher-order effects](docs/screenshots/studio-1440.png)
-
-## Quickstart
-
-No authentication. The app listens on loopback only.
-
-```sh
-npm ci
-npm run setup
-npm run atlas
-```
-
-Open http://127.0.0.1:8000. Needs Node 22+ and Python 3.12–3.13. Install needs a network; startup does not. Docker, Windows paths, the Linux CPU PyTorch wheel, and hot reload are in the [development guide](docs/DEVELOPMENT.md).
-
-## Reproducibility and integrity
-
-- `requirements-lock.txt` and `package-lock.json` pin the dependency sets. On Linux, setup installs the CPU PyTorch wheel before the rest of the lock.
-- There is no separate pre-registration file. The splits, seeds, and baselines are the records in the evaluation JSON. `npm run verify:release` replays 60 held-out GRU means and intervals and 2,430 graph node predictions from the saved checkpoints (`scripts/check_release.py`) instead of trusting a retyped metric.
-- Evaluation files, hashes, manifests, caches, checkpoints, `docs/LOCAL_LATENCY.json`, and `docs/ICIO_SAMPLE_AUDIT.json` are records. Do not edit them by hand. The key-result figures in this file are the exact JSON tokens; `backend/tests/test_readme_figures.py` fails if they drift.
-- `docs/screenshots/` was captured from the running app on Linux Chromium. Playwright also wrote `*-linux.png` baselines with `npx playwright test --update-snapshots`. The `*-darwin.png` files are the previous interface; refresh them on a Mac with that same command before trusting a macOS pixel run. The command is in the [development guide](docs/DEVELOPMENT.md).
-- The validate workflow runs setup, Ruff, backend tests, the release gate, and the production build on Ubuntu, macOS, and Windows, for Python 3.12 and 3.13. The Docker image stays on 3.12. Browser evidence in [`docs/VALIDATION.md`](docs/VALIDATION.md) is local Chromium. A short [model card](docs/MODEL_CARD.md) states intended use and limits without a second results table. [Security](SECURITY.md) records the loopback boundary.
-
-Cite this software with [`CITATION.cff`](CITATION.cff).
+- One held-out network year, and the 405 nodes in that year are dependent. Ridge has the lowest test RMSE. No generalization, calibration, or causal claim follows.
+- Ten annual GDP targets. The GRU does not beat ridge on every seed. Nominal 80% intervals are not recalibrated. Seed 17 was the default before the test was inspected.
+- World Bank rows are revised history. There is no release vintage, so this is not a point-in-time backtest.
+- Scenarios use fixed historical coefficients and one pass-through rate. They are not GDP, inflation, or an asset return.
+- Warm latency figures are ten sequential loopback requests on one macOS ARM64 machine. Not a load test, a cold start, or a promise for other hardware.
+- Browser evidence is local Chromium. Safari, Firefox, and a human accessibility pass are not done.
+- Loopback, single user. An internet-facing deployment would need authentication, a security review, and monitoring that this release does not include.
 
 ## What I'd do next
 
@@ -118,6 +106,16 @@ Not built. Not a result.
 - Firefox, Safari, and a human accessibility pass. The automated UI suite is Chromium.
 
 Further boundaries are already written down in [`docs/NEXT_STEPS.md`](docs/NEXT_STEPS.md) and [`docs/FINISHING_PLAN.md`](docs/FINISHING_PLAN.md).
+
+## Reproducibility and integrity
+
+- `requirements-lock.txt` and `package-lock.json` pin the dependency sets. On Linux, setup installs the CPU PyTorch wheel before the rest of the lock.
+- There is no separate pre-registration file. The splits, seeds, and baselines are the records in the evaluation JSON. `npm run verify:release` replays 60 held-out GRU means and intervals and 2,430 graph node predictions from the saved checkpoints (`scripts/check_release.py`) instead of trusting a retyped metric.
+- Evaluation files, hashes, manifests, caches, checkpoints, `docs/LOCAL_LATENCY.json`, and `docs/ICIO_SAMPLE_AUDIT.json` are records. Do not edit them by hand. The key-result figures in this file are the exact JSON tokens; `backend/tests/test_readme_figures.py` fails if they drift. The same test fails if `docs/figures/` drifts from [`scripts/render_readme_figures.py`](scripts/render_readme_figures.py).
+- `docs/screenshots/` was captured from the running app on Linux Chromium. Playwright also wrote `*-linux.png` baselines with `npx playwright test --update-snapshots`. The `*-darwin.png` files are the previous interface; refresh them on a Mac with that same command before trusting a macOS pixel run. The command is in the [development guide](docs/DEVELOPMENT.md).
+- The validate workflow runs setup, Ruff, backend tests, the release gate, and the production build on Ubuntu, macOS, and Windows, for Python 3.12 and 3.13. The Docker image stays on 3.12. Browser evidence in [`docs/VALIDATION.md`](docs/VALIDATION.md) is local Chromium. A short [model card](docs/MODEL_CARD.md) states intended use and limits without a second results table. [Security](SECURITY.md) records the loopback boundary.
+
+Cite this software with [`CITATION.cff`](CITATION.cff).
 
 ## Read next
 

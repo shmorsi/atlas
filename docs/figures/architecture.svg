@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1228 348" role="img" width="1228" height="348">
+<title>ATLAS local pipeline</title>
+<desc>Sources, cache, checks, compute, a loopback API, and the UI. No evaluation numbers are drawn here.</desc>
+<rect width="1228" height="348" fill="#000000"/>
+<rect x="0.5" y="0.5" width="1227" height="347" fill="none" stroke="#ffffff" stroke-opacity="0.14"/>
+<rect x="36" y="32" width="48" height="3" fill="#8ec5ff"/>
+<text x="36" y="60" fill="#8e8e93" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="2.4" text-anchor="start">LOCAL PIPELINE</text>
+<text x="36" y="96" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="32" font-weight="600" letter-spacing="-0.6" text-anchor="start">One process. Loopback only.</text>
+<rect x="36" y="132" width="176" height="150" fill="#000000" stroke="#ffffff" stroke-opacity="0.34"/>
+<text x="50" y="160" fill="#8e8e93" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="1.4" text-anchor="start">SOURCES</text>
+<text x="50" y="186" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">World Bank</text>
+<text x="50" y="206" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">Natural Earth</text>
+<text x="50" y="226" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">OECD ICIO</text>
+<text x="50" y="246" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">Treasury · Fed/ECB</text>
+<line x1="212" y1="207" x2="232" y2="207" stroke="#ffffff" stroke-opacity="0.34"/>
+<rect x="232" y="132" width="176" height="150" fill="#000000" stroke="#ffffff" stroke-opacity="0.34"/>
+<text x="246" y="160" fill="#8e8e93" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="1.4" text-anchor="start">CACHE</text>
+<text x="246" y="186" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">Raw files</text>
+<text x="246" y="206" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">Content hashes</text>
+<text x="246" y="226" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">No startup download</text>
+<line x1="408" y1="207" x2="428" y2="207" stroke="#ffffff" stroke-opacity="0.34"/>
+<rect x="428" y="132" width="176" height="150" fill="#000000" stroke="#ffffff" stroke-opacity="0.34"/>
+<text x="442" y="160" fill="#8e8e93" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="1.4" text-anchor="start">CHECKS</text>
+<text x="442" y="186" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">Finite values</text>
+<text x="442" y="206" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">Reconciliation</text>
+<text x="442" y="226" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">Spectral radius</text>
+<line x1="604" y1="207" x2="624" y2="207" stroke="#ffffff" stroke-opacity="0.34"/>
+<rect x="624" y="132" width="176" height="150" fill="#000000" stroke="#ffffff" stroke-opacity="0.34"/>
+<text x="638" y="160" fill="#8e8e93" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="1.4" text-anchor="start">COMPUTE</text>
+<text x="638" y="186" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">DuckDB, NumPy</text>
+<text x="638" y="206" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">SciPy, CVXPY</text>
+<text x="638" y="226" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">Saved PyTorch</text>
+<line x1="800" y1="207" x2="820" y2="207" stroke="#ffffff" stroke-opacity="0.34"/>
+<rect x="820" y="132" width="176" height="150" fill="#000000" stroke="#8ec5ff" stroke-opacity="1"/>
+<text x="834" y="160" fill="#8ec5ff" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="1.4" text-anchor="start">API</text>
+<text x="834" y="186" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">FastAPI</text>
+<text x="834" y="206" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">127.0.0.1 only</text>
+<text x="834" y="226" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">Typed requests</text>
+<line x1="996" y1="207" x2="1016" y2="207" stroke="#ffffff" stroke-opacity="0.34"/>
+<rect x="1016" y="132" width="176" height="150" fill="#000000" stroke="#ffffff" stroke-opacity="0.34"/>
+<text x="1030" y="160" fill="#8e8e93" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="1.4" text-anchor="start">UI</text>
+<text x="1030" y="186" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">React workspaces</text>
+<text x="1030" y="206" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">Offline map</text>
+<text x="1030" y="226" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">Labeled results</text>
+<text x="36" y="324" fill="#a8a8ad" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">Observed history, hypothetical scenarios, and learned predictions stay apart.</text>
+</svg>

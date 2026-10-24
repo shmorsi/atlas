@@ -69,7 +69,15 @@ ATLAS_TEST_URL=http://127.0.0.1:8000 npx playwright test --update-snapshots
 
 That refreshes the macOS files under `tests/*-snapshots/` and rewrites `docs/screenshots/`. Inspect both before committing. Until then, the three macOS pixel checks fail.
 
-The interface follows the same dark system as the portfolio: Inter Tight, a black field, hairline rules, square panels, and one blue accent. Negative map values stay a muted red so the sign is still visible. Fonts are bundled; startup does not fetch a typeface.
+The interface follows the same dark system as the portfolio: Inter Tight, a black field, a faint grid, hairline rules, square panels, and one blue accent (`#8ec5ff`). Negative map values stay a muted red so the sign is still visible. Weights 400, 500, 600, and 700 are bundled; startup does not fetch a typeface.
+
+## Figures
+
+```sh
+python3 scripts/render_readme_figures.py
+```
+
+That rewrites `docs/figures/held-out-rmse.svg` and `docs/figures/architecture.svg` from the committed evaluation JSON and a fixed pipeline layout. It does not train, and it does not edit a result file. `backend/tests/test_readme_figures.py` fails if the committed SVG drifts. Printed numbers in the chart are the original JSON tokens.
 
 `npm run package` builds the frontend, runs the integrity gate, and writes `../ATLAS-release.zip` plus a SHA-256 checksum.
 

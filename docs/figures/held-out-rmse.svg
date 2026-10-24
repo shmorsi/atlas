@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 470" role="img" width="1280" height="470">
+<title>Held-out test RMSE</title>
+<desc>Bar lengths use the committed evaluation values. Printed numbers are the original JSON tokens. The accent marks the lowest test RMSE in each panel.</desc>
+<rect width="1280" height="470" fill="#000000"/>
+<rect x="0.5" y="0.5" width="1279" height="469" fill="none" stroke="#ffffff" stroke-opacity="0.14"/>
+<rect x="36" y="36" width="48" height="3" fill="#8ec5ff"/>
+<text x="36" y="64" fill="#8e8e93" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="2.4" text-anchor="start">HELD-OUT TEST RMSE</text>
+<text x="36" y="100" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="36" font-weight="600" letter-spacing="-0.8" text-anchor="start">Reported as measured</text>
+<text x="36" y="132" fill="#8e8e93" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="1.6" text-anchor="start">GRAPH EXPERIMENT  ·  TEST 2022</text>
+<text x="36" y="154" fill="#a8a8ad" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">RMSE, log percentage points</text>
+<text x="36" y="182" fill="#8ec5ff" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="500" letter-spacing="0" text-anchor="start">ridge</text>
+<rect x="246" y="171" width="180" height="8" fill="none" stroke="#ffffff" stroke-opacity="0.14"/>
+<rect x="246" y="171" width="152.6166" height="8" fill="#8ec5ff"/>
+<text x="632" y="182" fill="#8ec5ff" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="500" letter-spacing="0" text-anchor="end">14.000078463484256</text>
+<text x="36" y="210" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">graph_seed17</text>
+<rect x="246" y="199" width="180" height="8" fill="none" stroke="#ffffff" stroke-opacity="0.14"/>
+<rect x="246" y="199" width="155.6484" height="8" fill="#3a3f45"/>
+<text x="632" y="210" fill="#a8a8ad" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="0" text-anchor="end">14.27819778155666</text>
+<text x="36" y="238" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">no_graph_seed17</text>
+<rect x="246" y="227" width="180" height="8" fill="none" stroke="#ffffff" stroke-opacity="0.14"/>
+<rect x="246" y="227" width="158.4832" height="8" fill="#3a3f45"/>
+<text x="632" y="238" fill="#a8a8ad" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="0" text-anchor="end">14.538244318320187</text>
+<text x="36" y="266" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">no_graph_seed43</text>
+<rect x="246" y="255" width="180" height="8" fill="none" stroke="#ffffff" stroke-opacity="0.14"/>
+<rect x="246" y="255" width="164.4807" height="8" fill="#3a3f45"/>
+<text x="632" y="266" fill="#a8a8ad" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="0" text-anchor="end">15.088421151018641</text>
+<text x="36" y="294" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">graph_seed43</text>
+<rect x="246" y="283" width="180" height="8" fill="none" stroke="#ffffff" stroke-opacity="0.14"/>
+<rect x="246" y="283" width="164.9357" height="8" fill="#3a3f45"/>
+<text x="632" y="294" fill="#a8a8ad" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="0" text-anchor="end">15.130155900126843</text>
+<text x="36" y="322" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">no_graph_seed29</text>
+<rect x="246" y="311" width="180" height="8" fill="none" stroke="#ffffff" stroke-opacity="0.14"/>
+<rect x="246" y="311" width="170.5157" height="8" fill="#3a3f45"/>
+<text x="632" y="322" fill="#a8a8ad" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="0" text-anchor="end">15.642028736708399</text>
+<text x="36" y="350" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">training_mean</text>
+<rect x="246" y="339" width="180" height="8" fill="none" stroke="#ffffff" stroke-opacity="0.14"/>
+<rect x="246" y="339" width="172.4799" height="8" fill="#3a3f45"/>
+<text x="632" y="350" fill="#a8a8ad" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="0" text-anchor="end">15.822211264610859</text>
+<text x="36" y="378" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">graph_seed29</text>
+<rect x="246" y="367" width="180" height="8" fill="none" stroke="#ffffff" stroke-opacity="0.14"/>
+<rect x="246" y="367" width="173.1438" height="8" fill="#3a3f45"/>
+<text x="632" y="378" fill="#a8a8ad" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="0" text-anchor="end">15.883110150007912</text>
+<text x="36" y="406" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">persistence</text>
+<rect x="246" y="395" width="180" height="8" fill="none" stroke="#ffffff" stroke-opacity="0.14"/>
+<rect x="246" y="395" width="180.0000" height="8" fill="#3a3f45"/>
+<text x="632" y="406" fill="#a8a8ad" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="0" text-anchor="end">16.51205896514047</text>
+<text x="668" y="132" fill="#8e8e93" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="600" letter-spacing="1.6" text-anchor="start">US REAL GDP GROWTH  ·  TEST 2015–2024</text>
+<text x="668" y="154" fill="#a8a8ad" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">RMSE, percentage points</text>
+<text x="668" y="182" fill="#8ec5ff" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="500" letter-spacing="0" text-anchor="start">gru_multivariate · 17</text>
+<rect x="878" y="171" width="180" height="8" fill="none" stroke="#ffffff" stroke-opacity="0.14"/>
+<rect x="878" y="171" width="129.9498" height="8" fill="#8ec5ff"/>
+<text x="1264" y="182" fill="#8ec5ff" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="500" letter-spacing="0" text-anchor="end">1.9452490484149925</text>
+<text x="668" y="210" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">gru_domestic_only · 17</text>
+<rect x="878" y="199" width="180" height="8" fill="none" stroke="#ffffff" stroke-opacity="0.14"/>
+<rect x="878" y="199" width="132.0849" height="8" fill="#3a3f45"/>
+<text x="1264" y="210" fill="#a8a8ad" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="0" text-anchor="end">1.977209393996446</text>
+<text x="668" y="238" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">ridge</text>
+<rect x="878" y="227" width="180" height="8" fill="none" stroke="#ffffff" stroke-opacity="0.14"/>
+<rect x="878" y="227" width="132.1101" height="8" fill="#3a3f45"/>
+<text x="1264" y="238" fill="#a8a8ad" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="0" text-anchor="end">1.9775866886855997</text>
+<text x="668" y="266" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">gru_domestic_only · 43</text>
+<rect x="878" y="255" width="180" height="8" fill="none" stroke="#ffffff" stroke-opacity="0.14"/>
+<rect x="878" y="255" width="135.8867" height="8" fill="#3a3f45"/>
+<text x="1264" y="266" fill="#a8a8ad" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="0" text-anchor="end">2.0341195211710534</text>
+<text x="668" y="294" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">training_mean</text>
+<rect x="878" y="283" width="180" height="8" fill="none" stroke="#ffffff" stroke-opacity="0.14"/>
+<rect x="878" y="283" width="136.5336" height="8" fill="#3a3f45"/>
+<text x="1264" y="294" fill="#a8a8ad" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="0" text-anchor="end">2.0438033614012676</text>
+<text x="668" y="322" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">gru_multivariate · 29</text>
+<rect x="878" y="311" width="180" height="8" fill="none" stroke="#ffffff" stroke-opacity="0.14"/>
+<rect x="878" y="311" width="137.4839" height="8" fill="#3a3f45"/>
+<text x="1264" y="322" fill="#a8a8ad" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="0" text-anchor="end">2.058029141745753</text>
+<text x="668" y="350" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">gru_multivariate · 43</text>
+<rect x="878" y="339" width="180" height="8" fill="none" stroke="#ffffff" stroke-opacity="0.14"/>
+<rect x="878" y="339" width="140.6287" height="8" fill="#3a3f45"/>
+<text x="1264" y="350" fill="#a8a8ad" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="0" text-anchor="end">2.105104483971819</text>
+<text x="668" y="378" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">gru_domestic_only · 29</text>
+<rect x="878" y="367" width="180" height="8" fill="none" stroke="#ffffff" stroke-opacity="0.14"/>
+<rect x="878" y="367" width="145.1428" height="8" fill="#3a3f45"/>
+<text x="1264" y="378" fill="#a8a8ad" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="0" text-anchor="end">2.172675965226472</text>
+<text x="668" y="406" fill="#f5f5f7" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="13" font-weight="400" letter-spacing="0" text-anchor="start">persistence_lag2</text>
+<rect x="878" y="395" width="180" height="8" fill="none" stroke="#ffffff" stroke-opacity="0.14"/>
+<rect x="878" y="395" width="180.0000" height="8" fill="#3a3f45"/>
+<text x="1264" y="406" fill="#a8a8ad" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="0" text-anchor="end">2.6944620628131157</text>
+<line x1="36" y1="432" x2="1244" y2="432" stroke="#ffffff" stroke-opacity="0.14"/>
+<text x="36" y="454" fill="#8e8e93" font-family="Inter Tight, Helvetica Neue, Arial, sans-serif" font-size="12" font-weight="400" letter-spacing="0" text-anchor="start">Axis starts at zero. Accent marks the lowest test RMSE in that panel.</text>
+</svg>
