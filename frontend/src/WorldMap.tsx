@@ -41,7 +41,7 @@ export function WorldMap({
             {
               id: "ocean",
               type: "background",
-              paint: { "background-color": "#07080a" },
+              paint: { "background-color": "#000000" },
             },
           ],
         },
@@ -108,7 +108,7 @@ export function WorldMap({
         type: "line",
         source: "world",
         filter: ["==", "id", "JPN"],
-        paint: { "line-color": "#f4f5f7", "line-width": 2 },
+        paint: { "line-color": "#f5f5f7", "line-width": 2 },
       });
       m.addLayer({
         id: "hover",
@@ -215,7 +215,7 @@ export function WorldMap({
                 ? "#3a3e44"
                 : v < 5
                   ? "#6d737a"
-                  : "#e7eaee";
+                  : "#8ec5ff";
         else {
           const t =
             indicator === "NY.GDP.MKTP.CD"
@@ -225,7 +225,7 @@ export function WorldMap({
                 : v / 180;
           color =
             t > 0.8
-              ? "#e7eaee"
+              ? "#8ec5ff"
               : t > 0.65
                 ? "#8e949b"
                 : t > 0.45
@@ -298,8 +298,8 @@ export function WorldMap({
               getPosition: (c) => [c.longitude, c.latitude],
               getRadius: (c) =>
                 Math.sqrt(c.indicators["SP.POP.TOTL"].value!) * 15,
-              getFillColor: [244, 245, 247, 90],
-              getLineColor: [244, 245, 247, 170],
+              getFillColor: [142, 197, 255, 90],
+              getLineColor: [142, 197, 255, 170],
               stroked: true,
               lineWidthMinPixels: 1,
               pickable: false,

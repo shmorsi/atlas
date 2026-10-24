@@ -104,7 +104,7 @@ Open http://127.0.0.1:8000. Needs Node 22+ and Python 3.12–3.13. Install needs
 - There is no separate pre-registration file. The splits, seeds, and baselines are the records in the evaluation JSON. `npm run verify:release` replays 60 held-out GRU means and intervals and 2,430 graph node predictions from the saved checkpoints (`scripts/check_release.py`) instead of trusting a retyped metric.
 - Evaluation files, hashes, manifests, caches, checkpoints, `docs/LOCAL_LATENCY.json`, and `docs/ICIO_SAMPLE_AUDIT.json` are records. Do not edit them by hand. The key-result figures in this file are the exact JSON tokens; `backend/tests/test_readme_figures.py` fails if they drift.
 - `docs/screenshots/` was captured from the running app on Linux Chromium. Playwright also wrote `*-linux.png` baselines with `npx playwright test --update-snapshots`. The `*-darwin.png` files are the previous interface; refresh them on a Mac with that same command before trusting a macOS pixel run. The command is in the [development guide](docs/DEVELOPMENT.md).
-- The validate workflow runs setup, Ruff, backend tests, the release gate, and the production build on Ubuntu, macOS, and Windows. Browser evidence in [`docs/VALIDATION.md`](docs/VALIDATION.md) is local Chromium.
+- The validate workflow runs setup, Ruff, backend tests, the release gate, and the production build on Ubuntu, macOS, and Windows, for Python 3.12 and 3.13. The Docker image stays on 3.12. Browser evidence in [`docs/VALIDATION.md`](docs/VALIDATION.md) is local Chromium. A short [model card](docs/MODEL_CARD.md) states intended use and limits without a second results table. [Security](SECURITY.md) records the loopback boundary.
 
 Cite this software with [`CITATION.cff`](CITATION.cff).
 
@@ -115,10 +115,10 @@ Not built. Not a result.
 - A language-agent research assistant on top of this terminal. It would call the local API, cite the cached source behind each number, and refuse a figure that those responses do not contain.
 - Release-vintage World Bank series, so a forecast can be checked at publication time. The current rows are revised history.
 - More than one held-out network year before asking whether the graph helps. Three training years and one test year are a feasibility check.
-- Firefox, Safari, and a human accessibility pass. The automated UI suite is Chromium, and the workflow runs Python 3.12 only.
+- Firefox, Safari, and a human accessibility pass. The automated UI suite is Chromium.
 
 Further boundaries are already written down in [`docs/NEXT_STEPS.md`](docs/NEXT_STEPS.md) and [`docs/FINISHING_PLAN.md`](docs/FINISHING_PLAN.md).
 
 ## Read next
 
-[Development](docs/DEVELOPMENT.md) · [Research report](docs/RESEARCH_REPORT.md) · [Learning notebooks](learning/README.md) · [Demo script](docs/DEMO_SCRIPT.md) · [Data sources](docs/DATA_SOURCES.md) · [Release notes](docs/RELEASE.md)
+[Development](docs/DEVELOPMENT.md) · [Model card](docs/MODEL_CARD.md) · [Research report](docs/RESEARCH_REPORT.md) · [Learning notebooks](learning/README.md) · [Demo script](docs/DEMO_SCRIPT.md) · [Data sources](docs/DATA_SOURCES.md) · [Release notes](docs/RELEASE.md) · [Security](SECURITY.md)

@@ -12,7 +12,7 @@
 }
 .experience-switch button[aria-pressed="true"] {
   background: #222428;
-  color: #f4f5f7;
+  color: #8ec5ff;
 }
 .guided-mode .page-heading {
   height: 82px;

@@ -26,7 +26,7 @@ export function ExposureMap({
           {
             id: "ocean",
             type: "background",
-            paint: { "background-color": "#07080a" },
+            paint: { "background-color": "#000000" },
           },
         ],
       },
@@ -127,7 +127,7 @@ export function ExposureMap({
       expression.push(
         code,
         magnitude > 0.05
-          ? "#e7eaee"
+          ? "#8ec5ff"
           : magnitude > 0.01
             ? "#8e949b"
             : magnitude > 0.001
@@ -155,7 +155,7 @@ export function ExposureMap({
         {scenario
           ? "Absolute modeled country cost change"
           : "Supplier inputs as a share of the selected buyer’s gross output"}
-        : light &gt;5%; mid &gt;1%; dim &gt;0.1%; faint &gt;0. Near-black
+        : strongest &gt;5%; mid &gt;1%; dim &gt;0.1%; faint &gt;0. Near-black
         includes zero and unavailable. Exact values and direction appear in the
         tables.{" "}
         {profile &&

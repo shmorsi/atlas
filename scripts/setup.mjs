@@ -17,9 +17,11 @@ function torchPin() {
   return match[1];
 }
 const venv = win ? ".venv/Scripts/python.exe" : ".venv/bin/python";
+// Prefer the interpreter already on PATH. GitHub setup-python exposes the
+// matrix version as `python3`, and Ubuntu runners also have a system 3.12.
 const candidates = [
   ...(existsSync(venv) ? [venv] : []),
-  ...(win ? ["python"] : ["python3.12", "python3.13", "python3"]),
+  ...(win ? ["python"] : ["python3", "python3.13", "python3.12"]),
 ];
 const python = candidates.find((cmd) => {
   const r = spawnSync(cmd, [

@@ -177,7 +177,7 @@ export function StructuralLab({ network = false }: { network?: boolean }) {
                   splitLine: { lineStyle: { color: "#2a2e33" } },
                 },
                 series: [
-                  ["Direct", "direct", "#f4f5f7"],
+                  ["Direct", "direct", "#8ec5ff"],
                   ["First-order", "first_order", "#8e949b"],
                   ["Higher-order", "higher_order", "#c5c8cc"],
                 ].map(([name, key, color]) => ({
@@ -598,7 +598,7 @@ export function PortfolioLab() {
                     type: "line",
                     showSymbol: false,
                     data: result.held_out.wealth,
-                    lineStyle: { color: "#f4f5f7" },
+                    lineStyle: { color: "#8ec5ff" },
                   },
                 ],
               }}
@@ -698,7 +698,7 @@ export function ForecastLab() {
                     name: "Observed (revised)",
                     type: "line",
                     data: report.test_actual,
-                    lineStyle: { color: "#f4f5f7" },
+                    lineStyle: { color: "#8ec5ff" },
                   },
                   {
                     name: "Prediction",
@@ -832,7 +832,7 @@ export function HistoricalLab({
               type: "bar",
               data: series.map((o) => ({
                 value: o.value,
-                itemStyle: { color: o.year === event ? "#f4f5f7" : "#5c636a" },
+                itemStyle: { color: o.year === event ? "#8ec5ff" : "#5c636a" },
               })),
             },
           ],

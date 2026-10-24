@@ -351,7 +351,7 @@ export function GuidedAtlas({
                         data: series.map((o) => o.value),
                         showSymbol: false,
                         connectNulls: false,
-                        lineStyle: { color: "#f4f5f7", width: 2 },
+                        lineStyle: { color: "#8ec5ff", width: 2 },
                       },
                     ],
                   }}

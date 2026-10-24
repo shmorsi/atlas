@@ -5,7 +5,7 @@ Short guide for running, checking, and changing ATLAS. The scientific results li
 ## Prerequisites
 
 - Node.js 22 or newer
-- Python 3.12 or 3.13. The [validate workflow](../.github/workflows/validate.yml) runs 3.12 only.
+- Python 3.12 or 3.13. The [validate workflow](../.github/workflows/validate.yml) installs each of those versions on Ubuntu, macOS, and Windows. The Docker image stays on 3.12.
 - A modern WebGL2 browser
 - On Debian and Ubuntu, the venv module is a separate package. If `python3 -m venv` says `ensurepip` is unavailable, install `python3.12-venv` (or `python3.13-venv`) and run setup again.
 - On Windows, use Python from python.org and run the commands in PowerShell. Replace `.venv/bin/python` below with `.venv/Scripts/python.exe`.
@@ -55,7 +55,7 @@ npx playwright install chromium
 ATLAS_TEST_URL=http://127.0.0.1:8000 npm run test:ui
 ```
 
-`npm run lint:python` runs Ruff 0.16.10, the version pinned in `requirements-lock.txt`, on `backend` and `scripts`. The validate workflow runs the same command on Ubuntu, macOS, and Windows.
+`npm run lint:python` runs Ruff 0.16.10, the version pinned in `requirements-lock.txt`, on `backend` and `scripts`. The validate workflow runs the same command for Python 3.12 and 3.13 on Ubuntu, macOS, and Windows.
 
 Pixel comparisons use the Playwright snapshot for the OS that is running the suite. `npx playwright test --update-snapshots` writes that OS's files only. Do not rename a Linux PNG to a macOS filename.
 
@@ -69,7 +69,7 @@ ATLAS_TEST_URL=http://127.0.0.1:8000 npx playwright test --update-snapshots
 
 That refreshes the macOS files under `tests/*-snapshots/` and rewrites `docs/screenshots/`. Inspect both before committing. Until then, the three macOS pixel checks fail.
 
-The interface is a dark monochrome layout: Inter, hairline rules, square panels, and one light accent. Negative map values stay a muted red so the sign is still visible. Fonts are bundled; startup does not fetch a typeface.
+The interface follows the same dark system as the portfolio: Inter Tight, a black field, hairline rules, square panels, and one blue accent. Negative map values stay a muted red so the sign is still visible. Fonts are bundled; startup does not fetch a typeface.
 
 `npm run package` builds the frontend, runs the integrity gate, and writes `../ATLAS-release.zip` plus a SHA-256 checksum.
 

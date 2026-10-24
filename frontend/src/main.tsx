@@ -16,8 +16,8 @@ import {
 import { WorldMap } from "./WorldMap";
 import { Chart } from "./Chart";
 import { api, Country, Observation, format, indicators } from "./types";
-import "@fontsource/inter/400.css";
-import "@fontsource/inter/500.css";
+import "@fontsource/inter-tight/400.css";
+import "@fontsource/inter-tight/500.css";
 import "./style.css";
 import "./guided.css";
 import { GuidedAtlas } from "./GuidedExperience";
@@ -555,9 +555,9 @@ function App() {
                                       data: series.map((o) => o.value),
                                       connectNulls: false,
                                       showSymbol: false,
-                                      lineStyle: { color: "#f4f5f7", width: 2 },
+                                      lineStyle: { color: "#8ec5ff", width: 2 },
                                       areaStyle: {
-                                        color: "#f4f5f7",
+                                        color: "#8ec5ff",
                                         opacity: 0.06,
                                       },
                                     },

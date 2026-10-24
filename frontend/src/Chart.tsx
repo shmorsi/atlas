@@ -27,9 +27,13 @@ export function Chart({
   useEffect(() => {
     const chart = echarts.init(el.current!, undefined, { renderer: "svg" });
     chart.setOption({
-      color: ["#f4f5f7", "#9aa1a8", "#6e757c", "#6e757c"],
+      color: ["#8ec5ff", "#9aa1a8", "#6e757c", "#6e757c"],
       backgroundColor: "transparent",
-      textStyle: { fontFamily: "Inter, sans-serif", color: "#b1b6bc", fontSize: 12 },
+      textStyle: {
+        fontFamily: "\"Inter Tight\", Inter, sans-serif",
+        color: "#a8a8ad",
+        fontSize: 12,
+      },
       animation: false,
       ...option,
     });

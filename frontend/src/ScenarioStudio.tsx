@@ -496,8 +496,8 @@ export function ScenarioStudio({ onAdvanced }: { onAdvanced: () => void }) {
                         {
                           type: "line",
                           data: result.rounds.map((r) => r.total * 100),
-                          lineStyle: { color: "#f4f5f7", width: 3 },
-                          areaStyle: { color: "#f4f5f7", opacity: 0.08 },
+                          lineStyle: { color: "#8ec5ff", width: 3 },
+                          areaStyle: { color: "#8ec5ff", opacity: 0.08 },
                         },
                       ],
                     }}
@@ -560,8 +560,8 @@ export function ScenarioStudio({ onAdvanced }: { onAdvanced: () => void }) {
                             r.within_price_domain ? r.total * 100 : null,
                           ),
                           itemStyle: {
-                            color: "#8f5d5d",
-                            borderRadius: [4, 4, 0, 0],
+                            color: "#8ec5ff",
+                            borderRadius: 0,
                           },
                           barMaxWidth: 36,
                         },
@@ -611,7 +611,7 @@ export function ScenarioStudio({ onAdvanced }: { onAdvanced: () => void }) {
                           <i
                             style={{
                               width: `${(Math.abs(c.total) / (Math.abs(result.countries[0].total) || 1)) * 100}%`,
-                              background: c.total < 0 ? "#8f5d5d" : "#f4f5f7",
+                              background: c.total < 0 ? "#8f5d5d" : "#8ec5ff",
                             }}
                           />
                         </div>

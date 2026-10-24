@@ -75,9 +75,9 @@
   padding: 11px 18px;
 }
 .studio-tabs button[aria-pressed="true"] {
-  border-color: #f4f5f7;
+  border-color: #8ec5ff;
   background: transparent;
-  color: #f4f5f7;
+  color: #8ec5ff;
 }
 .studio-tabs > span {
   margin-left: auto;

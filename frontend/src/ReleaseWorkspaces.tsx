@@ -68,7 +68,7 @@ export function TreasuryCurves() {
                   type: "line",
                   data: curve.points.map((p: any) => p.yield_percent),
                   connectNulls: false,
-                  lineStyle: { color: "#f4f5f7" },
+                  lineStyle: { color: "#8ec5ff" },
                 },
               ],
             }}
