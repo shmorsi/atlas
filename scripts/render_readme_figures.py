@@ -22,7 +22,7 @@ SANS = "Inter Tight, Helvetica Neue, Arial, sans-serif"
 
 
 def _head(path: Path) -> str:
-    return path.read_text().split('"predictions"', 1)[0]
+    return path.read_text(encoding="utf-8").split('"predictions"', 1)[0]
 
 
 def _num(block: str, key: str) -> str | None:
@@ -244,8 +244,8 @@ def main() -> None:
     """Write both figures under docs/figures."""
     FIGURES.mkdir(parents=True, exist_ok=True)
     held, architecture = render()
-    HELD_OUT.write_text(held)
-    ARCHITECTURE.write_text(architecture)
+    HELD_OUT.write_text(held, encoding="utf-8", newline="\n")
+    ARCHITECTURE.write_text(architecture, encoding="utf-8", newline="\n")
 
 
 if __name__ == "__main__":

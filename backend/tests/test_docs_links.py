@@ -12,7 +12,7 @@ def test_relative_markdown_links_resolve():
     for path in ROOT.rglob("*.md"):
         if any(part in {".git", "node_modules", ".venv"} for part in path.parts):
             continue
-        for match in LINK.finditer(path.read_text()):
+        for match in LINK.finditer(path.read_text(encoding="utf-8")):
             target = match.group(1).split("#", 1)[0]
             if not target or target.startswith(("http://", "https://", "mailto:")):
                 continue

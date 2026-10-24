@@ -12,16 +12,18 @@ def _numbers(text: str, fields: str) -> list[str]:
 
 
 def test_readme_key_results_match_committed_json():
-    readme = (ROOT / "README.md").read_text()
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
     graph = (
         (ROOT / "data/models/gnn/evaluation.json")
-        .read_text()
+        .read_text(encoding="utf-8")
         .split('"predictions"', 1)[0]
     )
     forecast = (
-        (ROOT / "data/models/evaluation.json").read_text().split('"predictions"', 1)[0]
+        (ROOT / "data/models/evaluation.json")
+        .read_text(encoding="utf-8")
+        .split('"predictions"', 1)[0]
     )
-    latency = json.loads((ROOT / "docs/LOCAL_LATENCY.json").read_text())
+    latency = json.loads((ROOT / "docs/LOCAL_LATENCY.json").read_text(encoding="utf-8"))
     quoted = _numbers(graph, "rmse_log_percentage_points|mae_log_percentage_points")
     quoted += _numbers(forecast, "rmse|mae|coverage_80")
     for row in latency["results"]:
@@ -43,15 +45,19 @@ def _figures():
 def test_readme_svgs_match_the_generator_and_quote_rmse_tokens():
     module = _figures()
     held, architecture = module.render()
-    assert (ROOT / "docs/figures/held-out-rmse.svg").read_text() == held
-    assert (ROOT / "docs/figures/architecture.svg").read_text() == architecture
+    assert (ROOT / "docs/figures/held-out-rmse.svg").read_text(encoding="utf-8") == held
+    assert (ROOT / "docs/figures/architecture.svg").read_text(
+        encoding="utf-8"
+    ) == architecture
     graph = (
         (ROOT / "data/models/gnn/evaluation.json")
-        .read_text()
+        .read_text(encoding="utf-8")
         .split('"predictions"', 1)[0]
     )
     forecast = (
-        (ROOT / "data/models/evaluation.json").read_text().split('"predictions"', 1)[0]
+        (ROOT / "data/models/evaluation.json")
+        .read_text(encoding="utf-8")
+        .split('"predictions"', 1)[0]
     )
     for number in _numbers(graph, "rmse_log_percentage_points"):
         assert number in held
