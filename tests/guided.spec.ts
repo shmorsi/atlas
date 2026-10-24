@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { saveGallery } from "./gallery";
 test("guided journey explains data and preserves research access", async ({
   page,
 }) => {
@@ -67,10 +68,7 @@ for (const [name, width, height] of [
         maxDiffPixelRatio: 0.003,
       });
     }
-    await page.screenshot({
-      path: `docs/screenshots/guided-${name}.png`,
-      fullPage: true,
-    });
+    await saveGallery(page, `docs/screenshots/guided-${name}.png`);
     if (name === "mobile") {
       await page
         .getByRole("navigation", { name: "Explore ATLAS" })
@@ -85,10 +83,7 @@ for (const [name, width, height] of [
           () => document.documentElement.scrollWidth <= innerWidth,
         ),
       ).toBeTruthy();
-      await page.screenshot({
-        path: "docs/screenshots/guided-scenario-mobile.png",
-        fullPage: true,
-      });
+      await saveGallery(page, "docs/screenshots/guided-scenario-mobile.png");
       await page.getByRole("button", { name: "Explore", exact: true }).click();
       await expect(page.locator(".guide-country-summary h2")).toHaveText(
         "Japan",

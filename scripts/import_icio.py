@@ -1,7 +1,11 @@
 """Import the official regular ICIO ZIP with strict code alignment and explicit aggregation."""
 
-import sys, json, hashlib, zipfile
+import hashlib
+import json
+import sys
+import zipfile
 from pathlib import Path
+
 import numpy as np
 import polars as pl
 from scipy.sparse import csr_matrix

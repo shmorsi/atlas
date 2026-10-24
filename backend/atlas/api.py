@@ -1,17 +1,21 @@
+import json
+
 from fastapi import FastAPI, HTTPException, Query, Response
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.trustedhost import TrustedHostMiddleware
-from atlas.schemas import (
-    ForecastResponse,
-    WalkForwardRequest,
-    NetworkScenarioRequest,
-    StudioRequest,
-)
-from fastapi.middleware.cors import CORSMiddleware
+
 from atlas import data
 from atlas.http_limits import RequestLimits
-from atlas.schemas import CountriesResponse, CountryDetailResponse, ForecastRequest
-import json
+from atlas.schemas import (
+    CountriesResponse,
+    CountryDetailResponse,
+    ForecastRequest,
+    ForecastResponse,
+    NetworkScenarioRequest,
+    StudioRequest,
+    WalkForwardRequest,
+)
 
 app = FastAPI(
     title="ATLAS Research API",
@@ -32,11 +36,13 @@ app.add_middleware(
 
 @app.get("/api/health")
 def health():
+    """Process liveness. Not a research-quality check."""
     return {"status": "ok", "mode": "offline", "version": "0.1.2"}
 
 
 @app.get("/api/countries", response_model=CountriesResponse)
 def countries(year: int = Query(2025, ge=1960, le=2100)):
+    """Observed country cross-section for one cached year."""
     if year > data.latest_annual()["year"]:
         raise HTTPException(422, "Observation year is not cached")
     return {"kind": "observed", "year": year, "countries": data.countries(year)}
@@ -44,6 +50,7 @@ def countries(year: int = Query(2025, ge=1960, le=2100)):
 
 @app.get("/api/countries/{code}", response_model=CountryDetailResponse)
 def country(code: str):
+    """One area's metadata and revised annual history."""
     item = next((c for c in data.countries() if c["id"] == code), None)
     if item is None:
         raise HTTPException(404, "Country not found")
@@ -57,6 +64,7 @@ def country(code: str):
 
 @app.get("/api/sources")
 def sources():
+    """Source URLs, licenses, and content hashes for the bundled caches."""
     items = json.loads((data.DATA / "manifest.json").read_text())
     treasury_path = data.DATA / "treasury-manifest.json"
     if treasury_path.exists():
@@ -114,13 +122,14 @@ def sources():
     return items
 
 
-from atlas.schemas import ShockRequest, BondRequest, PortfolioRequest
 from atlas.economics import propagate
-from atlas.finance import bond, parse_prices, portfolio_stats, optimize
+from atlas.finance import bond, optimize, parse_prices, portfolio_stats
+from atlas.schemas import BondRequest, PortfolioRequest, ShockRequest
 
 
 @app.post("/api/shocks")
 def shock(request: ShockRequest):
+    """Hypothetical price or quantity propagation on a caller-supplied matrix."""
     try:
         return propagate(request.coefficients, request.shock, request.mode)
     except ValueError as e:
@@ -129,6 +138,7 @@ def shock(request: ShockRequest):
 
 @app.post("/api/bonds")
 def bonds(request: BondRequest):
+    """Hypothetical coupon-bond price, duration, convexity, and yield shift."""
     try:
         return bond(**request.model_dump())
     except ValueError as e:
@@ -137,6 +147,7 @@ def bonds(request: BondRequest):
 
 @app.post("/api/portfolio")
 def portfolio(request: PortfolioRequest):
+    """Statistics and a constrained allocation for a user-supplied return CSV."""
     import numpy as np
 
     try:
@@ -187,6 +198,7 @@ def portfolio(request: PortfolioRequest):
 
 @app.get("/api/forecast/evaluation")
 def evaluation():
+    """Saved GRU experiments, every seed, and the baselines."""
     path = data.DATA / "models/evaluation.json"
     if not path.exists():
         raise HTTPException(404, "No trained model. Run scripts/train.py separately.")
@@ -195,6 +207,7 @@ def evaluation():
 
 @app.post("/api/forecast/infer", response_model=ForecastResponse)
 def forecast_inference(request: ForecastRequest):
+    """Neural prediction from one allow-listed GRU and a five-by-four window."""
     from atlas.forecast import infer
 
     path = data.DATA / "models" / f"{request.model}.pt"
@@ -208,6 +221,7 @@ def forecast_inference(request: ForecastRequest):
 
 @app.get("/api/ready")
 def ready(response: Response):
+    """Required files and six GRU checkpoints. Operational readiness only."""
     from atlas.runtime import readiness
 
     result = readiness()
@@ -224,6 +238,7 @@ def replay(
     ),
     year: int = Query(2024, ge=2015, le=2024),
 ):
+    """Replay one saved GRU on the historical window for an allow-listed year."""
     from atlas.forecast import dataset, infer
 
     x, y, years, specs = dataset()
@@ -248,6 +263,7 @@ def replay(
 
 @app.get("/api/rates/treasury")
 def treasury_curves():
+    """Observed US Treasury par yields. Not spot rates or total returns."""
     from atlas.treasury import curves
 
     try:
@@ -258,6 +274,7 @@ def treasury_curves():
 
 @app.post("/api/portfolio/walk-forward")
 def portfolio_walk_forward(request: WalkForwardRequest):
+    """Walk-forward allocation with trailing fits, drift, and repeated costs."""
     from atlas.finance import walk_forward
 
     try:
@@ -281,6 +298,7 @@ def portfolio_walk_forward(request: WalkForwardRequest):
 
 @app.get("/api/network")
 def network_metadata():
+    """OECD aggregate metadata, hashes, and reconciliation diagnostics."""
     from atlas.network import metadata
 
     return metadata()
@@ -288,6 +306,7 @@ def network_metadata():
 
 @app.get("/api/network/country/{code}")
 def network_country(code: str, year: int = Query(2022, ge=2016, le=2022)):
+    """Observed sector output and supplier flows for one area-year."""
     from atlas.network import profile
 
     try:
@@ -298,6 +317,7 @@ def network_country(code: str, year: int = Query(2022, ge=2016, le=2022)):
 
 @app.post("/api/network/scenario")
 def network_scenario(request: NetworkScenarioRequest):
+    """Hypothetical fixed-coefficient scenario on one observed OECD network."""
     from atlas.network import scenario
 
     try:
@@ -308,6 +328,7 @@ def network_scenario(request: NetworkScenarioRequest):
 
 @app.get("/api/network/evaluation")
 def network_evaluation():
+    """All-seed graph, no-graph, and baseline results for the one test year."""
     path = data.DATA / "models/gnn/evaluation.json"
     if not path.exists():
         raise HTTPException(404, "Graph experiment has not been trained")
@@ -316,6 +337,7 @@ def network_evaluation():
 
 @app.post("/api/studio/simulate")
 def studio_simulate(request: StudioRequest):
+    """PyTorch fixed-share solve, autograd attribution, and assumption comparison."""
     from atlas.studio import simulate
 
     try:
@@ -326,6 +348,7 @@ def studio_simulate(request: StudioRequest):
 
 @app.get("/api/network/replay")
 def graph_checkpoint_replay(model: str = "graph_seed17"):
+    """Replay one saved graph checkpoint on the 2022 held-out year."""
     from atlas.graph_forecast import replay
 
     try:
@@ -342,6 +365,7 @@ def graph_checkpoint_replay(model: str = "graph_seed17"):
 
 @app.get("/api/events")
 def events():
+    """Cached official Fed and ECB headlines and links."""
     path = data.DATA / "processed/events.json"
     if not path.exists():
         raise HTTPException(404, "No event cache; explicitly update public data")
@@ -350,6 +374,7 @@ def events():
 
 @app.get("/api/updates")
 def update_status():
+    """Status of the explicit public-data refresh."""
     from atlas.updates import status
 
     return status()
@@ -357,6 +382,7 @@ def update_status():
 
 @app.post("/api/updates", status_code=202)
 def update_public_data():
+    """Start one bounded Treasury, Fed, and ECB refresh. Nothing downloads at startup."""
     from atlas.updates import start_refresh
 
     return start_refresh()
@@ -364,6 +390,7 @@ def update_public_data():
 
 @app.get("/api/data/coverage")
 def coverage():
+    """Latest annual cache size and the frozen forecast cutoff."""
     latest = data.latest_annual()
     return {
         "latest_year": latest["year"],

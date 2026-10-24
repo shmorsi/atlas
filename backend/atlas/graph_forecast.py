@@ -1,12 +1,17 @@
 """Exploratory graph experiment: three training years, one validation year, one test year."""
 
-import copy, hashlib, json, time
+import copy
+import hashlib
+import json
+import time
 from pathlib import Path
+
 import numpy as np
 import torch
 from torch import nn
-from atlas.network import load, metadata, DIRECTORY
+
 from atlas.data import DATA
+from atlas.network import DIRECTORY, load, metadata
 
 
 class GraphPredictor(nn.Module):
@@ -21,7 +26,8 @@ class GraphPredictor(nn.Module):
         return self.head(torch.tanh(self.local(x) + self.message(message))).squeeze(-1)
 
 
-def panel():
+def panel() -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """Build the 2016–2022 country-sector panel used by the graph experiment."""
     tables = [load(y) for y in range(2016, 2023)]
     output = np.array([d["output"] for d in tables])
     valid = (output > 0).all(0)
@@ -50,7 +56,8 @@ def panel():
     return np.array(x), np.array(graphs), np.array(targets)
 
 
-def train_graph(output_dir=DATA / "models/gnn", epochs=250):
+def train_graph(output_dir=DATA / "models/gnn", epochs: int = 250) -> dict:
+    """Train the graph and no-graph seeds and write their checkpoints and evaluation."""
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
     start = time.perf_counter()
@@ -184,7 +191,8 @@ def train_graph(output_dir=DATA / "models/gnn", epochs=250):
     return report
 
 
-def replay(model="graph_seed17"):
+def replay(model: str = "graph_seed17") -> np.ndarray:
+    """Replay one saved graph or no-graph checkpoint on the 2022 held-out year."""
     if model not in {
         f"{kind}_seed{s}" for kind in ["graph", "no_graph"] for s in [17, 29, 43]
     }:

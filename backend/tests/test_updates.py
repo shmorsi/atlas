@@ -1,11 +1,12 @@
 import json
 from urllib.parse import urlparse
+
 import pytest
-from fastapi.testclient import TestClient
-from atlas.api import app
 from atlas import updates
-from atlas.treasury import curves, parse_xml
+from atlas.api import app
 from atlas.data import DATA
+from atlas.treasury import curves
+from fastapi.testclient import TestClient
 
 
 def test_current_rates_and_official_events():

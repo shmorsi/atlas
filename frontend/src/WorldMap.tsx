@@ -41,7 +41,7 @@ export function WorldMap({
             {
               id: "ocean",
               type: "background",
-              paint: { "background-color": "#0b1520" },
+              paint: { "background-color": "#000000" },
             },
           ],
         },
@@ -91,14 +91,14 @@ export function WorldMap({
         id: "land",
         type: "fill",
         source: "world",
-        paint: { "fill-color": "#253949", "fill-opacity": 0.95 },
+        paint: { "fill-color": "#1c1f23", "fill-opacity": 0.95 },
       });
       m.addLayer({
         id: "borders",
         type: "line",
         source: "world",
         paint: {
-          "line-color": "#526374",
+          "line-color": "#3a3f45",
           "line-width": 0.65,
           "line-opacity": 0.65,
         },
@@ -108,14 +108,14 @@ export function WorldMap({
         type: "line",
         source: "world",
         filter: ["==", "id", "JPN"],
-        paint: { "line-color": "#e0b36b", "line-width": 2 },
+        paint: { "line-color": "#f5f5f7", "line-width": 2 },
       });
       m.addLayer({
         id: "hover",
         type: "line",
         source: "world",
         filter: ["==", "id", ""],
-        paint: { "line-color": "#c2d6e2", "line-width": 1.5 },
+        paint: { "line-color": "#c5c8cc", "line-width": 1.5 },
       });
       const graticule: GeoJSON.FeatureCollection = {
         type: "FeatureCollection",
@@ -152,7 +152,7 @@ export function WorldMap({
           type: "line",
           source: "grid",
           paint: {
-            "line-color": "#73869a",
+            "line-color": "#6e757c",
             "line-opacity": 0.1,
             "line-width": 1,
           },
@@ -205,17 +205,17 @@ export function WorldMap({
     const expression: any = ["match", ["get", "id"]];
     countries.forEach((c) => {
       const v = c.indicators[indicator]?.value;
-      let color = "#243341";
+      let color = "#1c1f23";
       if (v != null) {
         if (indicator === "NY.GDP.MKTP.KD.ZG")
           color =
             v < 0
-              ? "#77484b"
+              ? "#8f5d5d"
               : v < 2
-                ? "#344f58"
+                ? "#3a3e44"
                 : v < 5
-                  ? "#3c7377"
-                  : "#6ba397";
+                  ? "#6d737a"
+                  : "#8ec5ff";
         else {
           const t =
             indicator === "NY.GDP.MKTP.CD"
@@ -225,17 +225,17 @@ export function WorldMap({
                 : v / 180;
           color =
             t > 0.8
-              ? "#608e94"
+              ? "#8ec5ff"
               : t > 0.65
-                ? "#426a77"
+                ? "#8e949b"
                 : t > 0.45
-                  ? "#304e60"
-                  : "#243b4d";
+                  ? "#5c636a"
+                  : "#3a3e44";
         }
       }
       expression.push(c.id, color);
     });
-    expression.push("#243341");
+    expression.push("#1c1f23");
     m.setPaintProperty("land", "fill-color", expression);
     const filter: any =
       region === "All regions" ? null : ["==", ["get", "region"], region];
@@ -245,8 +245,12 @@ export function WorldMap({
   useEffect(() => {
     if (!ready || !map.current) return;
     const c = countries.find((c) => c.id === selected);
-    if (c)
-      map.current.easeTo({ center: [c.longitude, c.latitude], duration: 700 });
+    if (!c || !map.current) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    map.current.easeTo({
+      center: [c.longitude, c.latitude],
+      duration: reduce ? 0 : 700,
+    });
   }, [selected]);
   useEffect(() => {
     if (!ready || !map.current) return;
@@ -294,8 +298,8 @@ export function WorldMap({
               getPosition: (c) => [c.longitude, c.latitude],
               getRadius: (c) =>
                 Math.sqrt(c.indicators["SP.POP.TOTL"].value!) * 15,
-              getFillColor: [215, 172, 101, 95],
-              getLineColor: [215, 172, 101, 180],
+              getFillColor: [142, 197, 255, 90],
+              getLineColor: [142, 197, 255, 170],
               stroked: true,
               lineWidthMinPixels: 1,
               pickable: false,
@@ -331,9 +335,9 @@ export function WorldMap({
         <div className="legend">
           {indicator === "NY.GDP.MKTP.KD.ZG" ? (
             <>
-              <i style={{ background: "#77484b" }} /> &lt;0%{" "}
-              <i style={{ background: "#344f58" }} /> 0–2%{" "}
-              <i style={{ background: "#3c7377" }} /> 2–5% <b /> ≥5%
+              <i style={{ background: "#8f5d5d" }} /> &lt;0%{" "}
+              <i style={{ background: "#3a3e44" }} /> 0–2%{" "}
+              <i style={{ background: "#6d737a" }} /> 2–5% <b /> ≥5%
             </>
           ) : (
             <>

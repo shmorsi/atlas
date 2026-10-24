@@ -1,6 +1,9 @@
 """Execute code cells with the project interpreter and save honest captured output."""
 
-import contextlib, io, json, os
+import contextlib
+import io
+import json
+import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -15,7 +18,7 @@ for path in sorted((ROOT / "notebooks").glob("*.ipynb")):
         n += 1
         out = io.StringIO()
         with contextlib.redirect_stdout(out):
-            exec(compile("".join(cell["source"]), str(path), "exec"), scope)
+            exec(compile("".join(cell["source"]), str(path), "exec"), scope)  # noqa: S102
         cell["execution_count"] = n
         cell["outputs"] = (
             [

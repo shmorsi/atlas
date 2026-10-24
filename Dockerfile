@@ -18,6 +18,8 @@ COPY frontend frontend
 RUN npm run build
 
 # Stage 2: slim Python runtime with the pinned lock file.
+# The image stays on Python 3.12, the version this release was built with.
+# The validate workflow also installs 3.13 on every OS.
 FROM python:3.12-slim-bookworm AS runtime
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \

@@ -11,13 +11,13 @@ import {
   Search,
   Database,
   ChevronRight,
-  PanelLeftClose,
   Layers,
-  ArrowUpRight,
 } from "lucide-react";
 import { WorldMap } from "./WorldMap";
 import { Chart } from "./Chart";
 import { api, Country, Observation, format, indicators } from "./types";
+import "@fontsource/inter-tight/400.css";
+import "@fontsource/inter-tight/500.css";
 import "./style.css";
 import "./guided.css";
 import { GuidedAtlas } from "./GuidedExperience";
@@ -87,7 +87,8 @@ function App() {
     [detailError, setDetailError] = useState(""),
     [detailLoading, setDetailLoading] = useState(false),
     [refresh, setRefresh] = useState(0),
-    [sources, setSources] = useState<any[]>([]);
+    [sources, setSources] = useState<any[]>([]),
+    [sourcesError, setSourcesError] = useState("");
   const search = useRef<HTMLInputElement>(null);
   const [inspectorWidth, setInspectorWidth] = useState(285);
   useEffect(() => {
@@ -130,7 +131,7 @@ function App() {
   useEffect(() => {
     api<any[]>("/sources")
       .then(setSources)
-      .catch(() => {});
+      .catch((e) => setSourcesError(String(e)));
     function key(e: KeyboardEvent) {
       if ((e.metaKey || e.ctrlKey) && e.key === "k") {
         e.preventDefault();
@@ -169,13 +170,17 @@ function App() {
     <div
       className={`app ${experience === "guided" ? "guided-mode" : "research-mode"}`}
     >
+      <a className="skip-link" href="#content">
+        Skip to content
+      </a>
       <aside className="rail">
         <a
           className="brand"
           href="#"
           onClick={() => setWorkspace("World Atlas")}
         >
-          <span className="brand-mark">A</span>ATLAS
+          <span className="brand-mark">A</span>
+          <span className="brand-word">ATLAS</span>
           <span className="edition">RESEARCH</span>
         </a>
         <div className="rail-label">
@@ -218,7 +223,7 @@ function App() {
           </div>
         </div>
       </aside>
-      <div className="main">
+      <div className="main" id="content" tabIndex={-1}>
         <header className="topbar">
           <div className="breadcrumb">
             Research terminal <ChevronRight size={14} />
@@ -243,7 +248,7 @@ function App() {
             </button>
           </div>
           <span className="offline">SAVED DATA</span>
-          <span className="version">ATLAS / 0.1</span>
+          <span className="version">ATLAS / 0.1.2</span>
         </header>
         {experience === "guided" && (
           <nav className="guided-mobile-nav" aria-label="Explore ATLAS">
@@ -524,24 +529,24 @@ function App() {
                                     type: "category",
                                     data: series.map((o) => o.year),
                                     axisLabel: {
-                                      color: "#8795a8",
+                                      color: "#b1b6bc",
                                       interval: Math.max(
                                         1,
                                         Math.floor(series.length / 4),
                                       ),
                                     },
                                     axisLine: {
-                                      lineStyle: { color: "#293543" },
+                                      lineStyle: { color: "#2a2e33" },
                                     },
                                   },
                                   yAxis: {
                                     type: "value",
                                     axisLabel: {
-                                      color: "#8795a8",
+                                      color: "#b1b6bc",
                                       formatter: (v) => format(v, indicator),
                                     },
                                     splitLine: {
-                                      lineStyle: { color: "#202c38" },
+                                      lineStyle: { color: "#22262b" },
                                     },
                                   },
                                   series: [
@@ -550,9 +555,9 @@ function App() {
                                       data: series.map((o) => o.value),
                                       connectNulls: false,
                                       showSymbol: false,
-                                      lineStyle: { color: "#d7ac65", width: 2 },
+                                      lineStyle: { color: "#8ec5ff", width: 2 },
                                       areaStyle: {
-                                        color: "#d7ac65",
+                                        color: "#8ec5ff",
                                         opacity: 0.06,
                                       },
                                     },
@@ -707,6 +712,7 @@ function App() {
                 assumptions, structural estimates, historical portfolio analysis
                 and retrospective neural evaluations separately.
               </p>
+              {sourcesError && <p role="alert">{sourcesError}</p>}
               {sources.map((s, i) => (
                 <article key={i}>
                   <h3>{s.label || s.source}</h3>
@@ -731,14 +737,13 @@ function App() {
               </p>
             </section>
           ) : (
-            <section className="research empty">
+            <section className="research empty" role="alert">
               <FlaskConical size={28} />
-              <div className="eyebrow">RESEARCH MODULE / NOT YET AVAILABLE</div>
+              <div className="eyebrow">UNKNOWN WORKSPACE</div>
               <h2>{workspace}</h2>
               <p>
-                This module needs validated data and tested models before
-                results can be displayed. See the build status for
-                implementation progress.
+                This name is not one of the workspaces in this release. The
+                navigation lists every workspace that can show results.
               </p>
               <button onClick={() => setWorkspace("Research & Methods")}>
                 View sources & methodology

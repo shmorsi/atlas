@@ -1,10 +1,17 @@
 """Differentiable, historical fixed-share price scenarios. No learned causal claims."""
 
 import torch
+
 from atlas.network import load, metadata
 
 
-def simulate(shocks, year=2022, pass_through=1.0, focus="JPN"):
+def simulate(
+    shocks: list[dict],
+    year: int = 2022,
+    pass_through: float = 1.0,
+    focus: str = "JPN",
+) -> dict:
+    """Solve and differentiate a combined fixed-share cost scenario with PyTorch."""
     meta = metadata()
     nodes = meta["nodes"]
     d = load(year)
@@ -85,7 +92,7 @@ def simulate(shocks, year=2022, pass_through=1.0, focus="JPN"):
         cumulative = cumulative + term
         rounds.append({"round": step, "total": float(weight @ cumulative)})
     sensitivity = []
-    for rate in sorted(set([0.0, 0.25, 0.5, 0.75, 1.0, pass_through])):
+    for rate in sorted({0.0, 0.25, 0.5, 0.75, 1.0, pass_through}):
         value = torch.linalg.solve(identity - rate * a.T, direct)
         sensitivity.append(
             {

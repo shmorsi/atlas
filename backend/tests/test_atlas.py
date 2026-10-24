@@ -1,8 +1,8 @@
 import json
-import pytest
-from fastapi.testclient import TestClient
-from atlas.api import app
+
 from atlas import data
+from atlas.api import app
+from fastapi.testclient import TestClient
 
 client = TestClient(app)
 

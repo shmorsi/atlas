@@ -5,7 +5,9 @@ import hashlib
 import json
 import math
 import xml.etree.ElementTree as ET
+
 import polars as pl
+
 from atlas.data import DATA
 
 SOURCE = "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value=2024"
@@ -26,7 +28,8 @@ TENORS = {
 }
 
 
-def parse_xml(raw, include_six_week=False):
+def parse_xml(raw: bytes, include_six_week: bool = False) -> list[dict]:
+    """Parse one official Treasury yield XML feed into dated tenor rows."""
     if b"<!DOCTYPE" in raw.upper() or b"<!ENTITY" in raw.upper():
         raise ValueError("XML declarations are not supported")
     root = ET.fromstring(raw)
@@ -66,7 +69,8 @@ def parse_xml(raw, include_six_week=False):
     return sorted(rows, key=lambda r: (r["date"], r["months"]))
 
 
-def prepare():
+def prepare() -> dict:
+    """Write the 2024 Treasury parquet and its source manifest from the raw XML."""
     raw = (DATA / "raw/treasury-2024.xml").read_bytes()
     rows = parse_xml(raw)
     if any(not r["date"].startswith("2024-") for r in rows):
@@ -90,7 +94,8 @@ def prepare():
     return manifest
 
 
-def curves():
+def curves() -> dict:
+    """Observed par curves: the 2024 cache plus the later continuation file."""
     path = DATA / "processed/treasury.parquet"
     if not path.exists():
         raise FileNotFoundError("Treasury cache unavailable")

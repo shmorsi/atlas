@@ -4,11 +4,17 @@ No original release dates exist in this cache. This is revised-history evaluatio
 not a tradable point-in-time backtest. Inputs stop two annual periods before target.
 """
 
-import copy, hashlib, json, random, time
+import copy
+import hashlib
+import json
+import random
+import time
 from pathlib import Path
+
 import numpy as np
 import torch
 from torch import nn
+
 from atlas.data import DATA, query
 
 
@@ -39,7 +45,8 @@ class EconomicGNN(nn.Module):
         return self.out(torch.tanh(self.local(x) + self.message(incoming))).squeeze(-1)
 
 
-def dataset():
+def dataset() -> tuple[np.ndarray, np.ndarray, np.ndarray, list]:
+    """Build chronological US growth windows. Missing windows are dropped, not imputed."""
     specs = [
         ("USA", "NY.GDP.MKTP.KD.ZG"),
         ("CAN", "NY.GDP.MKTP.KD.ZG"),
@@ -74,7 +81,10 @@ def dataset():
     return np.array(x), np.array(targets), np.array(target_year), specs
 
 
-def metrics(y, mean, sd=None):
+def metrics(
+    y: np.ndarray, mean: np.ndarray, sd: np.ndarray | None = None
+) -> dict:
+    """MAE and RMSE, plus Gaussian interval diagnostics when a scale is supplied."""
     out = {
         "mae": float(np.mean(np.abs(y - mean))),
         "rmse": float(np.sqrt(np.mean((y - mean) ** 2))),
@@ -96,7 +106,10 @@ def metrics(y, mean, sd=None):
     return out
 
 
-def train(output: Path, epochs=300, seeds=(17, 29, 43)):
+def train(
+    output: Path, epochs: int = 300, seeds: tuple[int, ...] = (17, 29, 43)
+) -> dict:
+    """Train every listed GRU seed and write checkpoints plus evaluation.json."""
     output.mkdir(parents=True, exist_ok=True)
     start = time.perf_counter()
     x, y, years, specs = dataset()
@@ -226,7 +239,7 @@ def train(output: Path, epochs=300, seeds=(17, 29, 43)):
         "train_years": years[tr].tolist(),
         "validation_years": years[va].tolist(),
         "test_years": years[te].tolist(),
-        "n_temporal_targets": int(len(years)),
+        "n_temporal_targets": len(years),
         "test_actual": y[te].tolist(),
         "results": records,
         "predictions": predictions,
@@ -289,13 +302,15 @@ def _load_checkpoint(path: str, modified_ns: int, size: int):
     return model, state
 
 
-def load_checkpoint(checkpoint: Path):
+def load_checkpoint(checkpoint: Path) -> tuple[nn.Module, dict]:
+    """Load one saved GRU checkpoint on CPU, cached by file identity."""
     checkpoint = checkpoint.resolve()
     stat = checkpoint.stat()
     return _load_checkpoint(str(checkpoint), stat.st_mtime_ns, stat.st_size)
 
 
-def infer(checkpoint: Path, window):
+def infer(checkpoint: Path, window: np.ndarray) -> dict:
+    """Run one saved GRU on a five-by-four window. The output is a neural prediction."""
     x = np.asarray(window, float)
     if x.shape != (5, 4) or not np.isfinite(x).all():
         raise ValueError("Require a complete 5-year, 4-feature window")

@@ -1,3 +1,5 @@
+# Declared ranges. `npm run setup` installs requirements-lock.txt.
+# On Linux, setup first installs the CPU torch wheel named in that lock.
 fastapi>=0.115,<1
 uvicorn>=0.34,<1
 numpy>=2.1,<3

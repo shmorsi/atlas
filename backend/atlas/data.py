@@ -1,5 +1,8 @@
-import json, math, sqlite3
+import json
+import math
+import sqlite3
 from pathlib import Path
+
 import duckdb
 import polars as pl
 
@@ -13,7 +16,8 @@ INDICATORS = {
 }
 
 
-def prepare():
+def prepare() -> None:
+    """Normalize the raw country file and World Bank cache into the processed tables."""
     geo = json.loads((DATA / "raw/countries.geojson").read_text())
     countries = []
     for i, f in enumerate(geo["features"]):
@@ -91,7 +95,8 @@ def prepare():
     )
 
 
-def query(sql, params=None):
+def query(sql: str, params: list | None = None) -> list[dict]:
+    """Run a read-only DuckDB query against the frozen observations file."""
     with duckdb.connect(":memory:") as db:
         db.read_parquet(str(DATA / "processed/observations.parquet")).create_view(
             "observations"
@@ -101,7 +106,8 @@ def query(sql, params=None):
         return [dict(zip(names, r)) for r in result.fetchall()]
 
 
-def latest_annual():
+def latest_annual() -> dict:
+    """Return the separate latest-year cache. It is not the forecast training set."""
     path = DATA / "processed/latest-annual.json"
     return (
         json.loads(path.read_text())
@@ -110,7 +116,8 @@ def latest_annual():
     )
 
 
-def countries(year=2024):
+def countries(year: int = 2024) -> list[dict]:
+    """Country geometries joined to one common observation year."""
     items = json.loads((DATA / "processed/countries.json").read_text())
     obs = (
         [o for o in latest_annual()["observations"] if o["year"] == year]
@@ -124,7 +131,8 @@ def countries(year=2024):
     return [{**c, "indicators": by.get(c["id"], {})} for c in items]
 
 
-def history(code):
+def history(code: str) -> list[dict]:
+    """All cached annual observations for one Natural Earth area code."""
     return query("SELECT * FROM observations WHERE entity=? ORDER BY year", [code]) + [
         o for o in latest_annual()["observations"] if o["entity"] == code
     ]

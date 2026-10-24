@@ -2,10 +2,12 @@
 
 import hashlib
 import json
+
 from atlas.data import DATA, ROOT
 
 
-def readiness():
+def readiness() -> dict:
+    """Check required caches and the six GRU checkpoints. This is not a scientific claim."""
     required = [
         DATA / "processed/observations.parquet",
         DATA / "processed/countries.json",
@@ -31,7 +33,7 @@ def readiness():
             key = f"{result['model']}_seed{result['seed']}"
             path = DATA / "models" / f"{key}.pt"
             try:
-                _, state = load_checkpoint(path)
+                _, _state = load_checkpoint(path)
                 model_status.append(
                     {
                         "model": key,

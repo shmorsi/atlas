@@ -1,45 +1,94 @@
 # ATLAS
 
-**A local-first economic research terminal: real country data, production-network scenarios and reproducible PyTorch experiments in one offline app.**
+**A local-first economic research terminal: cached country data, production-network scenarios, and reproducible PyTorch experiments in one offline app.**
 
-A research terminal, not a product.
+[![Validate local release](https://github.com/shmorsi/atlas/actions/workflows/validate.yml/badge.svg)](https://github.com/shmorsi/atlas/actions/workflows/validate.yml)
+[![Docker image](https://github.com/shmorsi/atlas/actions/workflows/docker.yml/badge.svg)](https://github.com/shmorsi/atlas/actions/workflows/docker.yml)
+[![Release](https://img.shields.io/github/v/release/shmorsi/atlas)](https://github.com/shmorsi/atlas/releases/tag/v0.1.2)
+[![License: MIT](https://img.shields.io/github/license/shmorsi/atlas)](LICENSE)
 
-Headline result: a ridge baseline beat every PyTorch graph and no-graph model on the one held-out year (2022 test RMSE 14.0001 vs 14.2782 log pp for the best neural run). The GRU forecaster does not consistently beat ridge either.
+[Project page](https://shmorsi.github.io/projects/atlas.html) · [v0.1.2](https://github.com/shmorsi/atlas/releases/tag/v0.1.2) · [Research report](docs/RESEARCH_REPORT.md) · [Validation](docs/VALIDATION.md) · [API](docs/API.md)
 
-Latency figures in the docs (median 6.47 to 40.51 ms) are warm loopback requests on one macOS ARM64 machine, not load tests.
+![Research World Atlas for Japan: flat map, GDP growth history, and a comparison with the United States](docs/screenshots/desktop.png)
 
-[![Validate local release](https://github.com/shmorsi/atlas/actions/workflows/validate.yml/badge.svg)](https://github.com/shmorsi/atlas/actions/workflows/validate.yml) [![Docker image](https://github.com/shmorsi/atlas/actions/workflows/docker.yml/badge.svg)](https://github.com/shmorsi/atlas/actions/workflows/docker.yml)
+## Key results
 
-[Project overview & screenshots](https://shmorsi.github.io/projects/atlas.html) · [Download release](https://github.com/shmorsi/atlas/releases/tag/v0.1.2) · [Research report](docs/RESEARCH_REPORT.md) · [Validation evidence](docs/VALIDATION.md)
+Figures below are copied from committed files. Nothing here is rounded, interpolated, or estimated. [`docs/RESEARCH_REPORT.md`](docs/RESEARCH_REPORT.md) prints the same evaluations to four decimal places; the JSON files are the source.
 
-![ATLAS country exploration](docs/screenshots/atlas-overview.png)
+**Graph experiment, one held-out year (2022).** Target is the next annual log change in country-sector gross output. Train 2018–2020, validation 2021, test 2022, 405 dependent nodes, 81 parameters. Ridge has the lowest test RMSE. The graph does not beat the zero-edge ablation on every seed. Source: [`data/models/gnn/evaluation.json`](data/models/gnn/evaluation.json).
 
-## What's inside
+| Model | Test RMSE | Test MAE |
+|---|---:|---:|
+| ridge | 14.000078463484256 | 9.397344422846155 |
+| graph_seed17 | 14.27819778155666 | 9.484987390823374 |
+| no_graph_seed17 | 14.538244318320187 | 9.625492874314386 |
+| no_graph_seed43 | 15.088421151018641 | 10.199939650553098 |
+| graph_seed43 | 15.130155900126843 | 10.239191931405065 |
+| no_graph_seed29 | 15.642028736708399 | 10.68678092914435 |
+| training_mean | 15.822211264610859 | 10.734963018075211 |
+| graph_seed29 | 15.883110150007912 | 10.901140053208215 |
+| persistence | 16.51205896514047 | 11.830011849722426 |
 
-![Scenario Studio: inspectable economic cost propagation](docs/screenshots/studio-1440.png)
+**US real GDP growth, ten held-out years (2015–2024).** Inputs end at t−2. 354 parameters with all features, 282 in the domestic-only ablation. Seeds 17, 29, and 43 are all reported. Default seed 17 was chosen before test inspection. Multivariate seed 17 and domestic-only seed 17 have test RMSE below ridge; the other four GRU runs do not. The GRU does not beat ridge on every seed. Source: [`data/models/evaluation.json`](data/models/evaluation.json).
 
-- **Explore:** 177 geographic entities, dated World Bank observations, an offline map, and a guided country-comparison journey.
-- **Trace:** seven OECD production tables aggregated to 405 nodes across 81 areas, with documented orientation, independent sample audits and hypothetical cost propagation.
-- **Evaluate:** 12 real trained PyTorch checkpoints, all-seed baselines and reproducible inference. The graph experiment has one held-out year; ridge performs best.
-- **Inspect:** PyTorch solves and differentiates combined cost scenarios; neural evidence replays real graph checkpoints against held-out observations and baselines. See [Scenario Studio mathematics](docs/SCENARIO_STUDIO.md) and [validation](docs/VALIDATION.md).
+| Model | Seed | Test RMSE | Test MAE | Nominal 80% coverage |
+|---|---:|---:|---:|---:|
+| gru_multivariate | 17 | 1.9452490484149925 | 1.1803315213484535 | 0.8 |
+| gru_domestic_only | 17 | 1.977209393996446 | 1.2015100466519733 | 0.8 |
+| ridge | — | 1.9775866886855997 | 1.3090976214639525 | — |
+| gru_domestic_only | 43 | 2.0341195211710534 | 1.3685062222090554 | 0.8 |
+| training_mean | — | 2.0438033614012676 | 1.3626015214125236 | — |
+| gru_multivariate | 29 | 2.058029141745753 | 1.3959041102776653 | 0.8 |
+| gru_multivariate | 43 | 2.105104483971819 | 1.4981929916077439 | 0.7 |
+| gru_domestic_only | 29 | 2.172675965226472 | 1.6165172531367997 | 0.8 |
+| persistence_lag2 | — | 2.6944620628131157 | 2.000157404319797 | — |
 
-This is a **local application**, not a hosted trading service. The **Scenario Studio** implements combined production-cost shocks, assumption comparisons, source attribution and a neural evidence view. The broader ETF/event extension remains [future design work](docs/SCENARIO_STUDIO_RESEARCH.md). The [exact release scope](docs/BUILD_STATUS.md) is documented.
+**Warm loopback latency**, one macOS ARM64 machine, ten sequential requests each, not a load test. Source: [`docs/LOCAL_LATENCY.json`](docs/LOCAL_LATENCY.json).
 
-<details><summary>See the OECD network workspace</summary>
+| Endpoint | Median ms | Max ms |
+|---|---:|---:|
+| `/api/network/country/JPN?year=2022` | 5.31 | 6.09 |
+| `/api/countries?year=2025` | 6.47 | 12.42 |
+| `/api/network/scenario` | 11.0 | 11.77 |
+| `/api/forecast/replay` | 40.51 | 59.4 |
 
-![Historical production dependencies](docs/screenshots/atlas-network.png)
+The bundled atlas also holds 177 Natural Earth geometries, 42,900 frozen 1960–2024 World Bank rows, a separate 2025 cache of 660 rows (592 nonmissing), seven OECD tables aggregated to 405 nodes across 81 areas, 694 observed Treasury par curves through 2026-10-09, and 30 dated Fed/ECB releases. Those counts are recorded in [`docs/BUILD_STATUS.md`](docs/BUILD_STATUS.md) and [`docs/RESEARCH_REPORT.md`](docs/RESEARCH_REPORT.md).
 
-</details>
+## Why this matters
 
-Local-first global economic intelligence and quantitative research terminal. React + TypeScript + Vite + MapLibre + ECharts; Python + FastAPI + DuckDB/Parquet. No hosted services or credentials.
+The evaluation is allowed to lose. A ridge baseline beats every saved graph and no-graph checkpoint on the only held-out network year. The forecast experiment keeps every seed, including the ones that do not beat ridge. Scenarios are labeled hypothetical. Revised World Bank history has no release vintages, so it is not a point-in-time backtest.
+
+The engineering around that record is the rest of the project: one loopback FastAPI process, hashed inputs, typed requests, and a release gate that replays the saved checkpoints instead of trusting a stored metric. It is a local research instrument, not a hosted trading system.
+
+## Architecture
+
+```mermaid
+flowchart LR
+  WB[World Bank download] --> RAW[Immutable raw cache and hashes]
+  NE[Natural Earth] --> RAW
+  OECD[OECD ICIO tables] --> RAW
+  RAW --> V[Validate and normalize]
+  V --> PQ[Parquet]
+  V --> GEO[Local GeoJSON]
+  V --> SQL[SQLite provenance]
+  PQ --> DB[DuckDB]
+  DB --> API[FastAPI on 127.0.0.1]
+  Q[NumPy, SciPy, and CVXPY] --> API
+  PT[Saved PyTorch checkpoints] --> API
+  API --> UI[React research workspaces]
+  GEO --> MAP[MapLibre offline map]
+  MAP --> UI
+```
+
+Country exploration, the OECD network, Scenario Studio, rates, portfolios, forecasting, and official events are separate workspaces. Observed history, hypothetical input-output effects, bond valuations, and learned predictions stay labeled apart. Detail: [`docs/API.md`](docs/API.md), [`docs/SCENARIO_STUDIO.md`](docs/SCENARIO_STUDIO.md), [`docs/BUILD_STATUS.md`](docs/BUILD_STATUS.md). The rest of the inspected layouts are in [`docs/SCREENSHOTS.md`](docs/SCREENSHOTS.md).
+
+![Economic Network for Japan in 2022: sector flows, a supplier map, and a hypothetical propagation chart](docs/screenshots/network-1440.png)
+
+![Scenario Studio on the 2022 OECD network: shock controls, an exposure map, and direct versus higher-order effects](docs/screenshots/studio-1440.png)
 
 ## Quickstart
 
-ATLAS has no authentication. Both paths below serve on 127.0.0.1 only; keep it that way.
-
-### Local release (Node + Python)
-
-Prerequisites: Node 22+, Python 3.12–3.13, a modern WebGL2 browser. On Windows use Python from python.org and run in PowerShell; on macOS/Linux `python3` must refer to a supported Python. Tested on macOS ARM64 / Python 3.12.
+No authentication. The app listens on loopback only.
 
 ```sh
 npm ci
@@ -47,99 +96,29 @@ npm run setup
 npm run atlas
 ```
 
-Open http://127.0.0.1:8000. API documentation: http://127.0.0.1:8000/docs. Stop with Ctrl+C. Installation needs internet; normal startup uses bundled data and no external service. The startup command binds only to loopback, verifies source/model integrity, builds production assets, and serves the interface plus API from one FastAPI process. It does not use Vite in production. Set `ATLAS_PORT` to choose another port. For hot-reload development, use `npm run develop` (UI 5173 / API 8000).
+Open http://127.0.0.1:8000. Needs Node 22+ and Python 3.12–3.13. Install needs a network; startup does not. Docker, Windows paths, the Linux CPU PyTorch wheel, and hot reload are in the [development guide](docs/DEVELOPMENT.md).
 
-The supplied `.venv` and `node_modules` are local conveniences and not part of Git. Install your own dependencies after copying the project. `requirements-lock.txt` records this build's exact Python versions; `package-lock.json` pins JavaScript dependencies.
+## Reproducibility and integrity
 
-### Docker
+- `requirements-lock.txt` and `package-lock.json` pin the dependency sets. On Linux, setup installs the CPU PyTorch wheel before the rest of the lock.
+- There is no separate pre-registration file. The splits, seeds, and baselines are the records in the evaluation JSON. `npm run verify:release` replays 60 held-out GRU means and intervals and 2,430 graph node predictions from the saved checkpoints (`scripts/check_release.py`) instead of trusting a retyped metric.
+- Evaluation files, hashes, manifests, caches, checkpoints, `docs/LOCAL_LATENCY.json`, and `docs/ICIO_SAMPLE_AUDIT.json` are records. Do not edit them by hand. The key-result figures in this file are the exact JSON tokens; `backend/tests/test_readme_figures.py` fails if they drift.
+- `docs/screenshots/` was captured from the running app on Linux Chromium. Playwright also wrote `*-linux.png` baselines with `npx playwright test --update-snapshots`. The `*-darwin.png` files are the previous interface; refresh them on a Mac with that same command before trusting a macOS pixel run. The command is in the [development guide](docs/DEVELOPMENT.md).
+- The validate workflow runs setup, Ruff, backend tests, the release gate, and the production build on Ubuntu, macOS, and Windows, for Python 3.12 and 3.13. The Docker image stays on 3.12. Browser evidence in [`docs/VALIDATION.md`](docs/VALIDATION.md) is local Chromium. A short [model card](docs/MODEL_CARD.md) states intended use and limits without a second results table. [Security](SECURITY.md) records the loopback boundary.
 
-```sh
-docker build -t atlas .
-docker run --rm -p 127.0.0.1:8000:8000 atlas
-```
+Cite this software with [`CITATION.cff`](CITATION.cff).
 
-Open http://127.0.0.1:8000. The image runs the same single FastAPI process as `npm run atlas`: a Node stage builds the frontend, and a slim Python 3.12 stage installs `requirements-lock.txt` (CPU PyTorch) and serves the API plus the built UI. The bundled data and checkpoints are copied in from the repository, exactly as the release ships them. The build downloads only npm and Python packages; startup downloads nothing. The release integrity gate (`scripts/check_release.py`) runs during the build and again at startup.
+## What I'd do next
 
-Always publish with the `127.0.0.1:` prefix. The server listens on all interfaces inside the container so Docker can forward the port, and the prefix keeps it reachable from this machine only. To use another host port, change the left side: `-p 127.0.0.1:8001:8000`. The container reports health from `/api/ready`. The [Docker workflow](.github/workflows/docker.yml) builds the image and smoke-tests the API and UI on every pull request.
+Not built. Not a result.
 
-## Data
+- A language-agent research assistant on top of this terminal. It would call the local API, cite the cached source behind each number, and refuse a figure that those responses do not contain.
+- Release-vintage World Bank series, so a forecast can be checked at publication time. The current rows are revised history.
+- More than one held-out network year before asking whether the graph helps. Three training years and one test year are a feasibility check.
+- Firefox, Safari, and a human accessibility pass. The automated UI suite is Chromium.
 
-177 Natural Earth country/territory geometries and 42,900 WDI records (including missing values), covering GDP, population, growth and trade openness for 1960–2024. Each observation carries entity, unit, period, source, retrieval date, missingness flag and nullable publication/vintage fields. Original release dates are **unknown**. Revised history cannot substantiate a point-in-time backtest.
+Further boundaries are already written down in [`docs/NEXT_STEPS.md`](docs/NEXT_STEPS.md) and [`docs/FINISHING_PLAN.md`](docs/FINISHING_PLAN.md).
 
-Natural Earth is public domain. WDI is attributed under World Bank CC BY 4.0 additional terms. See `data/manifest.json` and `docs/DATA_SOURCES.md`. Boundaries are generalized and depict de facto control; small territories may be absent. Country codes use Natural Earth's ADM0 identifiers, with World Bank codes cross-walked explicitly. Trade openness is not bilateral production exposure.
+## Read next
 
-Refresh is explicit, never triggered on startup:
-
-```sh
-.venv/bin/python scripts/fetch_data.py
-.venv/bin/python scripts/prepare_data.py
-```
-
-On Windows replace `.venv/bin/python` with `.venv/Scripts/python.exe`. Raw files are retained and hashed. Normalized observations use Parquet, queried through DuckDB. SQLite stores source metadata and is rebuilt by preparation.
-
-The default atlas additionally includes a separate 2025 WDI cache (660 records, 592 available values). This does not alter the frozen GRU training dataset. Run `npm run refresh:annual` to explicitly update the latest completed annual period; `npm run refresh:public` updates Treasury and official event feeds. The Events workspace provides the same rates/events update action. Retrieval and observation dates are displayed; cached data do not imply real-time coverage.
-
-## Checks
-
-```sh
-.venv/bin/python -m pytest -q
-npm run build
-npx playwright install chromium
-npm run verify:release
-# With the production app running (macOS/Linux):
-ATLAS_TEST_URL=http://127.0.0.1:8000 npm run test:ui
-npm run package  # creates ../ATLAS-release.zip and SHA-256 checksum
-```
-
-See `docs/BUILD_STATUS.md` for exact completion boundaries and tests; `docs/screenshots/` for inspected layouts. Research workspaces are never filled with invented observations or fake model output.
-
-## Architecture
-
-```mermaid
-flowchart LR
- WB[World Bank download] --> RAW[Immutable raw cache + hashes]
- NE[Natural Earth] --> RAW
- RAW --> V[Validate + normalize]
- V --> PQ[Parquet]
- V --> GEO[Local GeoJSON]
- V --> SQL[SQLite provenance]
- PQ --> DB[DuckDB]
- DB --> API[FastAPI / typed requests]
- Q[Independent NumPy / SciPy / CVXPY models] --> API
- API --> UI[React research workspaces]
- GEO --> MAP[MapLibre offline map]
- MAP --> UI
-```
-
-## Navigation
-
-ATLAS opens in **Guided** mode: choose a country, read plain-language explanations, follow its growth history, and compare two economies. Scroll down in that order. Map gestures leave ordinary page scrolling available; use the zoom buttons or the map's modified gesture. The **What if?** page introduces cost transmission with one slider and a clearly labeled fictional teaching network.
-
-Choose **Research** in the top bar for the full terminal, editable equations, diagnostics, portfolio analysis and saved forecasting experiments. Switching modes preserves the selected country and observation year. Advanced controls remain available without crowding the introductory journey.
-
-See [the finishing plan](docs/FINISHING_PLAN.md) for measurable release criteria and the research/data work still outstanding.
-
-
-Search countries by name/code, select by map or keyboard-accessible list, change common observation year, choose an indicator and region, and toggle globe/flat projection. Cmd/Ctrl+K focuses search. Escape clears search. Tables offer an accessible alternative to the map. Mobile stacks panels and scrolls wide comparison tables.
-
-## Scientific contract
-
-Observed history, hypothetical input-output effects, bond valuations, and learned predictions have separate result labels. No causal effect, investment performance, or neural improvement is implied without a measured evaluation. Unavailable data and unsupported model links remain explicit. This is research software, not an operational trading system.
-
-## Working research modules
-
-- **Shock / Network laboratories:** user-editable coefficient matrix; synthetic starting example explicitly labeled. Price and quantity solvers, decomposition and numerical diagnostics. A separate Economic Network workspace loads seven real OECD tables aggregated to 405 nodes, with supplier relationships, geographic links and historical cost propagation.
-- **Graph research:** six genuine trained PyTorch graph/no-graph checkpoints, three chronological training years, one validation year and one test year. Every seed and baseline is reported; ridge performs best on the one held-out year.
-- **Rates:** 694 observed daily Treasury par curves spanning 2024–2026, latest 2026-10-09, with source hash and missingness preserved; hypothetical coupon-bond valuation, duration, convexity and exact yield-shift repricing.
-- **Portfolio Studio:** locally uploaded total-return CSV, validated weights, volatility/drawdown/CVaR, minimum-variance/CVaR allocation and chronological holdout comparison. A separate walk-forward mode uses trailing training windows, drifting holdings and costs at every rebalance, with original/equal-weight baselines. No redistributable ETF history is supplied.
-- **Macro Forecasting:** real trained compact PyTorch GRU/Gaussian-head experiments, six saved checkpoints, three baselines, ablation, all seeds and held-out diagnostics. On-demand CPU PyTorch inference recomputes predictions from cached, evaluated weights. Small sample and revised-history limitations are explicit.
-- **Historical Events:** 30 dated official Fed/ECB releases, filters, source links, explicit refresh, possible transmission channels and annual GDP context. No causal headline-to-market estimate or point-in-time replay.
-
-```sh
-.venv/bin/python scripts/train.py
-.venv/bin/python scripts/check_notebooks.py
-```
-
-See [technical research report](docs/RESEARCH_REPORT.md), [learning guide](learning/README.md), [API contracts](docs/API.md) and [recruiter demo](docs/DEMO_SCRIPT.md). The full original product brief remains only partially fulfilled; the completion matrix is authoritative.
-
-See [release notes and remaining scope](docs/RELEASE.md). The local release package includes production assets, source and real model checkpoints; dependencies still require installation.
+[Development](docs/DEVELOPMENT.md) · [Model card](docs/MODEL_CARD.md) · [Research report](docs/RESEARCH_REPORT.md) · [Learning notebooks](learning/README.md) · [Demo script](docs/DEMO_SCRIPT.md) · [Data sources](docs/DATA_SOURCES.md) · [Release notes](docs/RELEASE.md) · [Security](SECURITY.md)

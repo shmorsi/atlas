@@ -27,7 +27,7 @@ Acceptance: clean replay reproduces data splits, predictions, tables and saved c
 ## 4. Harden the release
 
 - Run keyboard and screen-reader review, contrast checks, reduced-motion checks and touch-device testing. Current browser automation is Chromium on macOS; it is not a full accessibility audit.
-- Verify clean installation and offline operation on supported macOS, Windows and Linux environments, plus Safari and Firefox where WebGL2 is available.
+- GitHub Actions verifies a clean dependency install, setup, backend tests, release gate and production build on Ubuntu, macOS and Windows. The Docker workflow smoke-tests the running API and UI on Ubuntu. Safari, Firefox and a human accessibility review are still open. Offline use after installation is the normal startup path; the install itself needs network access for dependencies.
 - Measure cold startup, interaction latency and memory on a representative ordinary laptop. Split large research/chart bundles if measured loading warrants it; the current production build retains a size advisory.
 - Exercise malformed uploads, long country names, empty historical series, connection loss/retry and unavailable research data. Keep results tied to current inputs.
 - Rerun backend, production-build and browser suites; inspect intentional visual changes before accepting new baselines. Package source, dependency locks, provenance and a clear limitations page.

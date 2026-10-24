@@ -1,9 +1,11 @@
-import hashlib, json
+import hashlib
+import json
+
 import numpy as np
 import pytest
-from atlas.network import load, metadata, profile, scenario, DIRECTORY
-from atlas.graph_forecast import panel, replay
 from atlas.data import DATA
+from atlas.graph_forecast import panel, replay
+from atlas.network import DIRECTORY, load, metadata, profile, scenario
 
 
 def test_observed_network_integrity_and_orientation():

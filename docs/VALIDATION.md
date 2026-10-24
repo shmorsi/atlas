@@ -33,7 +33,7 @@ The population overlay now loads on demand. The initial main JavaScript bundle d
 
 LOCAL_LATENCY.json records ten warm sequential loopback requests per operation: median 6.47 ms for 2025 countries, 5.31 ms for Japan's network profile, 11.00 ms for a 405-node scenario and 40.51 ms for GRU replay. These are measurements on this machine, not concurrent-load, cold-start or other-hardware guarantees.
 
-Earlier evidence: all three learning notebooks executed with saved outputs; setup and dependency checks passed. Setup now retains supplied processed caches and runs the release gate rather than unnecessarily rewriting frozen Parquet files. Windows/Linux/Safari/Firefox clean installation and human accessibility/comprehension tests are not verified here.
+Earlier evidence: all three learning notebooks executed with saved outputs; setup and dependency checks passed. Setup now retains supplied processed caches and runs the release gate rather than unnecessarily rewriting frozen Parquet files. This local session did not itself install on Windows or Linux. Safari, Firefox and human accessibility/comprehension tests are not verified. The CI record below covers clean setup, backend tests, artifact replay and the production build on Ubuntu, macOS and Windows.
 
 A passing engineering suite does not establish causal identification, investment profitability or forecast reliability. The graph experiment has only one held-out year; ridge is the best tested baseline. Read RESEARCH_REPORT.md and BUILD_STATUS.md for the scientific boundary.
 

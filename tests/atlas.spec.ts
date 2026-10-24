@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { saveGallery } from "./gallery";
 test("country selection, search, years, geography and navigation", async ({
   page,
 }) => {
@@ -44,10 +45,7 @@ for (const [name, width, height] of [
       ),
     ).toBeTruthy();
     await expect(page.locator(".map-error")).toHaveCount(0);
-    await page.screenshot({
-      path: `docs/screenshots/${name}.png`,
-      fullPage: true,
-    });
+    await saveGallery(page, `docs/screenshots/${name}.png`);
   });
 }
 test("API failure has recoverable error state", async ({ page }) => {
@@ -75,10 +73,7 @@ test("quantitative workspaces use backend results", async ({ page }) => {
   ).toBeVisible();
   await expect(page.getByText("0.11111", { exact: true })).toBeVisible();
   await page.evaluate(() => window.scrollTo(0, 0));
-  await page.screenshot({
-    path: "docs/screenshots/shock-laboratory.png",
-    fullPage: true,
-  });
+  await saveGallery(page, "docs/screenshots/shock-laboratory.png");
   await page.getByLabel("Technical coefficients").fill("[[1]]");
   await page.getByLabel("Shock vector").fill("[0.1]");
   await page.getByRole("button", { name: "Run structural model" }).click();
@@ -91,10 +86,7 @@ test("quantitative workspaces use backend results", async ({ page }) => {
     page.getByRole("cell", { name: "ridge", exact: true }),
   ).toBeVisible();
   await page.evaluate(() => window.scrollTo(0, 0));
-  await page.screenshot({
-    path: "docs/screenshots/forecasting.png",
-    fullPage: true,
-  });
+  await saveGallery(page, "docs/screenshots/forecasting.png");
   await page.getByRole("button", { name: "Portfolio Studio" }).click();
   // Explicitly synthetic browser test fixture, never a demonstration dataset.
   const rows = [

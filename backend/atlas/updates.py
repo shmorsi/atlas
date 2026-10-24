@@ -1,11 +1,20 @@
 """Explicit, bounded public-source refresh. Offline startup never calls this module's downloader."""
 
-import datetime, email.utils, hashlib, json, os, tempfile, threading
+import datetime
+import email.utils
+import hashlib
+import json
+import os
+import ssl
+import tempfile
+import threading
+import urllib.request
+import xml.etree.ElementTree as ET
 from concurrent.futures import ThreadPoolExecutor
 from urllib.parse import urlparse
-import urllib.request
-import ssl, certifi
-import xml.etree.ElementTree as ET
+
+import certifi
+
 from atlas.data import DATA
 from atlas.treasury import parse_xml
 
@@ -26,7 +35,8 @@ LOCK = threading.Lock()
 STATE = {"status": "idle", "results": []}
 
 
-def atomic_write(path, content):
+def atomic_write(path, content: bytes) -> None:
+    """Replace a file by writing a temporary sibling and renaming it into place."""
     path.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.NamedTemporaryFile(dir=path.parent, delete=False) as f:
         f.write(content)
@@ -34,11 +44,12 @@ def atomic_write(path, content):
     os.replace(name, path)
 
 
-def parse_feed(raw, key):
+def parse_feed(raw: bytes, key: str) -> list[dict]:
+    """Parse one official RSS feed into dated headline rows."""
     if b"<!DOCTYPE" in raw.upper() or b"<!ENTITY" in raw.upper():
         raise ValueError("Unsupported XML declaration")
     root = ET.fromstring(raw)
-    name, url, host = FEEDS[key]
+    name, _url, host = FEEDS[key]
     rows = []
     for item in root.findall(".//item"):
         title = (item.findtext("title") or "").strip()
@@ -68,7 +79,8 @@ def parse_feed(raw, key):
     return sorted(rows, key=lambda r: r["published_at"], reverse=True)[:20]
 
 
-def prepare_rates(years):
+def prepare_rates(years: list[int]) -> dict:
+    """Turn downloaded Treasury XML into the current par-curve cache."""
     sources = []
     grouped = {}
     now = datetime.datetime.now(datetime.timezone.utc).isoformat()
@@ -102,7 +114,8 @@ def prepare_rates(years):
     return result["source"]
 
 
-def prepare_events():
+def prepare_events() -> dict:
+    """Turn downloaded official feeds into the events cache."""
     entries = []
     sources = []
     for key, (name, url, host) in FEEDS.items():
@@ -136,7 +149,8 @@ def prepare_events():
     return result
 
 
-def download(url):
+def download(url: str) -> bytes:
+    """Fetch one HTTPS document with a timeout, a size cap, and the CA bundle."""
     request = urllib.request.Request(
         url, headers={"User-Agent": "ATLAS-local-research/0.1"}
     )
@@ -149,9 +163,10 @@ def download(url):
     return content
 
 
-def refresh():
+def refresh() -> list[dict]:
+    """Download Treasury and official event feeds. Failure keeps the previous cache."""
     results = []
-    year = datetime.date.today().year
+    year = datetime.datetime.now().astimezone().date().year
     years = [year - 1, year]
     staged = {}
     phase = []
@@ -165,7 +180,7 @@ def refresh():
                 raise ValueError("Unexpected year")
             staged[DATA / f"raw/treasury-{y}.xml"] = raw
             phase.append({"source": f"Treasury {y}", "status": "validated"})
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001 — a failed download must not replace the cache
             phase.append(
                 {"source": f"Treasury {y}", "status": "failed", "detail": str(e)}
             )
@@ -188,7 +203,7 @@ def refresh():
             parse_feed(raw, key)
             staged[DATA / f"raw/events-{key}.xml"] = raw
             phase.append({"source": key, "status": "validated"})
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001 — a failed download must not replace the cache
             phase.append({"source": key, "status": "failed", "detail": str(e)})
     if all(r["status"] == "validated" for r in phase):
         for path, raw in staged.items():
@@ -212,13 +227,14 @@ def _job():
             else "partial_failure",
             "results": results,
         }
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001 — the refresh job reports failure instead of crashing
         final = {"status": "failed", "results": [{"detail": str(e)}]}
     with LOCK:
         STATE.update(final)
 
 
-def start_refresh():
+def start_refresh() -> dict:
+    """Start at most one background refresh and return its current state."""
     with LOCK:
         if STATE["status"] == "running":
             return dict(STATE)
@@ -227,6 +243,7 @@ def start_refresh():
         return dict(STATE)
 
 
-def status():
+def status() -> dict:
+    """Return the latest explicit refresh state."""
     with LOCK:
         return dict(STATE)

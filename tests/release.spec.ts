@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { saveGallery } from "./gallery";
 test("observed Treasury curves and on-demand PyTorch inference", async ({
   page,
 }) => {
@@ -14,10 +15,7 @@ test("observed Treasury curves and on-demand PyTorch inference", async ({
   await expect(
     page.getByRole("row").filter({ hasText: "120 months" }),
   ).toContainText("3.95%");
-  await page.screenshot({
-    path: "docs/screenshots/treasury-curves.png",
-    fullPage: true,
-  });
+  await saveGallery(page, "docs/screenshots/treasury-curves.png");
   await page
     .getByRole("button", { name: "Macro Forecasting", exact: true })
     .click();

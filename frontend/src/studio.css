@@ -2,10 +2,10 @@
   max-width: 1500px;
   margin: auto;
   padding: 28px 34px 48px;
-  color: #dce5ed;
+  color: #e4e4e4;
 }
 .studio p {
-  color: #9eafbf;
+  color: #aeaeae;
   line-height: 1.65;
 }
 .studio-hero {
@@ -24,7 +24,7 @@
 }
 .studio-hero h2 em {
   font-style: normal;
-  color: #8eabb7;
+  color: #a2a2a2;
 }
 .studio-hero p {
   max-width: 590px;
@@ -34,23 +34,23 @@
   width: 210px;
   height: 210px;
   flex-shrink: 0;
-  border: 1px solid #35505d;
+  border: 1px solid #494949;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 9px;
-  background: radial-gradient(circle, #18303c88, transparent 70%);
+  background: radial-gradient(circle, #2a2a2a88, transparent 70%);
   box-shadow:
-    0 0 0 17px #20313b22,
-    0 0 0 36px #20313b11;
+    0 0 0 17px #2e2e2e22,
+    0 0 0 36px #2e2e2e11;
   margin-right: 38px;
-  color: #8ebbc4;
+  color: #a9a9a9;
 }
 .studio-seal strong {
   font-size: 42px;
-  color: #e2d0a8;
+  color: #c5c5c5;
   font-weight: 400;
 }
 .studio-seal span {
@@ -58,31 +58,31 @@
 }
 .studio-seal small {
   font-size: 10px;
-  color: #8596a6;
+  color: #969696;
 }
 .studio-tabs {
   display: flex;
   gap: 10px;
   align-items: center;
-  border-top: 1px solid #263541;
-  border-bottom: 1px solid #263541;
+  border-top: 1px solid #343434;
+  border-bottom: 1px solid #343434;
   padding: 14px 0;
 }
 .studio-tabs button {
   background: transparent;
   border: 1px solid transparent;
-  border-radius: 24px;
+  border-radius: 0;
   padding: 11px 18px;
 }
 .studio-tabs button[aria-pressed="true"] {
-  border-color: #52626b;
-  background: #24333d;
-  color: #f3dfb3;
+  border-color: #8ec5ff;
+  background: transparent;
+  color: #8ec5ff;
 }
 .studio-tabs > span {
   margin-left: auto;
   font-size: 11px;
-  color: #8b9ba8;
+  color: #9a9a9a;
 }
 .studio-section-title {
   display: flex;
@@ -94,7 +94,7 @@
 .studio-section-title > span {
   font-size: 11px;
   letter-spacing: 1.5px;
-  color: #c8d4dc;
+  color: #d2d2d2;
 }
 .studio-section-title p {
   font-size: 12px;
@@ -110,20 +110,20 @@
   text-align: left;
   position: relative;
   padding: 23px 18px;
-  border: 1px solid #2b3d48;
-  background: linear-gradient(140deg, #172630, #111b24);
-  border-radius: 12px;
+  border: 1px solid #3a3a3a;
+  background: linear-gradient(140deg, #141414, #0f0f0f);
+  border-radius: 0;
   min-height: 116px;
 }
 .studio-presets button[aria-pressed="true"] {
-  border-color: #bc9b63;
-  background: linear-gradient(140deg, #322e26, #171e24);
+  border-color: #909090;
+  background: linear-gradient(140deg, #2c2c2c, #101010);
 }
 .studio-presets svg {
   position: absolute;
   right: 13px;
   top: 14px;
-  color: #ad9470;
+  color: #8e8e8e;
 }
 .studio-presets strong {
   display: block;
@@ -134,7 +134,7 @@
 .studio-presets span {
   display: block;
   font-size: 11px;
-  color: #a4b2be;
+  color: #b1b1b1;
   margin-top: 12px;
   line-height: 1.5;
 }
@@ -146,9 +146,9 @@
 .studio-controls,
 .studio-map-panel,
 .studio-card {
-  border: 1px solid #2b3c48;
-  border-radius: 14px;
-  background: #111b24;
+  border: 1px solid #3a3a3a;
+  border-radius: 0;
+  background: #0f0f0f;
   min-width: 0;
 }
 .studio-controls {
@@ -164,22 +164,22 @@
 }
 .studio label {
   display: block;
-  color: #b9c7d1;
+  color: #c5c5c5;
   font-size: 12px;
   margin: 15px 0;
 }
 .studio label strong {
   float: right;
-  color: #e3c78f;
+  color: #b9b9b9;
 }
 .studio select {
   display: block;
   width: 100%;
   margin-top: 8px;
-  background: #192832;
-  color: #e0e8ef;
-  border: 1px solid #3b4c59;
-  border-radius: 7px;
+  background: #151515;
+  color: #e8e8e8;
+  border: 1px solid #4a4a4a;
+  border-radius: 0;
   min-height: 40px;
   padding: 8px;
   font: inherit;
@@ -187,11 +187,11 @@
 .studio input[type="range"] {
   width: 100%;
   margin: 14px 0 4px;
-  accent-color: #d7ac65;
+  accent-color: #9e9e9e;
 }
 .studio fieldset {
-  border: 1px solid #34444e;
-  border-radius: 9px;
+  border: 1px solid #414141;
+  border-radius: 0;
   margin: 18px 0;
   padding: 0 12px 12px;
   min-width: 0;
@@ -200,13 +200,13 @@
   font-size: 10px;
   padding: 0 7px;
   letter-spacing: 1px;
-  color: #d2bb91;
+  color: #b2b2b2;
   text-transform: uppercase;
 }
 .studio-range {
   display: flex;
   justify-content: space-between;
-  color: #8599a8;
+  color: #969696;
   font-size: 9px;
 }
 .studio-remove,
@@ -224,13 +224,13 @@
   border-style: dashed;
 }
 .studio-assumptions {
-  border-top: 1px solid #293a45;
+  border-top: 1px solid #373737;
   padding-top: 16px;
   margin: 20px 0;
 }
 .studio summary {
   cursor: pointer;
-  color: #bbceda;
+  color: #cacaca;
   font-size: 12px;
   padding: 10px 0;
   line-height: 1.5;
@@ -245,7 +245,7 @@
   margin: 20px 0 10px;
 }
 .studio-note {
-  color: #8d9eac !important;
+  color: #9c9c9c !important;
   font-size: 11px;
   line-height: 1.6;
   display: block;
@@ -270,7 +270,7 @@
   padding: 22px 24px;
   align-items: center;
   gap: 14px;
-  border-top: 1px solid #293a45;
+  border-top: 1px solid #373737;
   margin-top: 22px;
 }
 .studio-mechanism article {
@@ -279,7 +279,7 @@
 }
 .studio-mechanism article > span {
   display: block;
-  color: #d7ac65;
+  color: #9e9e9e;
   font-size: 11px;
   margin-bottom: 9px;
 }
@@ -293,20 +293,20 @@
 .studio-mechanism > svg {
   transform: rotate(-90deg);
   flex-shrink: 0;
-  color: #617e8d;
+  color: #818181;
 }
 .studio-takeaways {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  border: 1px solid #3a4b56;
-  background: linear-gradient(120deg, #1b2c35, #141d27);
-  border-radius: 14px;
+  border: 1px solid #484848;
+  background: linear-gradient(120deg, #161616, #101010);
+  border-radius: 0;
   margin: 22px 0;
   overflow: hidden;
 }
 .studio-takeaways article {
   padding: 25px;
-  border-right: 1px solid #34434e;
+  border-right: 1px solid #414141;
 }
 .studio-takeaways article:last-child {
   border: 0;
@@ -314,13 +314,13 @@
 .studio-takeaways article > span {
   font-size: 10px;
   letter-spacing: 1px;
-  color: #99b4c3;
+  color: #aeaeae;
 }
 .studio-takeaways strong {
   display: block;
   font-size: clamp(24px, 2.5vw, 35px);
   font-weight: 450;
-  color: #e6cb96;
+  color: #bebebe;
   letter-spacing: -1px;
   margin-top: 18px;
 }
@@ -357,7 +357,7 @@
   display: block;
   margin-top: 6px;
   font-size: 10px;
-  color: #879ba9;
+  color: #989898;
 }
 .studio-rankings button {
   display: grid;
@@ -366,7 +366,7 @@
   gap: 10px;
   width: 100%;
   border: 0;
-  border-bottom: 1px solid #283944;
+  border-bottom: 1px solid #363636;
   border-radius: 0;
   background: transparent;
   text-align: left;
@@ -380,8 +380,8 @@
 }
 .studio-bar {
   height: 5px;
-  background: #283944;
-  border-radius: 3px;
+  background: #363636;
+  border-radius: 0;
   overflow: hidden;
 }
 .studio-bar i {
@@ -390,8 +390,8 @@
   min-width: 1px;
 }
 .studio-math {
-  border: 1px solid #31434e;
-  border-radius: 10px;
+  border: 1px solid #404040;
+  border-radius: 0;
   padding: 10px 22px;
   margin: 20px 0;
 }
@@ -401,7 +401,7 @@
 }
 .studio-equation {
   font-family: monospace;
-  color: #e6cb96;
+  color: #bebebe;
   font-size: clamp(13px, 2vw, 22px);
   padding: 22px 0;
   overflow-wrap: anywhere;
@@ -410,7 +410,7 @@
   display: flex;
   align-items: center;
   gap: 18px;
-  border-top: 1px solid #2b3e49;
+  border-top: 1px solid #3a3a3a;
   padding-top: 25px;
   margin-top: 34px;
 }
@@ -451,7 +451,7 @@
 .studio summary:focus-visible,
 .studio input:focus-visible,
 .studio select:focus-visible {
-  outline: 2px solid #e6c88e;
+  outline: 2px solid #bababa;
   outline-offset: 4px;
 }
 .studio button:disabled {
@@ -545,7 +545,7 @@
   }
   .studio-takeaways article {
     border-right: 0;
-    border-bottom: 1px solid #34434e;
+    border-bottom: 1px solid #414141;
     padding: 23px;
   }
   .studio-card {

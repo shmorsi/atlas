@@ -2,15 +2,18 @@
 
 import json
 from functools import lru_cache
+
 import numpy as np
 from scipy.linalg import solve
+
 from atlas.data import DATA
 
 DIRECTORY = DATA / "processed/network"
 
 
 @lru_cache(maxsize=7)
-def load(year=2022):
+def load(year: int = 2022) -> dict[str, np.ndarray]:
+    """Load one frozen annual aggregate. The returned arrays are read-only."""
     if year not in range(2016, 2023):
         raise ValueError("Network year must be 2016–2022")
     with np.load(DIRECTORY / f"{year}.npz", allow_pickle=False) as f:
@@ -20,11 +23,13 @@ def load(year=2022):
     return arrays
 
 
-def metadata():
+def metadata() -> dict:
+    """Return the committed network metadata, including reconciliation records."""
     return json.loads((DIRECTORY / "metadata.json").read_text())
 
 
-def profile(country="JPN", year=2022):
+def profile(country: str = "JPN", year: int = 2022) -> dict:
+    """Observed supplier flows and sector output for one area and year."""
     meta = metadata()
     nodes = meta["nodes"]
     d = load(year)
@@ -83,7 +88,13 @@ def profile(country="JPN", year=2022):
     }
 
 
-def scenario(country="SAU", sector="Energy", shock=0.1, year=2022):
+def scenario(
+    country: str = "SAU",
+    sector: str = "Energy",
+    shock: float = 0.1,
+    year: int = 2022,
+) -> dict:
+    """Hypothetical fixed-coefficient cost scenario on one observed network."""
     if not np.isfinite(shock) or not -0.5 <= shock <= 0.5:
         raise ValueError("Direct cost change must be within −50% to +50%")
     meta = metadata()
