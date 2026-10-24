@@ -35,10 +35,10 @@
 }
 .guide-intro h2 {
   font-size: 32px;
-  line-height: 1.25;
+  line-height: 1.15;
   margin: 12px 0;
-  font-weight: 450;
-  letter-spacing: -0.8px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
 }
 .guide-intro p {
   max-width: 580px;
@@ -828,8 +828,8 @@
     scroll-margin-top: 65px;
   }
   .guided-mode footer {
-    font-size: 9px;
-    letter-spacing: 0;
+    font-size: 11px;
+    letter-spacing: 0.04em;
   }
   .guided-mode .guide-details {
     font-size: 13px;
@@ -860,10 +860,11 @@
   .guided-mobile-nav button {
     font-size: 12px;
     border: 0;
+    min-height: 44px;
     padding: 8px 4px;
   }
   .guided-mobile-nav button[aria-current="page"] {
-    background: #2e2e2e;
-    color: #ababab;
+    background: #181a1e;
+    color: var(--accent);
   }
 }

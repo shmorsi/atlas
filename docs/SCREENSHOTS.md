@@ -1,6 +1,8 @@
 # Inspected screenshot gallery
 
-Captured from the running production app with Playwright Chromium on Linux after the dark interface update (Inter Tight, black field, one blue accent). These are not mockups. The matching `*-linux.png` files under `tests/` were written by `npx playwright test --update-snapshots` on that same machine. The `*-darwin.png` files are the previous interface; refresh them on a Mac with the command in [DEVELOPMENT.md](DEVELOPMENT.md). CI does not run the pixel compare.
+Captured from the running production app with Playwright Chromium on Linux after the dark interface update (Inter Tight, black field, one blue accent, hairline rules). These are not mockups. The matching `*-linux.png` files under `tests/` were written by `npx playwright test --update-snapshots` on that same machine. The `*-darwin.png` files are the previous interface; refresh them on a Mac with the command in [DEVELOPMENT.md](DEVELOPMENT.md). CI does not run the pixel compare.
+
+The README charts in [figures/](figures/) are separate. `scripts/render_readme_figures.py` draws them from the committed evaluation JSON and a fixed pipeline layout. They are not screenshots, and they do not round the printed tokens.
 
 ## Guided default / desktop
 

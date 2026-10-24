@@ -19,12 +19,16 @@ from atlas.data import DATA, query
 
 
 class TemporalGaussian(nn.Module):
-    def __init__(self, features, hidden=8):
+    """Compact GRU with a positive-scale Gaussian head."""
+
+    def __init__(self, features: int, hidden: int = 8) -> None:
+        """Build the recurrent net and the two-output head."""
         super().__init__()
         self.gru = nn.GRU(features, hidden, batch_first=True)
         self.head = nn.Linear(hidden, 2)
 
-    def forward(self, x):
+    def forward(self, x: torch.Tensor) -> tuple[torch.Tensor, torch.Tensor]:
+        """Return the predictive mean and a positive scale."""
         h, _ = self.gru(x)
         out = self.head(h[:, -1])
         return out[:, 0], nn.functional.softplus(out[:, 1]) + 0.05
@@ -33,13 +37,15 @@ class TemporalGaussian(nn.Module):
 class EconomicGNN(nn.Module):
     """Incoming input-share messages; no training/economic claims without verified A."""
 
-    def __init__(self, features, hidden=8):
+    def __init__(self, features: int, hidden: int = 8) -> None:
+        """Linear local and incoming-share maps into one output."""
         super().__init__()
         self.local = nn.Linear(features, hidden)
         self.message = nn.Linear(features, hidden, bias=False)
         self.out = nn.Linear(hidden, 1)
 
-    def forward(self, x, a):
+    def forward(self, x: torch.Tensor, a: torch.Tensor) -> torch.Tensor:
+        """Apply one incoming input-share message and a pointwise tanh."""
         # A[i,j] is supplier i's input share in j. Batch dimension is time, not independent nodes.
         incoming = torch.einsum("ij,bif->bjf", a, x)
         return self.out(torch.tanh(self.local(x) + self.message(incoming))).squeeze(-1)

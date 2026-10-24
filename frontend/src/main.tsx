@@ -18,6 +18,8 @@ import { Chart } from "./Chart";
 import { api, Country, Observation, format, indicators } from "./types";
 import "@fontsource/inter-tight/400.css";
 import "@fontsource/inter-tight/500.css";
+import "@fontsource/inter-tight/600.css";
+import "@fontsource/inter-tight/700.css";
 import "./style.css";
 import "./guided.css";
 import { GuidedAtlas } from "./GuidedExperience";
@@ -176,8 +178,11 @@ function App() {
       <aside className="rail">
         <a
           className="brand"
-          href="#"
-          onClick={() => setWorkspace("World Atlas")}
+          href="#content"
+          onClick={(event) => {
+            event.preventDefault();
+            setWorkspace("World Atlas");
+          }}
         >
           <span className="brand-mark">A</span>
           <span className="brand-word">ATLAS</span>
@@ -223,7 +228,7 @@ function App() {
           </div>
         </div>
       </aside>
-      <div className="main" id="content" tabIndex={-1}>
+      <main className="main" id="content" tabIndex={-1}>
         <header className="topbar">
           <div className="breadcrumb">
             Research terminal <ChevronRight size={14} />
@@ -270,7 +275,7 @@ function App() {
         )}
         <div className="page-heading">
           <div>
-            <div className="eyebrow">GLOBAL ECONOMIC INTELLIGENCE</div>
+            <div className="eyebrow">ECONOMIC RESEARCH TERMINAL</div>
             <h1>
               {workspace}
               <span>/ {workspace === "World Atlas" ? "01" : "RESEARCH"}</span>
@@ -758,7 +763,7 @@ function App() {
           <span>Observed ≠ forecast · Hypothetical ≠ realized</span>
           <span>LOCAL-FIRST / NO CLOUD SERVICES</span>
         </footer>
-      </div>
+      </main>
     </div>
   );
 }

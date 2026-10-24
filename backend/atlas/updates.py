@@ -11,6 +11,7 @@ import threading
 import urllib.request
 import xml.etree.ElementTree as ET
 from concurrent.futures import ThreadPoolExecutor
+from pathlib import Path
 from urllib.parse import urlparse
 
 import certifi
@@ -35,7 +36,7 @@ LOCK = threading.Lock()
 STATE = {"status": "idle", "results": []}
 
 
-def atomic_write(path, content: bytes) -> None:
+def atomic_write(path: Path, content: bytes) -> None:
     """Replace a file by writing a temporary sibling and renaming it into place."""
     path.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.NamedTemporaryFile(dir=path.parent, delete=False) as f:

@@ -15,13 +15,17 @@ from atlas.network import DIRECTORY, load, metadata
 
 
 class GraphPredictor(nn.Module):
-    def __init__(self, features=4, hidden=8):
+    """One-layer incoming-share predictor for the saved graph experiment."""
+
+    def __init__(self, features: int = 4, hidden: int = 8) -> None:
+        """Build the local map, the share map, and the scalar head."""
         super().__init__()
         self.local = nn.Linear(features, hidden)
         self.message = nn.Linear(features, hidden, bias=False)
         self.head = nn.Linear(hidden, 1)
 
-    def forward(self, x, a):
+    def forward(self, x: torch.Tensor, a: torch.Tensor) -> torch.Tensor:
+        """Apply one batched incoming-share message and a pointwise tanh."""
         message = torch.einsum("bij,bif->bjf", a, x)
         return self.head(torch.tanh(self.local(x) + self.message(message))).squeeze(-1)
 
@@ -56,7 +60,9 @@ def panel() -> tuple[np.ndarray, np.ndarray, np.ndarray]:
     return np.array(x), np.array(graphs), np.array(targets)
 
 
-def train_graph(output_dir=DATA / "models/gnn", epochs: int = 250) -> dict:
+def train_graph(
+    output_dir: Path = DATA / "models/gnn", epochs: int = 250
+) -> dict:
     """Train the graph and no-graph seeds and write their checkpoints and evaluation."""
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
