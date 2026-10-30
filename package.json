@@ -1,6 +1,11 @@
 {
   "name": "atlas-terminal",
   "version": "0.1.2",
+  "description": "Local research terminal that traces cost shocks through observed production networks.",
+  "author": "Sherif Morsi",
+  "license": "MIT",
+  "homepage": "https://shmorsi.github.io/",
+  "repository": { "type": "git", "url": "https://github.com/shmorsi/atlas.git" },
   "private": true,
   "type": "module",
   "scripts": {
